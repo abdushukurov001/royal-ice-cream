@@ -1,17 +1,18 @@
+/** @type {import('tailwindcss').Config} */
 module.exports = {
-    content: [
-      "./src/**/*.{html,js,jsx,ts,tsx}",
-    ],
-    theme: {
-      extend: {
-        fontFamily: {
-          berkshire: ['Berkshire Swash', 'cursive'],
-        },
+  content: [
+    "./src/**/*.{html,js,jsx,ts,tsx}",
+    "./public/index.html", 
+  ],
+  theme: {
+    extend: {
+      fontFamily: {
+        berkshire: ['Berkshire Swash', 'cursive'],
       },
     },
-    plugins: [
-      require('tailwindcss'),
-      require('autoprefixer'),
-    ],
-  }
-  
+  },
+  plugins: [
+    require('tailwindcss'),
+    require('autoprefixer'),
+  ],
+};
