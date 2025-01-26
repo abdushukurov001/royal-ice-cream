@@ -1,5 +1,6 @@
 import './App.css'
 import Catalog from './components/Catalog';
+import ProductDetail from './components/ProductDetail';
 import Home from './pages/Home'
 import {createBrowserRouter, RouterProvider} from 'react-router-dom';
 
@@ -16,8 +17,8 @@ function App() {
     },
     {
       path: '/catalog/:id',
-      // element: </>
-    }
+      element: <ProductDetail/>
+    },
 
   ]);
  
