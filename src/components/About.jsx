@@ -2,7 +2,7 @@ import React from 'react';
 
 const AboutUs = () => {
   return (
-    <div className="bg-pink-100 p-[50px] mt-35 mb-35 rounded-2xl flex items-center flex-wrap lg:justify-between gap-8 justify-center  max-w-6xl mx-auto">
+    <div className="bg-pink-100 p-[50px] mt-35 mb-35 rounded-2xl flex items-center flex-wrap lg:justify-between gap-8 justify-center  max-w-6xl mx-auto" id='about'>
       <div className="max-w-lg">
         <h2 className="text-4xl font-bold mb-4">About <span className="text-pink-500">us</span></h2>
         <p className="text-gray-500 md:text-lg leading-relaxed">

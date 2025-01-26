@@ -3,6 +3,7 @@ import { Search } from 'lucide-react';
 import logo from '../assets/logo.svg';
 import logoDark from '../assets/logoDark.svg'
 import Language from './Language';
+import { Link } from 'react-router-dom';
 
 const Navbar = () => {
     const [isMenuOpen, setIsMenuOpen] = useState(false);
@@ -24,6 +25,15 @@ const Navbar = () => {
 
         return () => window.removeEventListener('scroll', handleScroll);
     }, []);
+
+    const scrollToSection = (sectionId) => {
+        const section = document.getElementById(sectionId);
+        if (section) {
+            section.scrollIntoView({behavior: "smooth"});
+        } else {
+            window.location.href = `/?scroll=${sectionId}`;
+        }
+    };
 
     return (
         <nav className={`fixed top-0 left-0 w-full py-4 z-50 transition-all ${scrolling || window.location.pathname.startsWith('/catalog') ? 'bg-white text-black shadow-md' : 'bg-transparent text-white'}`}>
@@ -49,11 +59,11 @@ const Navbar = () => {
                 <div className="hidden lg:flex items-center gap-19">
                   <div className='flex gap-10'>
                   <a href="/" className="hover:text-pink-500 lg:text-lg  transition-colors">Home</a>
-                    <a href="/about" className="hover:text-pink-500 lg:text-lg transition-colors">About</a>
-                    <a href="/catalog" className="hover:text-pink-500 lg:text-lg transition-colors">Catalog</a>
-                    <a href="/documents" className="hover:text-pink-500 lg:text-lg transition-colors">Documents</a>
-                    <a href="/news" className="hover:text-pink-500 lg:text-lg transition-colors">News</a>
-                    <a href="/contact" className="hover:text-pink-500 lg:text-lg transition-colors">Contact</a>
+                    <a onClick={() => scrollToSection("about")}  className="hover:text-pink-500 cursor-pointer lg:text-lg transition-colors">About</a>
+                    <Link to="/catalog"  className="hover:text-pink-500 cursor-pointer lg:text-lg transition-colors">Catalog</Link>
+                    <a onClick={() => scrollToSection("documents")}  className="hover:text-pink-500 cursor-pointer lg:text-lg transition-colors">Documents</a>
+                    <a onClick={() => scrollToSection("news")}  className="hover:text-pink-500 cursor-pointer lg:text-lg transition-colors">News</a>
+                    <a onClick={() => scrollToSection("contact")}  className="hover:text-pink-500 cursor-pointer lg:text-lg transition-colors">Contact</a>
                   </div>
 
                     
@@ -72,11 +82,11 @@ const Navbar = () => {
             >
                 <div className="flex flex-col items-center gap-4 py-8">
                     <a href="/" className="hover:text-pink-500 transition-colors">Home</a>
-                    <a href="/about" className="hover:text-pink-500 transition-colors">About</a>
-                    <a href="/catalog" className="hover:text-pink-500 transition-colors">Catalog</a>
-                    <a href="/documents" className="hover:text-pink-500 transition-colors">Documents</a>
-                    <a href="/news" className="hover:text-pink-500 transition-colors">News</a>
-                    <a href="/contact" className="hover:text-pink-500 transition-colors">Contact</a>
+                    <a onClick={() => scrollToSection("about")} className="hover:text-pink-500 cursor-pointer transition-colors">About</a>
+                    <Link to="/catalog" className="hover:text-pink-500 cursor-pointer transition-colors">Catalog</Link>
+                    <a onClick={() => scrollToSection("documents")} className="hover:text-pink-500 cursor-pointer transition-colors">Documents</a>
+                    <a onClick={() => scrollToSection("news")} className="hover:text-pink-500 cursor-pointer transition-colors">News</a>
+                    <a onClick={() => scrollToSection("contact")} className="hover:text-pink-500 cursor-pointer transition-colors">Contact</a>
 
                     <Language />
                 </div>
