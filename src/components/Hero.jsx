@@ -19,7 +19,7 @@ const Hero = () => {
 
       <div className="relative z-10 max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 h-full flex items-center justify-center text-center">
         <div className="text-white">
-          <h1 className="text-3xl md:text-5xl font-bold mb-4 font-berkshire">
+          <h1 className="md:text-[100px] text-5xl bekshire font-bold mb-4 font-berkshire">
             Discover <span className="text-pink-400">Sweet </span> Delights!
           </h1>
           <p className="text-lg md:text-2xl mb-8">

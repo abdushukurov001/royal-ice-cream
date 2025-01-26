@@ -1,0 +1,10 @@
+*{   
+ 
+    list-style: none;
+    font-family: 'Gilroy', sans-serif;
+    box-sizing: border-box;
+}
+
+.bekshire, h2{
+    font-family: 'Berkshire Swash', cursive;
+}

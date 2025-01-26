@@ -12,8 +12,8 @@ const ContactSection = () => {
                   />
             <div className="flex flex-col md:flex-row justify-between items-center px-6 space-y-6 md:space-y-0">
                 <div className="text-gray-700 text-center md:text-left space-y-4">
-                    <h2 className="text-3xl font-bold text-pink-600 mb-7">
-                        Contact Us
+                    <h2 className="md:text-5xl text-3xl font-bold text-pink-600 mb-7">
+                        CONTACT US
                     </h2>
                     <p className="flex items-center gap-3">
                         <Phone size={20} className="text-pink-600" />
