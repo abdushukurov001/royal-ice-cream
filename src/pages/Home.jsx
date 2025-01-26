@@ -5,6 +5,9 @@ import hero from "../assets/hero.jpg";
 import AboutUs from "../components/About";
 import ClassicFavorites from "../components/ClassicFavorites";
 import Documents from "../components/Documents";
+import News from "../components/News";
+import Contact from "../components/Contact";
+import Footer from "../components/Footer"
 
 const Home = () => {
   return (
@@ -22,6 +25,9 @@ const Home = () => {
       <AboutUs/>
       <ClassicFavorites/>
       <Documents/>
+      <News/>
+      <Contact/>
+      <Footer/>
     </>
   );
 };
