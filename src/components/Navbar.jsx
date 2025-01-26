@@ -38,7 +38,7 @@ const Navbar = () => {
 
 
                 <button
-                    className=" lg:hidden"
+                    className=" lg:hidden cursor-pointer"
                     onClick={toggleMenu}
                 >
                     <svg className="w-6 h-6" xmlns="http://www.w3.org/2000/svg" fill="none" stroke="currentColor" viewBox="0 0 24 24" strokeWidth="2">
