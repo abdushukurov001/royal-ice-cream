@@ -93,7 +93,7 @@ function News() {
         <img
             src={imgL}
             alt="Decoration Left"
-            className="absolute left-0   top-[40] h-[300px] md:h-[500px]"
+            className="absolute left-0  top-[40] h-[300px] md:h-[500px]"
             style={{ transform: "translateY(-50%)" }}
         />
         {/* Right Decoration */}
@@ -104,34 +104,37 @@ function News() {
             style={{ transform: "translateY(50%)" }}
         />
         <div className="container mx-auto px-4 text-center mb-12">
-            <h2 className="text-4xl font-bold">
-                <span className="text-pink-500">News</span>
+            <h2 className="text-4xl font-bold text-pink-500">
+                News
             </h2>
             <h4 className="pt-5 text-lg text-gray-700">Check out our top news</h4>
         </div>
         <div className="container mx-auto px-4">
-            <Slider {...slickOptions} className="mx-auto">
-                {news.map((item, key) => (
-                    <div key={key} className="px-2">
-                        <div className="border h-[430px] border-slate-400 border-none bg-pink-100 cursor-pointer backdrop-blur-[20px] p-[15px] rounded-[20px]">
-                            <img
-                                src={item.image}
-                                alt={item.title}
-                                className="rounded-[20px]  w-full aspect-[29/17] object-cover"
-                            />
-                            <h5 className="text-[18px] text-black font-medium tracking-wide mt-[10px]">
-                                {item.title}
-                            </h5>
-                            <p className="font-light text-black tracking-wide">
-                                {item.description}
-                            </p>
-                            <p className="mt-[15px] text-black w-fit ml-auto font-light text-[14px] tracking-wide">
-                                2 mins read
-                            </p>
-                        </div>
-                    </div>
-                ))}
-            </Slider>
+        <Slider {...slickOptions} className="mx-auto">
+    {news.map((item, key) => (
+        <div key={key} className="px-2">
+            <div className="relative md:h-[430px] h-[400px] border-none border-slate-400 bg-pink-100 cursor-pointer backdrop-blur-[20px] p-[15px] rounded-[20px]">
+                <img
+                    src={item.image}
+                    alt={item.title}
+                    className="rounded-[20px] w-full aspect-[29/17] object-cover"
+                />
+                <h5 className="text-[18px] text-black font-medium tracking-wide mt-[10px]">
+                    {item.title}
+                </h5>
+                <p className="font-light text-black tracking-wide">
+                    {item.description}
+                </p>
+                {/* "2 mins read" always at the bottom */}
+                <p className="absolute bottom-[15px] right-[15px] text-black font-light text-[14px] tracking-wide">
+                    2 mins read
+                </p>
+            </div>
+        </div>
+    ))}
+</Slider>
+
+
         </div>
     </section>
 </div>

@@ -1,4 +1,5 @@
 import React from 'react';
+import { Link } from 'react-router-dom';
 
 const Footer = () => {
     return (
@@ -7,8 +8,8 @@ const Footer = () => {
     <nav>
       <ul class="flex space-x-4">
         <li><a href="#" class="hover:text-gray-300">Home</a></li>
-        <li><a href="#" class="hover:text-gray-300">About us</a></li>
-        <li><a href="#" class="hover:text-gray-300">Products</a></li>
+        <li><a onClick={() => scrollToSection("about")} class="hover:text-gray-300">About us</a></li>
+        <Link><a href="#" class="hover:text-gray-300">Products</a></Link>
         <li><a href="#" class="hover:text-gray-300">Documents</a></li>
         <li><a href="#" class="hover:text-gray-300">News</a></li>
         <li><a href="#" class="hover:text-gray-300">Contacts</a></li>

@@ -20,8 +20,8 @@ const Documents = () => {
   return (
     <div className=" py-16 px-8" id='documents'>
       <div className="max-w-6xl mx-auto">
-        <h2 className="text-4xl font-bold text-center mb-12">
-          <span className="text-pink-500">DOCUMENTS</span>
+        <h2 className="text-4xl font-bold text-pink-500 text-center mb-12">
+          DOCUMENTS
         </h2>
         
         <div className="grid lg:grid-cols-3 sm:grid-cols-2  gap-8">
@@ -30,7 +30,7 @@ const Documents = () => {
               <img 
                 src={doc.image} 
                 alt={doc.title}
-                className="w-full h-[500px] object-cover rounded-lg mb-4"
+                className="w-full md:h-[500px] h-[300px] object-cover rounded-lg mb-4"
               />
               <button className="w-full  text-black py-2 rounded-lg cursor-pointer transition-colors flex items-center justify-center gap-2">
                <LucideDownload /> <span>Download</span>
