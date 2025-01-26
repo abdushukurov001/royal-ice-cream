@@ -36,30 +36,30 @@ const ClassicFavorites = () => {
       <img
             src={leftImg}
             alt="Decoration Left"
-            className="absolute left-0 bottom-[-40px]  md:top-[10px] h-[100px] md:h-[500px]"
+            className="absolute left-0 z-1 top-[10px] lg:top-[10px] h-[200px] lg:h-[500px]"
           />
     
           <img
             src={rightImg}
             alt="Decoration Right"
-            className="absolute right-0 bottom-[-40px] md:bottom-[35px] h-[100px] md:h-[500px]"
+            className="absolute right-0 z-0 bottom-[40px] lg:bottom-[35px] h-[120px] lg:h-[500px]"
           />
       <div className="max-w-6xl mx-auto ">
-        <h2 className="text-4xl font-bold text-center mb-2">Our <span className="text-pink-500">Classic</span> Favorites</h2>
+        <h2 className="text-4xl z-10 font-bold text-center mb-2">Our <span className="text-pink-500">Classic</span> Favorites</h2>
         <p className="text-center text-gray-600 mb-12">Check out the top products that our customers love.</p>
         
         <div className="grid grid-cols-4 gap-8">
           {products.map((product, index) => (
-            <div key={index} className="group cursor-pointer">
-              <div className="rounded-lg overflow-hidden mb-4 transform transition-transform group-hover:scale-105">
+            <div key={index} className="group cursor-pointer bg-white p-3 rounded-[10px] z-10">
+              <div className="rounded-lg overflow-hidden  mb-4 transform transition-transform group-hover:scale-105">
                 <img 
                   src={product.image} 
                   alt={product.name}
-                  className="w-full h-48 object-cover"
+                  className="w-full h-62 object-cover"
                 />
               </div>
-              <h3 className="font-semibold text-lg mb-2">{product.name}</h3>
-              <p className="text-gray-600 text-sm">{product.description}</p>
+              <h3 className="font-semibold text-xl mb-2">{product.name}</h3>
+              <p className="text-gray-600 text-md">{product.description}</p>
             </div>
           ))}
         </div>
