@@ -4,11 +4,12 @@ import logo from '../assets/logo.svg';
 import logoDark from '../assets/logoDark.svg'
 import Language from './Language';
 import { Link } from 'react-router-dom';
+import {useTranslation} from "react-i18next";
 
 const Navbar = () => {
     const [isMenuOpen, setIsMenuOpen] = useState(false);
     const [scrolling, setScrolling] = useState(false);
-
+    const {t} = useTranslation();
     const toggleMenu = () => setIsMenuOpen(!isMenuOpen);
 
 
@@ -40,9 +41,9 @@ const Navbar = () => {
             <div className="container mx-auto flex items-center justify-between px-6">
                 <div className="flex items-center">
                     {scrolling || window.location.pathname.startsWith('/catalog') ? (
-                        <img src={logoDark} alt="Logo" className="h-10" />
+                        <a href='/'><img src={logoDark} alt="Logo" className="h-12" /></a>
                     ) : (
-                        <img src={logo} alt="Logo" className="h-10" />
+                        <a href='/'><img src={logo} alt="Logo" className="h-12" /></a>
                     )}
                 </div>
 
@@ -58,7 +59,7 @@ const Navbar = () => {
 
                 <div className="hidden lg:flex items-center gap-19">
                   <div className='flex gap-10'>
-                  <a href="/" className="hover:text-pink-500 lg:text-lg  transition-colors">Home</a>
+                  <a href="#" className="hover:text-pink-500 lg:text-lg  transition-colors">{t('navbar.home')}</a>
                     <a onClick={() => scrollToSection("about")}  className="hover:text-pink-500 cursor-pointer lg:text-lg transition-colors">About</a>
                     <Link to="/catalog"  className="hover:text-pink-500 cursor-pointer lg:text-lg transition-colors">Catalog</Link>
                     <a onClick={() => scrollToSection("documents")}  className="hover:text-pink-500 cursor-pointer lg:text-lg transition-colors">Documents</a>

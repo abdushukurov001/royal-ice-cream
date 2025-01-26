@@ -28,7 +28,7 @@ const ContactSection = () => {
                        Uzbekistan, Tashkent, Small ring road 32/1Block
                     </p>
                 </div>
-                <div className="w-full z-10 md:w-1/2 h-[450px]">
+                <div className="w-full z-10 md:w-1/2 h-[350px]">
                     <iframe
                         src="https://maps.google.com/maps?q=tashkent&t=&z=13&ie=UTF8&iwloc=&output=embed"
                         className="w-full h-full rounded-lg shadow-lg"
