@@ -2,6 +2,7 @@ import './App.css'
 import Catalog from './components/Catalog';
 import ProductDetail from './components/ProductDetail';
 import Home from './pages/Home'
+import './i18n/i18';
 import {createBrowserRouter, RouterProvider} from 'react-router-dom';
 
 
@@ -25,6 +26,7 @@ function App() {
 
   return (
     <RouterProvider router={router}/>
+    
   )
 }
 

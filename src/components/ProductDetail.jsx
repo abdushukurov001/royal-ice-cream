@@ -1,7 +1,8 @@
 import ice1 from '../assets/ice1.png'
 import Navbar from "./Navbar.jsx";
 import Footer from "./Footer.jsx";
-import {useEffect} from "react";
+import { useEffect } from "react";
+import { FaArrowRight } from 'react-icons/fa';
 
 const product = {
     id: 1,
@@ -18,7 +19,7 @@ const ProductDetail = () => {
 
     return (
         <>
-            <Navbar/>
+            <Navbar />
             <div className="min-h-screen bg-gray-50 py-8 mt-20 px-4 sm:px-6 lg:px-8">
                 <div className="max-w-7xl mx-auto">
                     <div className="breadcrumb flex">
@@ -29,11 +30,11 @@ const ProductDetail = () => {
                             Home
                         </a>
                         <a
-                            href="/catalog"
-                            className="mb-6 inline-flex items-center text-gray-600 hover:text-gray-900 transition-colors"
+                            onClick={() => window.history.back()}
+                            className="mb-6 inline-flex cursor-pointer items-center text-gray-600 hover:text-gray-900 transition-colors"
                         >
                             <svg
-                                className="w-5 h-5 mr-1"
+                                className="w-8 h-5 mr-1"
                                 fill="none"
                                 stroke="currentColor"
                                 viewBox="0 0 24 24"
@@ -42,15 +43,37 @@ const ProductDetail = () => {
                                     strokeLinecap="round"
                                     strokeLinejoin="round"
                                     strokeWidth={2}
-                                    d="M10 19l-7-7m0 0l7-7m-7 7h18"
+                                    d="M5 12h14m-7-7l7 7-7 7"
                                 />
                             </svg>
+
                             Products catalog
                         </a>
+                        <a
+                            onClick={() => window.history.back()}
+                            className="mb-6 inline-flex font-bold cursor-pointer items-center text-gray-600 hover:text-gray-900 transition-colors"
+                        >
+                            <svg
+                                className="w-8 h-5 mr-1"
+                                fill="none"
+                                stroke="currentColor"
+                                viewBox="0 0 24 24"
+                            >
+                                <path
+                                    strokeLinecap="round"
+                                    strokeLinejoin="round"
+                                    strokeWidth={2}
+                                    d="M5 12h14m-7-7l7 7-7 7"
+                                />
+                            </svg>
+
+                            Products Info
+                        </a>
+                        
                     </div>
 
                     <div className="bg-[#FFF5F7] rounded-lg shadow-lg overflow-hidden">
-                        <div className="grid grid-cols-1 md:grid-cols-2 gap-8 p-8">
+                        <div className="grid grid-cols-1 lg:grid-cols-2 gap-8 p-8">
                             {/* Product Image */}
                             <div className="aspect-w-1 aspect-h-1">
                                 <img
@@ -110,7 +133,7 @@ const ProductDetail = () => {
                     </div>
                 </div>
             </div>
-            <Footer/>
+            <Footer />
         </>
     );
 };
