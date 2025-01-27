@@ -13,9 +13,8 @@ const product = {
 
 const ProductDetail = () => {
 
-    useEffect(() => {
-        window.scrollY = 0
-    }, []);
+    window.scrollTo({ top: 0, behavior: 'smooth' });
+
 
     return (
         <>
