@@ -73,8 +73,8 @@ function News() {
             {
                 breakpoint: 1536,
                 settings: {
-                    slidesToShow: 6,
-                    slidesToScroll: 6,
+                    slidesToShow: 4,
+                    slidesToScroll: 4,
                 },
             },
         ],
@@ -83,7 +83,7 @@ function News() {
     return (
         <div className="">
     <section
-        className="overflow-visible mb-40 relative h-screen text-black py-36"
+        className="overflow-visible mb-40 relative h-screen text-black py-36 scroll-mt-5"
         id="news"
         style={{
             backgroundImage: `url(${gradient})`,

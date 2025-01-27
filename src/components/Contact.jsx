@@ -4,7 +4,7 @@ import bgimg from '../assets/bg-contact.svg'
 
 const ContactSection = () => {
     return (
-        <section id='contact' className="container relative mb-16 rounded-3xl mx-auto bg-pink-100 px-18 py-20">
+        <section id='contact' className="container relative mb-16  rounded-3xl mx-auto  bg-pink-100 px-18 py-20 scroll-mt-26">
             <img
                     src={bgimg}
                     alt="Decoration Left"

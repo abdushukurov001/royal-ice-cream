@@ -5,8 +5,12 @@ import leftImg from "../assets/classicLeft.svg";
 import rightImg from "../assets/classicRight.svg";
 import "slick-carousel/slick/slick.css";
 import "slick-carousel/slick/slick-theme.css";
+import {useTranslation} from "react-i18next";
+
 
 const ClassicFavorites = () => {
+      const {t} = useTranslation();
+  
   const slickOptions = {
     infinite: true,
     speed: 1000,
@@ -43,8 +47,8 @@ const ClassicFavorites = () => {
       {
         breakpoint: 1536,
         settings: {
-          slidesToShow: 6,
-          slidesToScroll: 6,
+          slidesToShow: 4,
+          slidesToScroll: 4,
         },
       },
     ],
@@ -87,7 +91,7 @@ const ClassicFavorites = () => {
       <img
         src={leftImg}
         alt="Decoration Left"
-        className="absolute left-0 z-1 top-[10px] lg:top-[10px] h-[200px] lg:h-[500px]"
+        className="absolute left-0 z-0 top-[10px] lg:top-[10px] h-[200px] lg:h-[500px]"
       />
       <img
         src={rightImg}
@@ -95,8 +99,8 @@ const ClassicFavorites = () => {
         className="absolute right-0 z-0 bottom-[40px] lg:bottom-[35px] h-[120px] lg:h-[500px]"
       />
       <div className="max-w-6xl mx-auto">
-        <h2 className="text-4xl z-10 font-bold text-center mb-2">
-          Our <span className="text-pink-500">Classic</span> Favorites
+        <h2 className="text-4xl text-pink-500 z-10 font-bold text-center mb-2">
+         {t('home.favourites')}
         </h2>
         <p className="text-center text-gray-600 mb-12">
           Check out the top products that our customers love.

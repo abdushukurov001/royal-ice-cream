@@ -18,7 +18,7 @@ const Documents = () => {
   ];
 
   return (
-    <div className=" py-16 px-8" id='documents'>
+    <div className=" py-16 px-8 scroll-mt-16" id='documents'>
       <div className="max-w-6xl mx-auto">
         <h2 className="text-4xl font-bold text-pink-500 text-center mb-12">
           DOCUMENTS

@@ -59,12 +59,12 @@ const Navbar = () => {
 
                 <div className="hidden lg:flex items-center gap-19">
                   <div className='flex gap-10'>
-                  <a href="#" className="hover:text-pink-500 lg:text-lg  transition-colors">{t('navbar.home')}</a>
-                    <a onClick={() => scrollToSection("about")}  className="hover:text-pink-500 cursor-pointer lg:text-lg transition-colors">About</a>
-                    <Link to="/catalog"  className="hover:text-pink-500 cursor-pointer lg:text-lg transition-colors">Catalog</Link>
-                    <a onClick={() => scrollToSection("documents")}  className="hover:text-pink-500 cursor-pointer lg:text-lg transition-colors">Documents</a>
-                    <a onClick={() => scrollToSection("news")}  className="hover:text-pink-500 cursor-pointer lg:text-lg transition-colors">News</a>
-                    <a onClick={() => scrollToSection("contact")}  className="hover:text-pink-500 cursor-pointer lg:text-lg transition-colors">Contact</a>
+                  <a href="/" className="hover:text-pink-500 lg:text-lg  transition-colors">{t('navbar.home')}</a>
+                    <a onClick={() => scrollToSection("about")}  className="hover:text-pink-500 cursor-pointer lg:text-lg transition-colors">{t('navbar.about')}</a>
+                    <Link to="/catalog"  className="hover:text-pink-500 cursor-pointer lg:text-lg transition-colors">{t('navbar.catalog')}</Link>
+                    <a onClick={() => scrollToSection("documents")}  className="hover:text-pink-500 cursor-pointer lg:text-lg transition-colors">{t('navbar.documents')}</a>
+                    <a onClick={() => scrollToSection("news")}  className="hover:text-pink-500 cursor-pointer lg:text-lg transition-colors">{t('navbar.news')}</a>
+                    <a onClick={() => scrollToSection("contact")}  className="hover:text-pink-500 cursor-pointer lg:text-lg transition-colors">{t('navbar.contact')}</a>
                   </div>
 
                     
@@ -82,12 +82,12 @@ const Navbar = () => {
                     } lg:hidden z-50`}
             >
                 <div className="flex flex-col items-center gap-4 py-8">
-                    <a href="/" className="hover:text-pink-500 transition-colors">Home</a>
-                    <a onClick={() => scrollToSection("about")} className="hover:text-pink-500 cursor-pointer transition-colors">About</a>
-                    <Link to="/catalog" className="hover:text-pink-500 cursor-pointer transition-colors">Catalog</Link>
-                    <a onClick={() => scrollToSection("documents")} className="hover:text-pink-500 cursor-pointer transition-colors">Documents</a>
-                    <a onClick={() => scrollToSection("news")} className="hover:text-pink-500 cursor-pointer transition-colors">News</a>
-                    <a onClick={() => scrollToSection("contact")} className="hover:text-pink-500 cursor-pointer transition-colors">Contact</a>
+                    <a href="/" className="hover:text-pink-500 transition-colors">{t('navbar.home')}</a>
+                    <a onClick={() => scrollToSection("about")} className="hover:text-pink-500 cursor-pointer transition-colors">{t('navbar.about')}</a>
+                    <Link to="/catalog" className="hover:text-pink-500 cursor-pointer transition-colors">{t('navbar.catalog')}</Link>
+                    <a onClick={() => scrollToSection("documents")} className="hover:text-pink-500 cursor-pointer transition-colors">{t('navbar.documents')}</a>
+                    <a onClick={() => scrollToSection("news")} className="hover:text-pink-500 cursor-pointer transition-colors">{t('navbar.news')}</a>
+                    <a onClick={() => scrollToSection("contact")} className="hover:text-pink-500 cursor-pointer transition-colors">{t('navbar.contact')}</a>
 
                     <Language />
                 </div>
