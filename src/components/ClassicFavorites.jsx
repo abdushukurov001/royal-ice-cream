@@ -1,4 +1,3 @@
-import React from "react";
 import Slider from "react-slick";
 import gradient from "../assets/Gradient.jpg";
 import leftImg from "../assets/classicLeft.svg";
@@ -99,16 +98,17 @@ const ClassicFavorites = () => {
         className="absolute right-0 z-0 bottom-[40px] lg:bottom-[35px] h-[120px] lg:h-[500px]"
       />
       <div className="max-w-6xl mx-auto">
-        <h2 className="text-4xl text-pink-500 z-10 font-bold text-center mb-2">
+        <h2 data-aos="fade-down" data-aos-duration="1500" data-aos-delay="50" className="text-4xl text-pink-500 z-10 font-bold text-center mb-2">
          {t('home.favourites')}
         </h2>
-        <p className="text-center text-gray-600 mb-12">
+        <p data-aos="fade-down" data-aos-duration="1500" data-aos-delay="50" className="text-center text-gray-600 mb-12">
           Check out the top products that our customers love.
         </p>
 
         <Slider {...slickOptions}>
   {products.map((product, index) => (
-    <div key={index} className="px-2">
+    <div data-aos={index % 2 === 0 ? "flip-left" : "flip-right"}
+ data-aos-duration="1700" data-aos-delay="50" key={index} className="px-2">
       <div className="group cursor-pointer h-[400px] bg-white p-3 rounded-[10px] z-10 overflow-hidden">
         <div className="rounded-lg overflow-hidden mb-4 transform transition-transform group-hover:scale-105">
           <img

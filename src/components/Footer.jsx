@@ -1,4 +1,3 @@
-import React from 'react';
 import { Link } from 'react-router-dom';
 import img from '../assets/footer-bg.svg';
 import logo from '../assets/logo.svg';
@@ -24,23 +23,23 @@ const Footer = () => {
 
 
     return (
-        <footer class="bg-pink-500 relative text-white py-6">
+        <footer className="bg-pink-500 relative text-white py-6">
        <img
             src={img}
             alt="Decoration Left"
             className="absolute left-0 z-0  bottom-[100px]  h-[200px] lg:h-[300px]" 
           /> 
           <div className='container z-20 mb-4 md:block flex relative justify-center mx-auto'><img src={logo} className='md:h-[80px] z-10' alt="" /></div>
-  <div class="container mx-auto flex justify-center items-center">
+  <div className="container mx-auto flex justify-center items-center">
     
 
-      <ul class="flex flex-col sm:flex-row  gap-4 md:gap-6 space-x-4">
-        <li><a onClick={() => window.location.href = "/"}  class="hover:text-gray-300 cursor-pointer">{t('navbar.home')}</a></li>
-        <li><a onClick={() => scrollToSection("about")} class="hover:text-gray-300 cursor-pointer">{t('navbar.about')}</a></li>
-        <Link to='/catalog' class="hover:text-gray-300">{t('navbar.catalog')}</Link>
-        <li><a onClick={() => scrollToSection("documents")} class="hover:text-gray-300 cursor-pointer">{t('navbar.documents')}</a></li>
-        <li><a onClick={() => scrollToSection("news")} class="hover:text-gray-300 cursor-pointer">{t('navbar.news')}</a></li>
-        <li><a onClick={() => scrollToSection("contact")} class="hover:text-gray-300 cursor-pointer">{t('navbar.contact')}</a></li>
+      <ul className="flex flex-col sm:flex-row  gap-4 md:gap-6 space-x-4">
+        <li><a onClick={() => window.location.href = "/"}  className="hover:text-gray-300 cursor-pointer">{t('navbar.home')}</a></li>
+        <li><a onClick={() => scrollToSection("about")} className="hover:text-gray-300 cursor-pointer">{t('navbar.about')}</a></li>
+        <Link to='/catalog' className="hover:text-gray-300">{t('navbar.catalog')}</Link>
+        <li><a onClick={() => scrollToSection("documents")} className="hover:text-gray-300 cursor-pointer">{t('navbar.documents')}</a></li>
+        <li><a onClick={() => scrollToSection("news")} className="hover:text-gray-300 cursor-pointer">{t('navbar.news')}</a></li>
+        <li><a onClick={() => scrollToSection("contact")} className="hover:text-gray-300 cursor-pointer">{t('navbar.contact')}</a></li>
       </ul>
  
    
