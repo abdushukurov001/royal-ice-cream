@@ -1,7 +1,11 @@
 import React from 'react';
 import { LucideDownload } from 'lucide-react';
+import {useTranslation} from "react-i18next";
+
 
 const Documents = () => {
+      const {t} = useTranslation();
+  
   const documents = [
     {
       title: "Document 1",
@@ -21,7 +25,7 @@ const Documents = () => {
     <div className=" py-16 px-8 scroll-mt-16" id='documents'>
       <div className="max-w-6xl mx-auto">
         <h2 className="text-4xl font-bold text-pink-500 text-center mb-12">
-          DOCUMENTS
+         {t('navbar.documents')}
         </h2>
         
         <div className="grid lg:grid-cols-3 sm:grid-cols-2  gap-8">

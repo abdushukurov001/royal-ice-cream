@@ -1,10 +1,14 @@
 import React from 'react';
+import {useTranslation} from "react-i18next";
+
 
 const AboutUs = () => {
+    const {t} = useTranslation();
+  
   return (
     <div className="bg-pink-100 p-[50px] mt-35 mb-35 rounded-2xl flex items-center flex-wrap lg:justify-between gap-8 justify-center  max-w-6xl mx-auto scroll-mt-26" id='about'>
       <div className="max-w-lg">
-        <h2 className="text-4xl font-bold mb-4">About <span className="text-pink-500">us</span></h2>
+        <h2 className="text-4xl text-pink-500 font-bold mb-4">{t('navbar.about')}</h2>
         <p className="text-gray-500 md:text-lg leading-relaxed">
           Crafting a special craft sweet taste is not simply random text. It has roots
           in a piece of classical Latin literature from 45 BC, making it over 2000 years
