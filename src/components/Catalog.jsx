@@ -138,6 +138,8 @@ const products2 = [
 export default function CatalogPage() {
         const {t} = useTranslation();
     
+        window.scrollTo({ top: 0, behavior: 'smooth' });
+
 
 
   return (
