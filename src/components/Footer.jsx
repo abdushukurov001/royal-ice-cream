@@ -24,7 +24,7 @@ const Footer = () => {
        <img
             src={img}
             alt="Decoration Left"
-            className="absolute left-0  bottom-[100px]  h-[200px] lg:h-[300px]" 
+            className="absolute left-0 z-0  bottom-[100px]  h-[200px] lg:h-[300px]" 
           /> 
           <div className='container z-20 mb-4 md:block flex relative justify-center mx-auto'><img src={logo} className='md:h-[80px] z-10' alt="" /></div>
   <div class="container mx-auto flex justify-center items-center">
