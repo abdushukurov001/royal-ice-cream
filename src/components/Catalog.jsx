@@ -145,7 +145,7 @@ export default function CatalogPage() {
     <Navbar/>
     <div className="container mx-auto mt-16 px-4 z-20 relative py-8">
       <header className="flex items-center justify-between mb-8">
-        <h1 className="text-3xl font-bold text-[#FF1493]">Catalog</h1>
+        <h1 className="text-3xl font-bold text-[#FF1493]">{t('navbar.catalog')}</h1>
         <button className="bg-[#FF1493] text-white px-3 py-2 rounded-3xl hover:bg-[#FF1493]/90">Download catalog</button>
       </header>
 

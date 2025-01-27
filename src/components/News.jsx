@@ -5,10 +5,14 @@ import 'slick-carousel/slick/slick-theme.css';
 import gradient from '../assets/Gradient.jpg'
 import imgL from '../assets/classicL.svg'
 import imgR from '../assets/classicR.svg'
+import {useTranslation} from "react-i18next";
+
 
 
 
 function News() {
+    const {t} = useTranslation();
+    
     const [news, setNews] = useState([
         {
             title: "News Title 1",
@@ -105,7 +109,7 @@ function News() {
         />
         <div className="container mx-auto px-4 text-center mb-12">
             <h2 className="text-4xl font-bold text-pink-500">
-                News
+               {t('navbar.news')}
             </h2>
             <h4 className="pt-5 text-lg text-gray-700">Check out our top news</h4>
         </div>

@@ -4,9 +4,13 @@ import img from '../assets/footer-bg.svg';
 import logo from '../assets/logo.svg';
 import ScrollTop from './TopScroll';
 import { FaTelegramPlane, FaInstagram, FaFacebook } from "react-icons/fa";
+import {useTranslation} from "react-i18next";
+
 
 
 const Footer = () => {
+  const {t} = useTranslation();
+
 
 
   const scrollToSection = (sectionId) => {
@@ -31,12 +35,12 @@ const Footer = () => {
     
 
       <ul class="flex flex-col sm:flex-row  gap-4 md:gap-6 space-x-4">
-        <li><a onClick={() => window.location.href = "/"}  class="hover:text-gray-300 cursor-pointer">Home</a></li>
-        <li><a onClick={() => scrollToSection("about")} class="hover:text-gray-300 cursor-pointer">About us</a></li>
-        <Link to='/catalog' class="hover:text-gray-300">Product</Link>
-        <li><a onClick={() => scrollToSection("documents")} class="hover:text-gray-300 cursor-pointer">Documents</a></li>
-        <li><a onClick={() => scrollToSection("news")} class="hover:text-gray-300 cursor-pointer">News</a></li>
-        <li><a onClick={() => scrollToSection("contact")} class="hover:text-gray-300 cursor-pointer">Contacts</a></li>
+        <li><a onClick={() => window.location.href = "/"}  class="hover:text-gray-300 cursor-pointer">{t('navbar.home')}</a></li>
+        <li><a onClick={() => scrollToSection("about")} class="hover:text-gray-300 cursor-pointer">{t('navbar.about')}</a></li>
+        <Link to='/catalog' class="hover:text-gray-300">{t('navbar.catalog')}</Link>
+        <li><a onClick={() => scrollToSection("documents")} class="hover:text-gray-300 cursor-pointer">{t('navbar.documents')}</a></li>
+        <li><a onClick={() => scrollToSection("news")} class="hover:text-gray-300 cursor-pointer">{t('navbar.news')}</a></li>
+        <li><a onClick={() => scrollToSection("contact")} class="hover:text-gray-300 cursor-pointer">{t('navbar.contact')}</a></li>
       </ul>
  
    

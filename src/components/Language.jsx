@@ -52,7 +52,7 @@ const Language = () => {
   };
 
   return (
-    <div className="relative ml-4 " ref={dropdownRef}>
+    <div className="relative ml-4" ref={dropdownRef}>
       <button
         onClick={() => setIsOpen(!isOpen)}
         className="flex items-center gap-2 cursor-pointer"
