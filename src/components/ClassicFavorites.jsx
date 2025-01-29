@@ -120,8 +120,8 @@ const ClassicFavorites = () => {
           />
         </div>
         <div className="h-full overflow-hidden relative">
-          <h3 className="font-semibold text-xl mb-2">{product.name}</h3>
-          <p className="text-gray-600 text-md mb-2">{product.description}</p>
+          <h3 className="font-semibold line-clamp-2 text-xl mb-2">{product.name}</h3>
+          <p className="text-gray-600 line-clamp-2 text-md mb-2">{product.description}</p>
           <div className="absolute inset-0 overflow-y-auto hidden-scrollbar">
             <p className="text-gray-600 text-md">
             </p>
