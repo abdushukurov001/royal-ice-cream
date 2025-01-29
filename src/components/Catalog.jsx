@@ -220,8 +220,8 @@ export default function CatalogPage() {
                         className="object-cover h-60"
                       />
                     </div>
-                    <h3 className="text-md font-medium text-[#FF1493]">{product.name}</h3>
-                    <p className="text-sm text-gray-500">{product.description}</p>
+                    <h3 className="text-md font-medium line-clamp-2 text-[#FF1493]">{product.name}</h3>
+                    <p className="text-sm line-clamp-2 text-gray-500">{product.description}</p>
                   </div>
                 </Link>
               ))}

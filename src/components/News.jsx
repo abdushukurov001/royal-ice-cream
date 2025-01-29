@@ -130,10 +130,10 @@ function News() {
                                         alt={item.title}
                                         className="rounded-[20px] w-full aspect-[29/17] object-cover"
                                     />
-                                    <h5 className="text-[18px] text-black font-medium tracking-wide mt-[10px]">
+                                    <h5 className="text-[18px] line-clamp-2 text-black font-medium tracking-wide mt-[10px]">
                                         {item.title}
                                     </h5>
-                                    <p className="font-light text-black tracking-wide">
+                                    <p className="font-light line-clamp-4 text-black tracking-wide">
                                         {item.description}
                                     </p>
                                     {/* "2 mins read" always at the bottom */}
