@@ -21,7 +21,7 @@ const Documents = () => {
     ];
 
     return (
-        <div className=" py-16 px-8 scroll-mt-16 md:mt-0 mt-57" id='documents'>
+        <div className=" py-16 px-8 scroll-mt-16 " id='documents'>
             <div className="max-w-6xl mx-auto">
                 <h2 data-aos="fade-up" data-aos-offset="200"
                     data-aos-delay="50"

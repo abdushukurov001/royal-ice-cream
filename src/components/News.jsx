@@ -15,7 +15,7 @@ function News() {
         {
             title: "News Title 1",
             description: "This is the description of news 1.",
-            image: "https://images.unsplash.com/photo-1563805042-7684c019e1cb?ixlib=rb-1.2.1&auto=format&fit=crop&w=300&q=80"
+            image: "	https://imkonplus.uz/d/video_2020-12-21_17-59-34_2.gif"
         },
         {
             title: "News Title 2",
@@ -35,7 +35,7 @@ function News() {
         {
             title: "News Title 4",
             description: "This is the description of news 4.",
-            image: "https://images.unsplash.com/photo-1563805042-7684c019e1cb?ixlib=rb-1.2.1&auto=format&fit=crop&w=300&q=80"
+            image: "https://imkonplus.uz/d/video_2020-12-21_18-28-34.gif"
         },
     ]);
 
