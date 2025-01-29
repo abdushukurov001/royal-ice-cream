@@ -97,13 +97,15 @@ const ClassicFavorites = () => {
         alt="Decoration Right"
         className="absolute right-0 z-0 bottom-[40px] lg:bottom-[35px] h-[120px] lg:h-[500px]"
       />
-      <div className="max-w-6xl mx-auto">
-        <h2 data-aos="fade-down" data-aos-duration="1500" data-aos-delay="50" className="text-4xl text-pink-500 z-10 font-bold text-center mb-2">
+      <div className="max-w-6xl relative mx-auto">
+       <div className="z-20">
+       <h2 data-aos="fade-down" data-aos-duration="1500" data-aos-delay="50" className="text-4xl text-pink-500  font-bold text-center mb-2">
          {t('home.favourites')}
         </h2>
         <p data-aos="fade-down" data-aos-duration="1500" data-aos-delay="50" className="text-center text-gray-600 mb-12">
           Check out the top products that our customers love.
         </p>
+       </div>
 
         <Slider {...slickOptions}>
   {products.map((product, index) => (

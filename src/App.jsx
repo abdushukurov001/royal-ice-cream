@@ -6,6 +6,10 @@ import './i18n/i18';
 import {createBrowserRouter, RouterProvider} from 'react-router-dom';
 
 
+function NotFoundRedirect() {
+  return <Home />; 
+}
+
 function App() {
   const router = createBrowserRouter([
     {
@@ -19,6 +23,10 @@ function App() {
     {
       path: '/catalog/:id',
       element: <ProductDetail/>
+    },
+    {
+      path: '*', 
+      element: <NotFoundRedirect />,
     },
 
   ]);
