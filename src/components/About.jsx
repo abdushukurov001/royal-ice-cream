@@ -1,4 +1,5 @@
 import {useTranslation} from "react-i18next";
+import img from '../assets/about.svg'
 
 
 const AboutUs = () => {
@@ -23,7 +24,7 @@ const AboutUs = () => {
       <div className="w-80 h-80 relative">
         <img data-aos="flip-right" data-aos-easing="linear"
      data-aos-duration="900"
-          src="https://images.unsplash.com/photo-1501443762994-82bd5dace89a?ixlib=rb-1.2.1&auto=format&fit=crop&w=1000&q=80"
+          src={img}
           alt="Ice cream"
           className="rounded-full object-cover w-full h-full"
         />
