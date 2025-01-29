@@ -64,7 +64,7 @@ const Home = () => {
 
             <AboutUs/>
             <ClassicFavorites/>
-            <Documents/>
+            <Documents />
             <News/>
             <Contact/>
             <Footer/>
