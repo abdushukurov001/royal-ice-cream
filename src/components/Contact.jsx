@@ -32,12 +32,50 @@ const ContactSection = () => {
                         Uzbekistan, Tashkent, Small ring road 32/1Block
                     </p>
                 </div>
-                <div data-aos="fade-up" data-aos-delay="1000" data-aos-duration="1500" className="w-full z-10 md:w-1/2 h-[350px] bg-pink-400 p-4 rounded-lg shadow-xl">
-                    <iframe
-                        src="https://maps.google.com/maps?q=tashkent&t=&z=13&ie=UTF8&iwloc=&output=embed"
-                        className="w-full h-full rounded-lg shadow-lg"
-                        title="Google Map"
-                    ></iframe>
+
+                <div data-aos="fade-up" data-aos-delay="1000" data-aos-duration="1500"
+                     className="w-full z-10 md:w-1/2 h-[350px] p-4 rounded-lg shadow-xl">
+                    <form id="contactForm" className="flex flex-col space-y-4">
+                        <div>
+                            <label htmlFor="name" className="block text-sm font-medium text-gray-700">Name</label>
+                            <input
+                                type="text"
+                                id="name"
+                                name="name"
+                                required
+                                className="mt-1 p-2 w-full rounded-md border border-gray-300 shadow-sm focus:border-indigo-500 focus:ring-indigo-500"
+                            />
+                        </div>
+
+                        <div>
+                            <label htmlFor="phone" className="block text-sm font-medium text-gray-700">Phone</label>
+                            <input
+                                type="tel"
+                                id="phone"
+                                name="phone"
+                                required
+                                className="mt-1 p-2 w-full rounded-md border border-gray-300 shadow-sm focus:border-indigo-500 focus:ring-indigo-500"
+                            />
+                        </div>
+
+                        <div>
+                            <label htmlFor="message" className="block text-sm font-medium text-gray-700">Message</label>
+                            <textarea
+                                id="message"
+                                name="message"
+                                rows="4"
+                                required
+                                className="mt-1 p-2 w-full rounded-md border border-gray-300 shadow-sm focus:border-indigo-500 focus:ring-indigo-500"
+                            ></textarea>
+                        </div>
+
+                        <button
+                            type="submit"
+                            className="inline-flex justify-center py-2 px-4 border border-transparent shadow-sm text-sm font-medium rounded-md text-white bg-indigo-600 hover:bg-indigo-700 focus:outline-none focus:ring-2 focus:ring-offset-2 focus:ring-indigo-500"
+                        >
+                            Submit
+                        </button>
+                    </form>
                 </div>
 
             </div>

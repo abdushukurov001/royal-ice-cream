@@ -25,7 +25,7 @@ function App() {
       path: '/catalog/:id',
       element: <ProductDetail/>
     },
-      {
+    {
       path: '/about',
       element: <AboutPage/>
     },
