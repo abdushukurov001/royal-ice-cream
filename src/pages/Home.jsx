@@ -48,8 +48,8 @@ const Home = () => {
                     loop
                     muted
                     preload="auto"
-                    defaultMuted
-                    webkitPlaysinline="true"
+                    defaultmuted="true"
+                    webkitplaysinline="true"
                     poster={heroFallback}
                 >
                     <source src={video} type="video/mp4"/>
