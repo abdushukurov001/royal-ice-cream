@@ -1,5 +1,4 @@
 import { useState, useEffect } from 'react';
-import { Search } from 'lucide-react';
 import logo from '../assets/logo.svg';
 import logoDark from '../assets/logoDark.svg'
 import Language from './Language';
@@ -69,7 +68,6 @@ const Navbar = () => {
 
                     
                     <div className='flex gap-5'>
-                      <Search className="w-5 h-5" />
                       <Language />
                     </div>
                     
