@@ -1,5 +1,6 @@
 import {useTranslation} from "react-i18next";
 import img from '../assets/about.svg'
+import { Link } from 'react-router-dom';
 
 
 const AboutUs = () => {
@@ -20,6 +21,7 @@ const AboutUs = () => {
           literature, discovered the undoubtable source. Lorem ipsum comes from
           sections 1.10.32 and 1.10.33 of "de Finibus Bonorum et Malorum".
         </p>
+          <Link to="">More details</Link>
       </div>
       <div className="w-80 h-80 relative">
         <img data-aos="flip-right" data-aos-easing="linear"
