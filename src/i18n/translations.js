@@ -12,7 +12,7 @@ export const resources = {
             contact: 'Contact',
         },
         home:{
-             favourites: 'Our Classic Favorites'
+             favourites: 'Our Products '
         },
         catalog:{
             iceCream: 'Ice cream',
@@ -33,7 +33,7 @@ export const resources = {
             contact: 'Контакты',
             },
             home:{
-                favourites: 'Нашa Популярная Продукция'
+                favourites: 'Нашa  Продукция'
            },
            catalog:{
                 iceCream: 'Мороженое',
@@ -55,7 +55,7 @@ export const resources = {
             contact: 'Aloqa',
             },
             home:{
-                favourites: 'Bizning Mashhur Maxsulotlarimiz'
+                favourites: 'Bizning Maxsulotlarimiz'
            },
            catalog:{
                 iceCream: 'Muzqaymoq',

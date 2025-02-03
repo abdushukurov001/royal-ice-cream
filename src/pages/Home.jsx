@@ -6,10 +6,10 @@ import Documents from "../components/Documents";
 import News from "../components/News";
 import Contact from "../components/Contact";
 import Footer from "../components/Footer";
+import AdvantagesSection from "../components/WhyUs";
 import video from "../assets/video/bg-vd.mp4";
 import heroFallback from "../assets/hero.jpg";
 import {useEffect, useRef} from "react";
-import AdvantagesSection from "../components/WhyUs";
 
 const Home = () => {
     const videoRef = useRef(null);
