@@ -21,22 +21,20 @@ const Footer = () => {
 
 
     return (
-        <footer className="bg-pink-500 relative text-white pb-4 pt-0">
-            <div className="map">
+<>
 
-                <div className="relative overflow-hidden">
-                    <iframe
-                        src="https://yandex.uz/map-widget/v1/org/royal_muz_morozhenoye_dlya_tebya/141009352422/?ll=69.259422%2C41.308594&z=16"
-                        width="100%" height="450" frameBorder="1" allowFullScreen={true}
-                        className="relative"></iframe>
-                </div>
+      
 
 
-            </div>
+
+
+
+        <footer className="bg-pink-400 relative text-white pb-4 pt-0">
+           
             <img
                 src={img}
                 alt="Decoration Left"
-                className="absolute left-0 z-0  bottom-[100px]  h-[200px] lg:h-[300px]"
+                className="absolute left-0 z-0  bottom-[50px]  h-[200px] lg:h-[300px]"
             />
             <div className='container z-20 mb-0 md:block flex relative justify-center mx-auto'>
                 <img src={logo}
@@ -54,6 +52,8 @@ const Footer = () => {
                     <Link to='/catalog' className="hover:text-gray-300">{t('navbar.catalog')}</Link>
                     <li><a onClick={() => scrollToSection("documents")}
                            className="hover:text-gray-300 cursor-pointer">{t('navbar.documents')}</a></li>
+                    <li><a onClick={() => scrollToSection("advantages")}
+                           className="hover:text-gray-300 cursor-pointer">{t('navbar.advantages')}</a></li>
                     <li><a onClick={() => scrollToSection("news")}
                            className="hover:text-gray-300 cursor-pointer">{t('navbar.news')}</a></li>
                     <li><a onClick={() => scrollToSection("contact")}
@@ -65,7 +65,7 @@ const Footer = () => {
             <div className='bg-pink-400 h-[1px] mt-1 mb-2'></div>
 
             <div className="flex justify-center gap-8">
-                <a href="https://t.me/yourchannel" target="_blank" rel="noopener noreferrer">
+            <a href="https://t.me/yourchannel" target="_blank" rel="noopener noreferrer">
                     <FaTelegramPlane className="w-6 h-6 text-white hover:text-pink-700"/>
                 </a>
                 <a href="https://instagram.com/yourprofile" target="_blank" rel="noopener noreferrer">
@@ -77,6 +77,7 @@ const Footer = () => {
             </div>
             <ScrollTop/>
         </footer>
+        </>
     );
 };
 
