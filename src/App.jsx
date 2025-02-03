@@ -4,6 +4,7 @@ import ProductDetail from './components/ProductDetail';
 import Home from './pages/Home'
 import './i18n/i18';
 import {createBrowserRouter, RouterProvider} from 'react-router-dom';
+import AboutPage from "./components/AboutPage/AboutPage.jsx";
 
 
 function NotFoundRedirect() {
@@ -23,6 +24,10 @@ function App() {
     {
       path: '/catalog/:id',
       element: <ProductDetail/>
+    },
+      {
+      path: '/about',
+      element: <AboutPage/>
     },
     {
       path: '*', 
