@@ -82,7 +82,7 @@ const Documents = () => {
   >
     <div className="bg-white rounded-xl max-w-[1000px] w-full h-auto max-h-[95vh] overflow-auto shadow-2xl flex flex-col">
 
-      <div className="flex justify-between items-center p-4 border-b">
+      <div className="flex justify-between items-center p-4 border-b-white">
         <h3 className="text-xl font-semibold">{selectedDoc.title}</h3>
         <button 
           onClick={() => setSelectedDoc(null)}

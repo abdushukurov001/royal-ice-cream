@@ -9,7 +9,7 @@ const products = [
   {
     id: 1,
     name: "Zarli",
-    description: "  Lorem ipsum dolor sit amet consectetur adipisicing elit. Sapiente consequatur vitae, quaerat, nostrum dolore amet doloremque ea, cupiditate dicta commodi recusandae nihil! Iure illo iste blanditiis vero facere! Officiis id beatae odit, ea eveniet quidem perspiciatis atque sequi autem deserunt vel possimus adipisci exercitationem rem deleniti sint. Dolorum perferendis vel quasi. Fugiat dignissimos odit numquam accusantium veritatis, omnis iusto, commodi nemo nobis labore vel animi. Officia dolorum, magnam natus accusantium rem repellat dolores ad tenetur optio assumenda ullam, pariatur architecto, ab obcaecati! Dignissimos praesentium eius assumenda at, iste itaque aliquid explicabo suscipit dolores nostrum facere, hic tenetur consequatur rerum eveniet.description:    rewgerew qerwgrt wegtwr gwtrgwtgwtgwtgrwgwtgr grtgtg ertgertg twrtgrtgr gtrgtretg trgre tgrg ertegretgtgrg  ",
+    description: "  tg twrtgrtgr gtrgtretg trgre tgrg ertegretgtgrg  ",
     image: 'https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcSMsEqWI5dkAVDpJ7qm27MKhnQlZfWaJBP4fQ&s',
   },
   {

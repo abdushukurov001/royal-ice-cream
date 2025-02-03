@@ -21,18 +21,21 @@ const Footer = () => {
 
 
     return (
-        <footer className="bg-pink-500 relative text-white pb-4 pt-0">
-            <div className="map">
+<>
 
-                <div className="relative overflow-hidden">
-                    <iframe
-                        src="https://yandex.uz/map-widget/v1/org/royal_muz_morozhenoye_dlya_tebya/141009352422/?ll=69.259422%2C41.308594&z=16"
-                        width="100%" height="450" frameBorder="1" allowFullScreen={true}
-                        className="relative"></iframe>
-                </div>
+      
+
+        <div className="container px-10  mx-auto">
+            <iframe
+                src="https://yandex.uz/map-widget/v1/org/royal_muz_morozhenoye_dlya_tebya/141009352422/?ll=69.259422%2C41.308594&z=16"
+                width="100%" height="" frameBorder="1" allowFullScreen={true}
+                className="relative md:h-[400px] h-[200px]  border-6 border-pink-300"></iframe>
+        </div>
 
 
-            </div>
+
+        <footer className="bg-pink-400 relative text-white pb-4 pt-0">
+           
             <img
                 src={img}
                 alt="Decoration Left"
@@ -77,6 +80,7 @@ const Footer = () => {
             </div>
             <ScrollTop/>
         </footer>
+        </>
     );
 };
 
