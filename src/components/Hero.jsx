@@ -2,6 +2,16 @@ import heroLeft from "../assets/her0-left.svg";
 import heroRight from "../assets/hero-right.svg";
 
 const Hero = () => {
+
+    const scrollToSection = (sectionId) => {
+        const section = document.getElementById(sectionId);
+        if (section) {
+            section.scrollIntoView({behavior: "smooth"});
+        } else {
+            window.location.href = `/?scroll=${sectionId}`;
+        }
+    };
+
     return (
         <div className="relative z-0 h-full text-center">
             <img
@@ -42,7 +52,8 @@ const Hero = () => {
                         products
                     </p>
                     <button data-aos="zoom-in" data-aos-delay="1000"
-                        className="bg-pink-500 cursor-pointer hover:bg-pink-400 text-white px-6 py-3 rounded-3xl text-lg font-semibold shadow-md transition-colors">
+                            onClick={() => scrollToSection("contact")}
+                            className="bg-pink-500 cursor-pointer hover:bg-pink-400 text-white px-6 py-3 rounded-3xl text-lg font-semibold shadow-md transition-colors">
                         Contact us
                     </button>
                 </div>

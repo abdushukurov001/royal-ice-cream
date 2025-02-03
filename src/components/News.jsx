@@ -115,34 +115,34 @@ function News() {
                         data-aos-duration="1400" className="pt-5 text-lg text-gray-700">Check out our top news</h4>
                 </div>
                 <div className="container mx-auto px-4">
-                    <Slider {...slickOptions} className="mx-auto">
-                        {news.map((item, key) => (
-                            <div key={key} className="px-2"
-                                 data-aos="flip-left"
-                                 data-aos-delay={50 + (key * 100)}
-                                 data-aos-duration={2000 + (key * 100)}
-                            >
-                                <div
-                                    className="relative md:h-[430px] h-[400px] border-none border-slate-400 bg-pink-100 cursor-pointer backdrop-blur-[20px] p-[15px] rounded-[20px]">
-                                    <img
-                                        src={item.image}
-                                        alt={item.title}
-                                        className="rounded-[20px] w-full aspect-[29/17] object-cover"
-                                    />
-                                    <h5 className="text-[18px] line-clamp-2 text-black font-medium tracking-wide mt-[10px]">
-                                        {item.title}
-                                    </h5>
-                                    <p className="font-light line-clamp-4 text-black tracking-wide">
-                                        {item.description}
-                                    </p>
-                                    {/* "2 mins read" always at the bottom */}
-                                    <p className="absolute bottom-[15px] right-[15px] text-black font-light text-[14px] tracking-wide">
-                                        2 mins read
-                                    </p>
-                                </div>
-                            </div>
-                        ))}
-                    </Slider>
+                    {/*<Slider {...slickOptions} className="mx-auto">*/}
+                    {/*    {news.map((item, key) => (*/}
+                    {/*        <div key={key} className="px-2"*/}
+                    {/*             data-aos="flip-left"*/}
+                    {/*             data-aos-delay={50 + (key * 100)}*/}
+                    {/*             data-aos-duration={2000 + (key * 100)}*/}
+                    {/*        >*/}
+                    {/*            <div*/}
+                    {/*                className="relative md:h-[430px] h-[400px] border-none border-slate-400 bg-pink-100 cursor-pointer backdrop-blur-[20px] p-[15px] rounded-[20px]">*/}
+                    {/*                <img*/}
+                    {/*                    src={item.image}*/}
+                    {/*                    alt={item.title}*/}
+                    {/*                    className="rounded-[20px] w-full aspect-[29/17] object-cover"*/}
+                    {/*                />*/}
+                    {/*                <h5 className="text-[18px] line-clamp-2 text-black font-medium tracking-wide mt-[10px]">*/}
+                    {/*                    {item.title}*/}
+                    {/*                </h5>*/}
+                    {/*                <p className="font-light line-clamp-4 text-black tracking-wide">*/}
+                    {/*                    {item.description}*/}
+                    {/*                </p>*/}
+                    {/*                /!* "2 mins read" always at the bottom *!/*/}
+                    {/*                <p className="absolute bottom-[15px] right-[15px] text-black font-light text-[14px] tracking-wide">*/}
+                    {/*                    2 mins read*/}
+                    {/*                </p>*/}
+                    {/*            </div>*/}
+                    {/*        </div>*/}
+                    {/*    ))}*/}
+                    {/*</Slider>*/}
                 </div>
             </section>
     );

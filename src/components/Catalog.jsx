@@ -95,7 +95,7 @@ export default function CatalogPage() {
         {[1].map((category) => (
           <section key={category}>
             <h2 className="text-3xl font-semibold mb-4">{t('catalog.iceCream')}</h2>
-            <div className="grid grid-cols-2 md:grid-cols-3 lg:grid-cols-5 gap-4">
+            <div className="grid grid-cols-2 md:grid-cols-3 lg:grid-cols-6 gap-4">
               {products.map((product) => (
                 <Link to={`/catalog/${product.id}`} key={product.id}>
                   <div className="bg-[#FFF5F7] rounded-lg p-4 transition-transform hover:scale-105">
@@ -121,7 +121,7 @@ export default function CatalogPage() {
         {[1].map((category) => (
           <section key={category}>
             <h2 className="text-3xl font-semibold mb-4">{t('catalog.semiFinished')}</h2>
-            <div className="grid grid-cols-2 md:grid-cols-3 lg:grid-cols-5 gap-4">
+            <div className="grid grid-cols-2 md:grid-cols-3 lg:grid-cols-6 gap-4">
               {products1.map((product) => (
                 <Link to={`/catalog/${product.id}`} key={product.id}>
                   <div className="bg-[#FFF5F7] rounded-lg p-4 transition-transform hover:scale-105">
@@ -147,7 +147,7 @@ export default function CatalogPage() {
         {[1].map((category) => (
           <section key={category}>
             <h2 className="text-3xl font-semibold mb-4">Сгущенное молоко</h2>
-            <div className="grid grid-cols-2 md:grid-cols-3 lg:grid-cols-5 gap-4">
+            <div className="grid grid-cols-2 md:grid-cols-3 lg:grid-cols-6 gap-4">
               {products2.map((product) => (
                 <Link to={`/catalog/${product.id}`} key={product.id}>
                   <div className="bg-[#FFF5F7] rounded-lg p-4 transition-transform hover:scale-105">
@@ -173,7 +173,7 @@ export default function CatalogPage() {
         {[1].map((category) => (
           <section key={category}>
             <h2 className="text-3xl font-semibold mb-4">Семечки</h2>
-            <div className="grid grid-cols-2 md:grid-cols-3 lg:grid-cols-5 gap-4">
+            <div className="grid grid-cols-2 md:grid-cols-3 lg:grid-cols-6 gap-4">
               {products3.map((product) => (
                 <Link to={`/catalog/${product.id}`} key={product.id}>
                   <div className="bg-[#FFF5F7] rounded-lg p-4 transition-transform hover:scale-105">
