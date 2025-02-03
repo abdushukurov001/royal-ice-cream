@@ -5,10 +5,13 @@ import rightImg from "../assets/classicRight.svg";
 import "slick-carousel/slick/slick.css";
 import "slick-carousel/slick/slick-theme.css";
 import {useTranslation} from "react-i18next";
+import { useNavigate } from "react-router-dom";
 
 
 const ClassicFavorites = () => {
       const {t} = useTranslation();
+      const navigate = useNavigate();
+
   
   const slickOptions = {
     infinite: true,
@@ -55,28 +58,24 @@ const ClassicFavorites = () => {
 
   const products = [
     {
-      name: "Chocolate Brownie Sundae",
-      description: "Rich chocolate ice cream with chunks of brownie",
-      image:
-        "https://images.unsplash.com/photo-1563805042-7684c019e1cb?ixlib=rb-1.2.1&auto=format&fit=crop&w=300&q=80",
-    },
-    {
-      name: "Strawberry Delight",
-      description: "Creamy strawberry ice cream with fresh strawberries",
-      image:
-        "https://images.unsplash.com/photo-1488900128323-21503983a07e?ixlib=rb-1.2.1&auto=format&fit=crop&w=300&q=80",
-    },
-    {
-      name: "Vanilla Bean Bliss",
-      description: "Classic vanilla ice cream with a hint of vanilla bean",
+      name: "Marojniy",
       image:
         "https://images.unsplash.com/photo-1567206563064-6f60f40a2b57?ixlib=rb-1.2.1&auto=format&fit=crop&w=300&q=80",
     },
     {
-      name: "Mint Chocolate Chip",
-      description: "Refreshing mint ice cream with chocolate chips",
+      name: "Sirok",
       image:
-        "https://images.unsplash.com/photo-1497034825429-c343d7c6a68f?ixlib=rb-1.2.1&auto=format&fit=crop&w=300&q=80",
+        "https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcTf4B31pb0nK625lIGyZtwMmqnQKoF5QM2_lg&s",
+    },
+    {
+      name: "Polufabrikat",
+      image:
+        "https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcR0Q3fSmqt08gPfYxssr5naEkS9lLCqrmFV5g&s",
+    },
+    {
+      name: "Sgushenka",
+      image:
+        "https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcQJKGv7zaWiHrwKf04EXIapFoTu7r-UBVJg4Q&s",
     },
   ];
 
@@ -111,7 +110,7 @@ const ClassicFavorites = () => {
   {products.map((product, index) => (
     <div data-aos={index % 2 === 0 ? "flip-left" : "flip-right"}
  data-aos-duration="1700" data-aos-delay="50" key={index} className="px-2">
-      <div className="group cursor-pointer h-[400px] bg-white p-3 rounded-[10px] z-10 overflow-hidden">
+      <div className="group cursor-pointer h-[330px] bg-white p-3 rounded-[10px] z-10 overflow-hidden">
         <div className="rounded-lg overflow-hidden mb-4 transform transition-transform group-hover:scale-105">
           <img
             src={product.image}
@@ -120,8 +119,7 @@ const ClassicFavorites = () => {
           />
         </div>
         <div className="h-full overflow-hidden relative">
-          <h3 className="font-semibold line-clamp-2 text-xl mb-2">{product.name}</h3>
-          <p className="text-gray-600 line-clamp-2 text-md mb-2">{product.description}</p>
+          <h3 className="font-semibold line-clamp-2 text-center text-xl mb-2">{product.name}</h3>
           <div className="absolute inset-0 overflow-y-auto hidden-scrollbar">
             <p className="text-gray-600 text-md">
             </p>
@@ -133,6 +131,14 @@ const ClassicFavorites = () => {
 </Slider>
 
       </div>
+     <div className="flex justify-center items-center  mt-15">
+     <button
+           onClick={() => navigate("/catalog")}
+            className="mt-4 cursor-pointer text-2xl text-center text-pink-400 hover:text-pink-500"
+          >
+            Подробнее...
+          </button>
+     </div>
     </div>
   );
 };

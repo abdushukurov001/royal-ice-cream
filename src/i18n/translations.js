@@ -7,12 +7,12 @@ export const resources = {
             home: 'Home',
             about: 'About us',
             catalog: 'Catalog',
-            documents: 'Documents',
+            documents: 'Certificates',
             news: 'News',
             contact: 'Contact',
         },
         home:{
-             favourites: 'Our Classic Favorites'
+             favourites: 'Our Products '
         },
         catalog:{
             iceCream: 'Ice cream',
@@ -28,12 +28,12 @@ export const resources = {
                 home: 'Главная',
                 about: 'O нас',
                 catalog: 'Продукция',
-            documents: 'Документы',
+            documents: 'Сертификаты',
             news: 'Новости',
             contact: 'Контакты',
             },
             home:{
-                favourites: 'Нашa Популярная Продукция'
+                favourites: 'Нашa  Продукция'
            },
            catalog:{
                 iceCream: 'Мороженое',
@@ -50,12 +50,12 @@ export const resources = {
                 home: 'Asosiy',
                 about: 'Biz haqimizda',
                 catalog: 'Mahsulotlar',
-            documents: 'Hujjatlar',
+            documents: 'Sertifikatlar',
             news: 'Yangiliklar',
             contact: 'Aloqa',
             },
             home:{
-                favourites: 'Bizning Mashhur Maxsulotlarimiz'
+                favourites: 'Bizning Maxsulotlarimiz'
            },
            catalog:{
                 iceCream: 'Muzqaymoq',

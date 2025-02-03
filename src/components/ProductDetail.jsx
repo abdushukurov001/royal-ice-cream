@@ -1,140 +1,143 @@
-import ice1 from '../assets/ice1.png'
+import React, { useState, useEffect } from 'react';
+import ice1 from '../assets/ice1.png';
 import Navbar from "./Navbar.jsx";
+import { useTranslation } from "react-i18next";
 import Footer from "./Footer.jsx";
-import { useEffect } from "react";
-import { FaArrowRight } from 'react-icons/fa';
+import ProductModal from './ProductDetailModal.jsx'; // Modal komponentini import qilamiz
 
-const product = {
+const products = [
+  {
     id: 1,
-    name: "Chocolate Brownie Sundae",
-    description: "It is a long established fact that a reader will be distracted by the readable content of a page when looking at its layout. The point of using Lorem Ipsum is that it has a more-or-less normal distribution of letters, as opposed to using 'Content here, content here', making it look like readable English. Many desktop publishing packages and web page editors now use Lorem Ipsum as their default model text, and a search for 'lorem ipsum' will uncover many web sites still in their infancy. Various versions have evolved over the years, sometimes by accident, sometimes on purpose (injected humour and the like).",
-    image: ice1,
-}
+    name: "Zarli",
+    description: "  Lorem ipsum dolor sit amet consectetur adipisicing elit. Sapiente consequatur vitae, quaerat, nostrum dolore amet doloremque ea, cupiditate dicta commodi recusandae nihil! Iure illo iste blanditiis vero facere! Officiis id beatae odit, ea eveniet quidem perspiciatis atque sequi autem deserunt vel possimus adipisci exercitationem rem deleniti sint. Dolorum perferendis vel quasi. Fugiat dignissimos odit numquam accusantium veritatis, omnis iusto, commodi nemo nobis labore vel animi. Officia dolorum, magnam natus accusantium rem repellat dolores ad tenetur optio assumenda ullam, pariatur architecto, ab obcaecati! Dignissimos praesentium eius assumenda at, iste itaque aliquid explicabo suscipit dolores nostrum facere, hic tenetur consequatur rerum eveniet.description:    rewgerew qerwgrt wegtwr gwtrgwtgwtgwtgrwgwtgr grtgtg ertgertg twrtgrtgr gtrgtretg trgre tgrg ertegretgtgrg  ",
+    image: 'https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcSMsEqWI5dkAVDpJ7qm27MKhnQlZfWaJBP4fQ&s',
+  },
+  {
+    id: 2,
+    name: "Коровка из Кореновки",
+    description: "Sample of brownie",
+    image: 'https://zira.uz/wp-content/uploads/2018/07/morojenoe-korovka-2.jpg',
+  },
+  {
+    id: 3,
+    name: "Stakan",
+    description: "Sample of brownie",
+    image: 'https://zira.uz/wp-content/uploads/2018/07/morojenoe-korovka-2.jpg',
+  },
+  {
+    id: 5,
+    name: "Коровка из Кореновки",
+    description: "Sample of brownie",
+    image: 'https://zira.uz/wp-content/uploads/2018/03/icecream-2.jpg',
+  },
+];
 
 const ProductDetail = () => {
 
-    window.scrollTo({ top: 0, behavior: 'smooth' });
+    useEffect(() => {
+            window.scrollTo({ top: 0, behavior: 'smooth' });
+        }, []);
 
+  const { t } = useTranslation();
+  const [selectedProduct, setSelectedProduct] = useState(null);
 
-    return (
-        <>
-            <Navbar />
-            <div className="min-h-screen bg-gray-50 py-8 mt-20 px-4 sm:px-6 lg:px-8">
-                <div className="max-w-7xl mx-auto">
-                    <div className="breadcrumb flex">
-                        <a
-                            href="/"
-                            className="mb-6 me-2 inline-flex items-center text-gray-600 hover:text-gray-900 transition-colors"
-                        >
-                            Home
-                        </a>
-                        <a
-                            onClick={() => window.history.back()}
-                            className="mb-6 inline-flex cursor-pointer items-center text-gray-600 hover:text-gray-900 transition-colors"
-                        >
-                            <svg
-                                className="w-8 h-5 mr-1"
-                                fill="none"
-                                stroke="currentColor"
-                                viewBox="0 0 24 24"
-                            >
-                                <path
-                                    strokeLinecap="round"
-                                    strokeLinejoin="round"
-                                    strokeWidth={2}
-                                    d="M5 12h14m-7-7l7 7-7 7"
-                                />
-                            </svg>
+  const handleProductClick = (product) => {
+    setSelectedProduct(product);
+  };
 
-                            Products catalog
-                        </a>
-                        <a
-                            onClick={() => window.history.back()}
-                            className="mb-6 inline-flex font-bold cursor-pointer items-center text-gray-600 hover:text-gray-900 transition-colors"
-                        >
-                            <svg
-                                className="w-8 h-5 mr-1"
-                                fill="none"
-                                stroke="currentColor"
-                                viewBox="0 0 24 24"
-                            >
-                                <path
-                                    strokeLinecap="round"
-                                    strokeLinejoin="round"
-                                    strokeWidth={2}
-                                    d="M5 12h14m-7-7l7 7-7 7"
-                                />
-                            </svg>
+  const closeModal = () => {
+    setSelectedProduct(null);
+  };
 
-                            Products Info
-                        </a>
-                        
+  return (
+    <>
+      <Navbar />
+      <div className="min-h-screen bg-gray-50 py-8 mt-20 px-4 sm:px-6 lg:px-8">
+        <div className="max-w-7xl mx-auto">
+          <div className="breadcrumb flex">
+            <a
+              href="/"
+              className="mb-6 me-2 inline-flex items-center text-gray-600 hover:text-gray-900 transition-colors"
+            >
+              Home
+            </a>
+            <a
+              onClick={() => window.history.back()}
+              className="mb-6 inline-flex cursor-pointer items-center text-gray-600 hover:text-gray-900 transition-colors"
+            >
+              <svg
+                className="w-8 h-5 mr-1"
+                fill="none"
+                stroke="currentColor"
+                viewBox="0 0 24 24"
+              >
+                <path
+                  strokeLinecap="round"
+                  strokeLinejoin="round"
+                  strokeWidth={2}
+                  d="M5 12h14m-7-7l7 7-7 7"
+                />
+              </svg>
+              Products catalog
+            </a>
+            <a
+              onClick={() => window.history.back()}
+              className="mb-6 inline-flex font-bold cursor-pointer items-center text-gray-600 hover:text-gray-900 transition-colors"
+            >
+              <svg
+                className="w-8 h-5 mr-1"
+                fill="none"
+                stroke="currentColor"
+                viewBox="0 0 24 24"
+              >
+                <path
+                  strokeLinecap="round"
+                  strokeLinejoin="round"
+                  strokeWidth={2}
+                  d="M5 12h14m-7-7l7 7-7 7"
+                />
+              </svg>
+              Products Info
+            </a>
+          </div>
+
+          <div className="space-y-12">
+            {[1].map((category) => (
+              <section key={category}>
+                <h2 className="text-3xl font-semibold mb-4">Chopli</h2>
+                <div className="grid grid-cols-2 md:grid-cols-3 lg:grid-cols-5 gap-4">
+                  {products.map((product) => (
+                    <div
+                      key={product.id}
+                      onClick={() => handleProductClick(product)}
+                      className="bg-[#FFF5F7] rounded-lg p-4 transition-transform hover:scale-105 cursor-pointer"
+                    >
+                      <div className="aspect-square mx-auto relative mb-3 rounded-lg overflow-hidden">
+                        <img
+                          src={product.image}
+                          alt={product.name}
+                          width={260}
+                          height={200}
+                          className="object-cover h-60"
+                        />
+                      </div>
+                      <h3 className="text-md font-medium text-[#FF1493]">{product.name}</h3>
+                      <p className="text-sm text-gray-500  line-clamp-2">{product.description}</p>
                     </div>
-
-                    <div className="bg-[#FFF5F7] rounded-lg shadow-lg overflow-hidden">
-                        <div className="grid grid-cols-1 lg:grid-cols-2 gap-8 p-8">
-                            {/* Product Image */}
-                            <div className="aspect-w-1 aspect-h-1">
-                                <img
-                                    src={product.image}
-                                    alt={product.name}
-                                    width={476}
-                                    height={517}
-                                    className="w-full h-full object-center object-cover rounded-lg shadow"
-                                />
-                            </div>
-
-                            {/* Product Details */}
-                            <div className="space-y-6 py-20">
-                                <h1 className="text-3xl font-bold text-gray-900">
-                                    {product.name}
-                                </h1>
-
-                                <div className="prose max-w-none text-gray-600">
-                                    <p>{product.description}</p>
-                                </div>
-
-                                <div className="mt-8 pt-6">
-                                    <dl className="space-y-4">
-                                        <div className="flex gap-5 px-4 py-3 rounded-lg">
-                                            <dt className="text-sm font-medium text-gray-500">
-                                                Info
-                                            </dt>
-                                            <dd className="text-sm text-gray-900">
-                                                value
-                                            </dd>
-                                        </div>
-                                    </dl>
-                                    <dl className="space-y-4">
-                                        <div className="flex gap-5 px-4 py-3 rounded-lg">
-                                            <dt className="text-sm font-medium text-gray-500">
-                                                Info
-                                            </dt>
-                                            <dd className="text-sm text-gray-900">
-                                                value
-                                            </dd>
-                                        </div>
-                                    </dl>
-                                    <dl className="space-y-4">
-                                        <div className="flex gap-5 px-4 py-3 rounded-lg">
-                                            <dt className="text-sm font-medium text-gray-500">
-                                                Info
-                                            </dt>
-                                            <dd className="text-sm text-gray-900">
-                                                value
-                                            </dd>
-                                        </div>
-                                    </dl>
-
-                                </div>
-                            </div>
-                        </div>
-                    </div>
+                  ))}
                 </div>
-            </div>
-            <Footer />
-        </>
-    );
+              </section>
+            ))}
+          </div>
+        </div>
+      </div>
+      <Footer />
+
+      {selectedProduct && (
+        <ProductModal product={selectedProduct} onClose={closeModal} />
+      )}
+    </>
+  );
 };
 
 export default ProductDetail;

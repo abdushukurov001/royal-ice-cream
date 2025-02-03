@@ -6,6 +6,7 @@ import Documents from "../components/Documents";
 import News from "../components/News";
 import Contact from "../components/Contact";
 import Footer from "../components/Footer";
+import AdvantagesSection from "../components/WhyUs";
 import video from "../assets/video/bg-vd.mp4";
 import heroFallback from "../assets/hero.jpg";
 import {useEffect, useRef} from "react";
@@ -47,8 +48,8 @@ const Home = () => {
                     loop
                     muted
                     preload="auto"
-                    defaultMuted
-                    webkitPlaysinline="true"
+                    defaultmuted="true"
+                    webkitplaysinline="true"
                     poster={heroFallback}
                 >
                     <source src={video} type="video/mp4"/>
@@ -65,6 +66,7 @@ const Home = () => {
             <AboutUs/>
             <ClassicFavorites/>
             <Documents />
+            <AdvantagesSection/>
             <News/>
             <Contact/>
             <Footer/>

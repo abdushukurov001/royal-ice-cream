@@ -1,5 +1,4 @@
 import { useState, useEffect } from 'react';
-import { Search } from 'lucide-react';
 import logo from '../assets/logo.svg';
 import logoDark from '../assets/logoDark.svg'
 import Language from './Language';
@@ -37,10 +36,10 @@ const Navbar = () => {
     };
 
     return (
-        <nav className={`fixed top-0 left-0 w-full py-4 z-50 transition-all ${scrolling || window.location.pathname.startsWith('/catalog') ? 'bg-white text-black shadow-md' : 'bg-transparent text-white'}`}>
+        <nav className={`fixed top-0 left-0 w-full py-4 z-50 transition-all ${scrolling || window.location.pathname.startsWith('/catalog') || window.location.pathname.startsWith('/about') ? 'bg-white text-black shadow-md' : 'bg-transparent text-white'}`}>
             <div className="container mx-auto flex items-center justify-between px-6">
                 <div className="flex items-center">
-                    {scrolling || window.location.pathname.startsWith('/catalog') ? (
+                    {scrolling || window.location.pathname.startsWith('/catalog') || window.location.pathname.startsWith('/about') ? (
                         <a href='/'><img src={logoDark} alt="Logo" className="h-12" /></a>
                     ) : (
                         <a href='/'><img src={logo} alt="Logo" className="h-12" /></a>
@@ -69,7 +68,6 @@ const Navbar = () => {
 
                     
                     <div className='flex gap-5'>
-                      <Search className="w-5 h-5" />
                       <Language />
                     </div>
                     
