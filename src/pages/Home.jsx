@@ -9,6 +9,7 @@ import Footer from "../components/Footer";
 import video from "../assets/video/bg-vd.mp4";
 import heroFallback from "../assets/hero.jpg";
 import {useEffect, useRef} from "react";
+import AdvantagesSection from "../components/WhyUs";
 
 const Home = () => {
     const videoRef = useRef(null);
@@ -65,6 +66,7 @@ const Home = () => {
             <AboutUs/>
             <ClassicFavorites/>
             <Documents />
+            <AdvantagesSection/>
             <News/>
             <Contact/>
             <Footer/>
