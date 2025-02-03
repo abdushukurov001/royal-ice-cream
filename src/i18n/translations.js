@@ -10,6 +10,7 @@ export const resources = {
             documents: 'Certificates',
             news: 'News',
             contact: 'Contact',
+            advantages: 'Our Advantages'
         },
         home:{
              favourites: 'Our Products '
@@ -31,6 +32,8 @@ export const resources = {
             documents: 'Сертификаты',
             news: 'Новости',
             contact: 'Контакты',
+            advantages: 'Наши преимущества'
+
             },
             home:{
                 favourites: 'Нашa  Продукция'
@@ -53,6 +56,8 @@ export const resources = {
             documents: 'Sertifikatlar',
             news: 'Yangiliklar',
             contact: 'Aloqa',
+            advantages: 'Bizning afzalliklarimiz'
+
             },
             home:{
                 favourites: 'Bizning Maxsulotlarimiz'
