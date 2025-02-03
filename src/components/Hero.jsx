@@ -27,7 +27,7 @@ const Hero = () => {
                         data-aos-mirror="true"
                         data-aos-once="false"
 
-                        className="md:text-[100px] text-5xl bekshire font-bold mb-4 font-berkshire">
+                        className="md:text-[100px] text-5xl drop-shadow-xl bekshire font-bold mb-4 font-berkshire">
                         Discover <span className="text-pink-400">Sweet </span> Delights!
                     </h1>
                     <p

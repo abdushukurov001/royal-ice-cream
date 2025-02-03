@@ -22,9 +22,7 @@ const ContactSection = () => {
             // if (response.status === 200) {
             if (true) {
                 toast.success('Message sent successfully!');
-                setTimeout(() => {
-                    window.location.reload();
-                }, 5000);
+                event.target.reset()
             } else {
                 toast.error('Failed to send message. Please try again.');
             }
