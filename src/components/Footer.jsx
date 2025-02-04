@@ -1,6 +1,6 @@
 import {Link} from 'react-router-dom';
-import img from '../assets/footer-bg.svg';
 import logo from '../assets/logo.png';
+import img from "../assets/classicLeft.svg";
 import ScrollTop from './TopScroll';
 import {FaTelegramPlane, FaInstagram, FaFacebook} from "react-icons/fa";
 import {useTranslation} from "react-i18next";
@@ -22,29 +22,20 @@ const Footer = () => {
 
     return (
 <>
-
-      
-
-
-
-
-
-        <footer className="bg-pink-400 relative text-white pb-4 pt-0">
+     <footer className="bg-pink-400 relative text-white pb-4 pt-4">
            
             <img
                 src={img}
                 alt="Decoration Left"
-                className="absolute left-0 z-0  bottom-[50px]  h-[200px] lg:h-[300px]"
+                className="absolute left-0 z-0  md:bottom-[130px]  h-[100px] lg:h-[100px]"
             />
-            <div className='container z-20 mb-0 md:block flex relative justify-center mx-auto'>
-                <img src={logo}
-                     className='md:h-[80px] z-10'
+          
+            <div className="container px-3 md:px-6 mx-auto  flex justify-between items-center">
+             <img src={logo}
+                     className='h-[80px] z-10'
                      alt=""/>
-            </div>
-            <div className="container mx-auto  flex justify-center items-center">
 
-
-                <ul className="flex z-1 flex-col sm:flex-row  gap-4 md:gap-6 space-x-4">
+                <ul className="flex z-1 flex-col justify-center flex-wrap sm:flex-row  gap-4 md:gap-6 space-x-4">
                     <li><a onClick={() => window.location.href = "/"}
                            className="hover:text-gray-300 cursor-pointer">{t('navbar.home')}</a></li>
                     <li><a onClick={() => scrollToSection("about")}
@@ -59,7 +50,7 @@ const Footer = () => {
                     <li><a onClick={() => scrollToSection("contact")}
                            className="hover:text-gray-300 cursor-pointer">{t('navbar.contact')}</a></li>
                 </ul>
-
+                 <div/>
 
             </div>
             <div className='bg-pink-400 h-[1px] mt-1 mb-2'></div>

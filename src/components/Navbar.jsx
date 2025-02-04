@@ -37,7 +37,7 @@ const Navbar = () => {
 
     return (
         <nav className={`fixed top-0 left-0 w-full py-2 z-50 transition-all ${scrolling || window.location.pathname.startsWith('/catalog') || window.location.pathname.startsWith('/about') ? 'bg-white text-black shadow-md' : 'bg-transparent text-white'}`}>
-            <div className="container mx-auto flex items-center justify-between px-3">
+            <div className="container mx-auto flex items-center justify-between px-3 md:px-6">
                 <div className="flex items-center">
                     {scrolling || window.location.pathname.startsWith('/catalog') || window.location.pathname.startsWith('/about') ? (
                         <a href='/'><img src={logoDark} alt="Logo" className="h-[70px]" /></a>
@@ -56,8 +56,8 @@ const Navbar = () => {
                     </svg>
                 </button>
 
-                <div className="hidden lg:flex items-center gap-19">
-                  <div className='flex gap-10'>
+                <div className="hidden lg:flex items-center gap-15">
+                  <div className='flex gap-6 '>
                   <a href="/" className="hover:text-pink-500 lg:text-lg  transition-colors">{t('navbar.home')}</a>
                     <a onClick={() => scrollToSection("about")}  className="hover:text-pink-500 cursor-pointer lg:text-lg transition-colors">{t('navbar.about')}</a>
                     <Link to="/catalog"  className="hover:text-pink-500 cursor-pointer lg:text-lg transition-colors">{t('navbar.catalog')}</Link>
