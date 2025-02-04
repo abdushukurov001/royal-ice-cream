@@ -1,6 +1,7 @@
 import ice1 from '../assets/ice1.png'
 import ice2 from '../assets/ice2.png'
 import ice3 from '../assets/ice3.png'
+import pista from "../assets/pista.png";
 import ice4 from '../assets/ice4.png'
 import Navbar from './Navbar'
 import Footer from './Footer'
@@ -69,7 +70,7 @@ const products3 = [
     id: 1,
     name: "Семечки",
     description: "Sample of brownie",
-    image: "https://web.xolodilnikgo.uz/web/image/product.product/6858/image_1024",
+    image: pista,
   },
 
 ];
@@ -85,7 +86,7 @@ export default function CatalogPage() {
   return (
     <>
     <Navbar/>
-    <div className="container mx-auto mt-16 px-4 z-20 relative py-8">
+    <div className="container mx-auto mt-22 px-4 z-20 relative py-8">
       <header className="flex items-center justify-between mb-8">
         <h1 className="text-3xl font-bold text-[#FF1493]">{t('navbar.catalog')}</h1>
         <button className="bg-[#FF1493] text-white px-3 py-2 rounded-3xl hover:bg-[#FF1493]/90">Download catalog</button>

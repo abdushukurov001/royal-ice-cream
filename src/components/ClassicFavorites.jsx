@@ -2,6 +2,7 @@ import Slider from "react-slick";
 import gradient from "../assets/Gradient.jpg";
 import leftImg from "../assets/classicLeft.svg";
 import rightImg from "../assets/classicRight.svg";
+import pista from "../assets/pista.png"
 import "slick-carousel/slick/slick.css";
 import "slick-carousel/slick/slick-theme.css";
 import {useTranslation} from "react-i18next";
@@ -16,7 +17,7 @@ const ClassicFavorites = () => {
   const slickOptions = {
     infinite: true,
     speed: 1000,
-    slidesToShow: 4,
+    slidesToShow: 5,
     slidesToScroll: 1,
     autoplay: true,
     autoplaySpeed: 2000,
@@ -49,8 +50,8 @@ const ClassicFavorites = () => {
       {
         breakpoint: 1536,
         settings: {
-          slidesToShow: 4,
-          slidesToScroll: 4,
+          slidesToShow: 5,
+          slidesToScroll: 1,
         },
       },
     ],
@@ -77,6 +78,11 @@ const ClassicFavorites = () => {
       image:
         "https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcQJKGv7zaWiHrwKf04EXIapFoTu7r-UBVJg4Q&s",
     },
+    {
+      name: "Pista",
+      image:
+        pista
+    },
   ];
 
   return (
@@ -89,14 +95,14 @@ const ClassicFavorites = () => {
       <img
         src={leftImg}
         alt="Decoration Left"
-        className="absolute left-0 z-0 top-[10px] lg:top-[10px] h-[200px] lg:h-[500px]"
+        className="absolute left-0 z-0 top-[10px] lg:top-[10px] h-[200px] lg:h-[400px]"
       />
       <img
         src={rightImg}
         alt="Decoration Right"
         className="absolute right-0 z-0 bottom-[40px] lg:bottom-[35px] h-[120px] lg:h-[500px]"
       />
-      <div className="max-w-6xl relative mx-auto">
+      <div className="max-w-7xl relative mx-auto">
        <div className="z-20">
        <h2 data-aos="fade-down" data-aos-duration="1500" data-aos-delay="50" className="text-4xl text-pink-500  font-bold text-center mb-2">
          {t('home.favourites')}
