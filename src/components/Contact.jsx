@@ -35,9 +35,9 @@ const ContactSection = () => {
 
     return (
 
-        <>
+        <div className='container mx-auto px-3 md:px-6'>
 
-            <section id='contact' className="container relative mb-16  rounded-3xl mx-auto  bg-pink-100 px-2 md:px-18 py-20 scroll-mt-26">
+            <section id='contact' className=" relative mb-16  rounded-3xl mx-auto  bg-pink-100 px-2 md:px-18 py-20 scroll-mt-26">
                 <img
                     src={bgimg}
                     alt="Decoration Left"
@@ -124,7 +124,7 @@ const ContactSection = () => {
                     width="100%" height="" frameBorder="1" allowFullScreen={true}
                     className="relative md:h-[400px] h-[200px]  border-6 border-pink-300"></iframe>
             </div>
-        </>
+        </div>
     );
 };
 
