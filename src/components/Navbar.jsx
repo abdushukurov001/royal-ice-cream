@@ -85,6 +85,7 @@ const Navbar = () => {
                     <a onClick={() => scrollToSection("about")} className="hover:text-pink-500 cursor-pointer transition-colors">{t('navbar.about')}</a>
                     <Link to="/catalog" className="hover:text-pink-500 cursor-pointer transition-colors">{t('navbar.catalog')}</Link>
                     <a onClick={() => scrollToSection("documents")} className="hover:text-pink-500 cursor-pointer transition-colors">{t('navbar.documents')}</a>
+                    <a onClick={() => scrollToSection("advantages")} className="hover:text-pink-500 cursor-pointer transition-colors">{t('navbar.advantages')}</a>
                     <a onClick={() => scrollToSection("news")} className="hover:text-pink-500 cursor-pointer transition-colors">{t('navbar.news')}</a>
                     <a onClick={() => scrollToSection("contact")} className="hover:text-pink-500 cursor-pointer transition-colors">{t('navbar.contact')}</a>
 
