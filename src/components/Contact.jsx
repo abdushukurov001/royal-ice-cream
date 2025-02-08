@@ -3,6 +3,7 @@ import bgimg from '../assets/bg-contact.svg'
 import {useTranslation} from "react-i18next";
 import {toast, ToastContainer} from 'react-toastify';
 import {useRef} from "react";
+import Footer from './Footer';
 
 
 const ContactSection = () => {
@@ -34,7 +35,7 @@ const ContactSection = () => {
     };
 
     return (
-
+      <>
         <div className='container mx-auto px-3 md:px-6'>
 
             <section id='contact' className=" relative mb-16  rounded-3xl mx-auto  bg-pink-100 px-2 md:px-18 py-20 scroll-mt-26">
@@ -43,7 +44,7 @@ const ContactSection = () => {
                     alt="Decoration Left"
                     className="absolute left-0 bottom-[40px] md:bottom-[0px] h-[300px] md:h-[500px]"
                 />
-                <div className="flex flex-col md:flex-row justify-between items-center px-6 space-y-6 md:space-y-0">
+                <div className="flex flex-col lg:flex-row justify-between items-center px-6 space-y-6 lg:space-y-0">
                     <div data-aos="zoom-out-right" className="text-gray-700 text-center md:text-left space-y-4">
                         <h2 data-aos="fade-down" className="md:text-5xl text-3xl font-bold text-pink-600 mb-7">
                             {t('navbar.contact')}
@@ -66,7 +67,7 @@ const ContactSection = () => {
                     </div>
 
                     <div data-aos="fade-up" data-aos-delay="1000" data-aos-duration="1500"
-                         className="w-full z-10 md:w-1/2 h-[350px] p-4 rounded-lg bg-white shadow-xl">
+                         className="w-full z-10 lg:w-1/2 h-[350px] p-4 rounded-lg bg-white shadow-xl">
                         <form id="contactForm" className="flex flex-col space-y-4" onSubmit={handleSubmit}>
                             <div>
                                 <label htmlFor="name" className="block text-sm font-medium text-gray-700">Name</label>
@@ -118,13 +119,97 @@ const ContactSection = () => {
 
             </section>
 
-            <div className="container mb-10 mx-auto">
-                <iframe
-                    src="https://yandex.uz/map-widget/v1/org/royal_muz_morozhenoye_dlya_tebya/141009352422/?ll=69.259422%2C41.308594&z=16"
-                    width="100%" height="" frameBorder="1" allowFullScreen={true}
-                    className="relative md:h-[400px] h-[200px]  border-6 border-pink-300"></iframe>
-            </div>
+          
         </div>
+
+        <div className="relative">
+    {/* Yuqori to‘lqin */}
+    <div className="absolute top-[-14px] left-0 w-full overflow-hidden" style={{ height: "40px", zIndex: 1 }}>
+        
+        <svg viewBox="0 0 1200 60" preserveAspectRatio="none" className="w-full h-full">
+            <path
+                d="M0, 0 
+                   L1200, 10
+                   L1200, 30
+                   Q1125,40 1050,30 
+                   Q975,0 900,30 
+                   Q825,60 750,30 
+                   Q675,0 600,30 
+                   Q525,60 450,30 
+                   Q375,0 300,30 
+                   Q225,60 150,30 
+                   Q75,0 0,30 
+                   Z"
+                fill="pink"
+            />
+        </svg>
+    </div>
+
+    <div className="absolute top-[-19px] left-0 w-full overflow-hidden" style={{ height: "40px", zIndex: 1 }}>
+        
+        <svg viewBox="0 0 1200 60" preserveAspectRatio="none" className="w-full h-full">
+            <path
+                d="M0, 0 
+                   L1200, 10
+                   L1200, 30
+                   Q1125,40 1050,30 
+                   Q975,0 900,30 
+                   Q825,60 750,30 
+                   Q675,0 600,30 
+                   Q525,60 450,30 
+                   Q375,0 300,30 
+                   Q225,60 150,30 
+                   Q75,0 0,30 
+                   Z"
+                fill="white"
+            />
+        </svg>
+    </div>
+
+    {/* Iframe - Xarita */}
+    <iframe
+        src="https://yandex.uz/map-widget/v1/org/royal_muz_morozhenoye_dlya_tebya/141009352422/?ll=69.259422%2C41.308594&z=16"
+        className="relative md:h-[400px] h-[200px] w-full"
+        allowFullScreen={true}
+        frameBorder="1"
+    />
+
+    {/* Pastki to‘lqin (chap tomoni baland, qolgan qismi kichik) */}
+    <div className="absolute bottom-0 left-0 w-full overflow-hidden" style={{ height: "50px" }}>
+        <svg viewBox="0 0 1200 60" preserveAspectRatio="none" className="w-full h-full">
+            <path
+                d="M0,0 
+                   Q190,-1 400,50 
+                   Q450,20 700,30 
+                   Q750,40 900,35 
+                   Q1050, 30 1200,40 
+                   L1200,60 
+                   L0,90 
+                   Z"
+                fill="#DB2777"
+            />
+        </svg>
+    </div>
+
+    <div className="absolute bottom-[-7px] left-0 w-full overflow-hidden" style={{ height: "50px" }}>
+        <svg viewBox="0 0 1200 60" preserveAspectRatio="none" className="w-full h-full">
+            <path
+                d="M0,0 
+                   Q190,-1 400,50 
+                   Q450,20 700,30 
+                   Q750,40 900,35 
+                   Q1050, 30 1200,40 
+                   L1200,60 
+                   L0,90 
+                   Z"
+                fill="#F472A1"
+            />
+        </svg>
+    </div>
+</div>
+
+    <Footer/>
+        </>
     );
 };
 

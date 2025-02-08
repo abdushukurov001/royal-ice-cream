@@ -69,7 +69,7 @@ const Home = () => {
             <AdvantagesSection/>
             <News/>
             <Contact/>
-            <Footer/>
+            {/* <Footer/> */}
         </>
     );
 };
