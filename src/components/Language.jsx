@@ -5,50 +5,49 @@ import { useTranslation } from "react-i18next";
 const Language = () => {
   const { i18n } = useTranslation();
   const [isOpen, setIsOpen] = useState(false);
-  const [selectedLanguage, setSelectedLanguage] = useState('Eng'); // Default value is 'Eng'
   const dropdownRef = useRef(null);
 
-  // Check if there's a saved language in localStorage
+  const languageMap = {
+    en: 'Eng',
+    ru: 'Ru',
+    uz: 'Uzb'
+  };
+
+  const getDisplayName = (code) => languageMap[code] || code;
+
+  const getLanguageCode = (display) => 
+    Object.entries(languageMap).find(([_, value]) => value === display)?.[0] || 'en';
+
   useEffect(() => {
     const savedLanguage = localStorage.getItem('language');
-    if (savedLanguage) {
-      setSelectedLanguage(savedLanguage); // Set the language to saved one
+    if (savedLanguage && Object.keys(languageMap).includes(savedLanguage)) {
       i18n.changeLanguage(savedLanguage);
     } else {
-      const defaultLanguage = i18n.language || 'en'; // Use i18n's language if no saved one
-      setSelectedLanguage(defaultLanguage === 'en' ? 'Eng' : defaultLanguage === 'ru' ? 'Ru' : 'Uzb');
+      const defaultLanguage = i18n.language || 'en';
+      localStorage.setItem('language', defaultLanguage);
     }
   }, [i18n]);
 
-  // Handle outside click to close the dropdown
   useEffect(() => {
     const handleClickOutside = (event) => {
       if (dropdownRef.current && !dropdownRef.current.contains(event.target)) {
         setIsOpen(false);
       }
     };
+
     document.addEventListener('mousedown', handleClickOutside);
-    return () => {
-      document.removeEventListener('mousedown', handleClickOutside);
-    };
+    return () => document.removeEventListener('mousedown', handleClickOutside);
   }, []);
 
-  const languages = ['Eng', 'Ru', 'Uzb'];
+  const availableLanguages = Object.values(languageMap).filter(
+    lang => lang !== getDisplayName(i18n.language)
+  );
 
-  // Filter out the selected language from the list
-  const availableLanguages = languages.filter(lang => lang !== selectedLanguage);
-
-  // Handle language change
-  const handleLanguageChange = (lang) => {
-    setSelectedLanguage(lang);
-    setIsOpen(false);
-
-    // Map selected language to i18next language code (e.g., 'Eng' -> 'en')
-    const languageCode = lang === 'Eng' ? 'en' : lang === 'Ru' ? 'ru' : 'uz';
+  const handleLanguageChange = (displayName) => {
+    const languageCode = getLanguageCode(displayName);
     i18n.changeLanguage(languageCode);
-
-    // Save the selected language to localStorage
     localStorage.setItem('language', languageCode);
+    setIsOpen(false);
   };
 
   return (
@@ -58,7 +57,7 @@ const Language = () => {
         className="flex items-center gap-2 cursor-pointer"
       >
         <Globe className="w-5 h-5" />
-        <span className="text-sm">{selectedLanguage}</span>
+        <span className="text-sm">{getDisplayName(i18n.language)}</span>
       </button>
 
       {isOpen && (
@@ -68,7 +67,7 @@ const Language = () => {
               key={lang}
               onClick={() => handleLanguageChange(lang)}
               className={`px-4 py-2 text-sm text-black hover:bg-gray-100 ${
-                selectedLanguage === lang ? 'font-bold text-blue-600' : ''
+                getDisplayName(i18n.language) === lang ? 'font-bold text-blue-600' : ''
               }`}
             >
               {lang}
@@ -81,3 +80,4 @@ const Language = () => {
 };
 
 export default Language;
+
