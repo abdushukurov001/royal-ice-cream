@@ -202,7 +202,7 @@ const ContactSection = () => {
                    L1200,60 
                    L0,90 
                    Z"
-                fill="#F472A1"
+                fill="#fb64b6"
             />
         </svg>
     </div>

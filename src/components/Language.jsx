@@ -16,7 +16,7 @@ const Language = () => {
   const getDisplayName = (code) => languageMap[code] || code;
 
   const getLanguageCode = (display) => 
-    Object.entries(languageMap).find(([_, value]) => value === display)?.[0] || 'en';
+    Object.entries(languageMap).find(([, value]) => value === display)?.[0] || 'en';
 
   useEffect(() => {
     const savedLanguage = localStorage.getItem('language');
