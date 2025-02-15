@@ -1,10 +1,15 @@
 import {Play} from 'lucide-react';
 import ice_back from "../../assets/ice-back.jpg"
 import Navbar from "../Navbar.jsx";
-import React, {useEffect} from "react";
+import React, {useEffect, useState} from "react";
 import Footer from "../Footer.jsx";
+import { useTranslation } from 'react-i18next';
+import client from '../../service/index.jsx';
+
 
 const data = {
+
+    
     company: {
         name: "Royal ice cream",
         founded: 1985,
@@ -33,6 +38,35 @@ const AboutPage = () => {
 
     const videoRef = React.useRef(null);
     const [isPlaying, setIsPlaying] = React.useState(false);
+    const { i18n} = useTranslation();
+    const [about, setAbout] = useState('')
+
+
+
+    useEffect(() => {
+        const fetchVideo = async () => {
+            try {
+                const lang = i18n.language || i18n.resolvedLanguage;
+                const response = await client.get(`${lang}/about/`);
+                
+                if (response.data && response.data.length > 0) {
+                    console.log("Fetched video URL:", response.data[0].video);
+                    setAbout({
+                        title: response.data[0].title,
+                        description: response.data[0].description,
+                        video: response.data[0].video  
+                    });
+                }
+                 else {
+                    console.warn("Video topilmadi yoki noto‘g‘ri formatda");
+                }
+            } catch (error) {
+                console.error("Error fetching video:", error);
+            }
+        };
+
+        fetchVideo();
+    }, [i18n.resolvedLanguage]);
 
 
     useEffect(() => {
@@ -54,7 +88,6 @@ const AboutPage = () => {
         <>
             <Navbar/>
             <div className="min-h-screen bg-gradient-to-b from-pink-50 to-white">
-                {/* Hero Section */}
                 <section className="relative h-[70vh] overflow-hidden">
                     <div className="absolute inset-0 bg-black/40 z-10"/>
                     <img
@@ -64,38 +97,32 @@ const AboutPage = () => {
                     />
                     <div className="absolute inset-0 z-20 flex items-center justify-center">
                         <div className="text-center text-white">
-                            <h1 className="text-5xl md:text-7xl font-bold mb-4">{data.company.name}</h1>
-                            <p className="text-xl md:text-2xl max-w-2xl mx-auto px-4">
-                                {data.company.description}
-                            </p>
+                            <h1 className="text-5xl md:text-7xl font-bold mb-4">{about.title}</h1>
                         </div>
                     </div>
                 </section>
 
-                {/* Video Section */}
                 <section className="max-w-7xl mx-auto py-24 px-4">
                     <div className="relative aspect-video rounded-2xl overflow-hidden shadow-2xl">
-                        <video
-                            ref={videoRef}
-                            className="w-full h-full object-cover"
-                            poster={data.company.video.poster}
-                            playsInline
-                            preload="metadata"
-                            controls={isPlaying}
-                            onClick={handlePlayPause}
-                            // Mobile-friendly attributes
-                            webkit-playsinline="true"
-                            x-webkit-airplay="allow"
-                            x5-video-player-type="h5"
-                            x5-video-player-fullscreen="true"
-                            x5-video-orientation="portraint"
-                        >
-                            {/* Multiple source formats for broader compatibility */}
-                            <source src={`${data.company.video.url}.mp4`} type="video/mp4"/>
-                            <source src={`${data.company.video.url}.webm`} type="video/webm"/>
-                            {/* Fallback message */}
-                            Your browser does not support the video tag.
-                        </video>
+                    {about.video ? (
+    <video
+        ref={videoRef}
+        className="w-full h-full object-cover"
+        poster={about.video.poster} 
+        playsInline
+        preload="metadata"
+        controls
+        muted
+        onClick={handlePlayPause}
+    >
+        <source src={about.video} type="video/mp4" />
+        <source src={about.video.replace('.mp4', '.webm')} type="video/webm" />
+        Your browser does not support the video tag.
+    </video>
+) : (
+    <p>Loading...</p>
+)}
+
                         {!isPlaying && (
                             <button
                                 onClick={handlePlayPause}
@@ -110,29 +137,16 @@ const AboutPage = () => {
                         )}
                     </div>
                 </section>
-                {/* Mission Section */}
+
                 <section className="max-w-7xl mx-auto py-24 px-4">
                     <div className="bg-white rounded-2xl p-12 shadow-xl">
                         <h2 className="text-4xl font-bold mb-8 text-center">Our Mission</h2>
                         <p className="text-xl text-gray-600 text-center max-w-3xl mx-auto">
-                            {data.company.mission}
+                            {about.description}
                         </p>
                     </div>
                 </section>
 
-                {/* Stats Section */}
-                <section className="bg-pink-500 py-24">
-                    <div className="max-w-7xl mx-auto px-4">
-                        <div className="grid md:grid-cols-3 gap-8">
-                            {data.company.stats.map((stat, index) => (<div key={index} className="text-center">
-                                <div className="text-4xl md:text-5xl font-bold text-white mb-2">{stat.number}</div>
-                                <div className="text-pink-100">{stat.label}</div>
-                            </div>))}
-                        </div>
-                    </div>
-                </section>
-
-                {/* Values Section */}
                 <section className="max-w-7xl mx-auto py-24 px-4">
                     <h2 className="text-4xl font-bold text-center mb-16">Our Values</h2>
                     <div className="grid md:grid-cols-3 gap-8">

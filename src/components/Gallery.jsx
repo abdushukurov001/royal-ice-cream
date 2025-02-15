@@ -1,6 +1,35 @@
-import React from 'react';
+import { useTranslation } from "react-i18next";
+import { useState, useEffect } from "react";
+import client from "../service";
+
 
 const ImageSlider = () => {
+  const {  i18n } = useTranslation();
+  const [wyUs, setWyUs] = useState("");
+
+
+
+    useEffect(() => {
+      const fetchDescription = async () => {
+        try {
+          const lang = i18n.language || i18n.resolvedLanguage;
+          const response = await client.get(`/${lang}/why_us/`);
+          if (Array.isArray(response.data) && response.data.length > 0) {
+            setWyUs(response.data[0]);
+          } else {
+            console.warn("No main_description found in API response");
+            setWyUs(""); 
+          }
+        } catch (error) {
+          console.error("Error fetching about description:", error);
+          setWyUs("");
+        }
+      };
+  
+      fetchDescription();
+    }, [i18n.resolvedLanguage]);
+
+
   return (
    <div id='advantages' className='scroll-mt-28'>
     <h2 
@@ -13,7 +42,7 @@ const ImageSlider = () => {
     <div className="mb-12 flex justify-center">
         
       <img
-        src="https://static.xabar.uz/crop/2/5/736_736_95_2559578676.jpg"
+        src={wyUs.image}
         alt="Static Image"
         className="w-full lg:max-w-5xl h-64 object-cover rounded-lg shadow-lg"
       />

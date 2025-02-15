@@ -2,16 +2,38 @@ import Slider from "react-slick";
 import gradient from "../assets/Gradient.jpg";
 import leftImg from "../assets/classicLeft.svg";
 import rightImg from "../assets/classicRight.svg";
-import pista from "../assets/pista.png"
 import "slick-carousel/slick/slick.css";
 import "slick-carousel/slick/slick-theme.css";
 import {useTranslation} from "react-i18next";
 import { useNavigate } from "react-router-dom";
+import client from "../service";
+import { useEffect, useState } from "react";
 
 
 const ClassicFavorites = () => {
-      const {t} = useTranslation();
+      const {t,i18n} = useTranslation();
+      const [category, setCategory] = useState([])
       const navigate = useNavigate();
+
+
+       useEffect(() => {
+            const fetchNews = async () => {
+              try{
+                  const lang = i18n.language || i18n.resolvedLanguage;
+                  const response = await client.get(`/${lang}/categories/`);
+                  if (Array.isArray(response.data) && response.data.length > 0) {
+                      setCategory(response.data); 
+                  } else {
+                      console.warn("No documents found in API response");
+                      setCategory([]);
+                    }
+              }  catch (error) {
+                  console.error("Error fetching documents:", error);
+                  setCategory([]);
+                }
+            }
+            fetchNews()
+          }, [i18n.resolvedLanguage])
 
   
   const slickOptions = {
@@ -57,33 +79,7 @@ const ClassicFavorites = () => {
     ],
   };
 
-  const products = [
-    {
-      name: "Marojniy",
-      image:
-        "https://images.unsplash.com/photo-1567206563064-6f60f40a2b57?ixlib=rb-1.2.1&auto=format&fit=crop&w=300&q=80",
-    },
-    {
-      name: "Sirok",
-      image:
-        "https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcTf4B31pb0nK625lIGyZtwMmqnQKoF5QM2_lg&s",
-    },
-    {
-      name: "Polufabrikat",
-      image:
-        "https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcR0Q3fSmqt08gPfYxssr5naEkS9lLCqrmFV5g&s",
-    },
-    {
-      name: "Sgushenka",
-      image:
-        "https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcQJKGv7zaWiHrwKf04EXIapFoTu7r-UBVJg4Q&s",
-    },
-    {
-      name: "Pista",
-      image:
-        pista
-    },
-  ];
+  
 
   return (
     <div
@@ -113,19 +109,19 @@ const ClassicFavorites = () => {
        </div>
 
         <Slider {...slickOptions}>
-  {products.map((product, index) => (
+  {category.map((product, index) => (
     <div data-aos={index % 2 === 0 ? "flip-left" : "flip-right"}
  data-aos-duration="1700" data-aos-delay="50" key={index} className="px-2">
       <div className="group cursor-pointer h-[330px] bg-white p-3 rounded-[10px] z-10 overflow-hidden">
         <div className="rounded-lg overflow-hidden mb-4 transform transition-transform group-hover:scale-105">
           <img
             src={product.image}
-            alt={product.name}
+            alt={product.title}
             className="w-full h-62 object-cover"
           />
         </div>
         <div className="h-full overflow-hidden relative">
-          <h3 className="font-semibold line-clamp-2 text-center text-xl mb-2">{product.name}</h3>
+          <h3 className="font-semibold line-clamp-2 text-center text-xl mb-2">{product.title}</h3>
           <div className="absolute inset-0 overflow-y-auto hidden-scrollbar">
             <p className="text-gray-600 text-md">
             </p>
