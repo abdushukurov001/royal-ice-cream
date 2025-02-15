@@ -1,3 +1,4 @@
+import { useState, useEffect, useRef } from "react";
 import Hero from "../components/Hero";
 import Navbar from "../components/Navbar";
 import AboutUs from "../components/About";
@@ -5,22 +6,35 @@ import ClassicFavorites from "../components/ClassicFavorites";
 import Documents from "../components/Documents";
 import News from "../components/News";
 import Contact from "../components/Contact";
-import Footer from "../components/Footer";
 import AdvantagesSection from "../components/WhyUs";
-import video from "../assets/video/bg-vd.mp4";
 import heroFallback from "../assets/hero.jpg";
-import {useEffect, useRef} from "react";
+import client from "../service/index"; 
+import { useTranslation } from "react-i18next";
+
 
 const Home = () => {
+    const [videoUrl, setVideoUrl] = useState(null);
     const videoRef = useRef(null);
+        const { i18n} = useTranslation();
+    
 
     useEffect(() => {
+        
+        const fetchVideo = async () => {
+            try {
+                const lang = i18n.language || i18n.resolvedLanguage;
+                const response = await client.get(`${lang}/hero/`);
+                if (response.data && response.data.length > 0) {
+                    setVideoUrl(response.data[0].video);
+                } else {
+                    console.warn("Video topilmadi yoki noto‘g‘ri formatda");
+                }
+            } catch (error) {
+                console.error("Error fetching video:", error);
+            }
+        };
 
-        if (videoRef.current) {
-            videoRef.current.playbackRate = 1;
-            videoRef.current.setAttribute('webkit-playsinline', 'true');
-
-        }
+        fetchVideo();
 
         const playVideo = () => {
             if (videoRef.current) {
@@ -30,34 +44,33 @@ const Home = () => {
             }
         };
 
-        playVideo();
-        document.addEventListener('touchstart', playVideo);
-
+        document.addEventListener("touchstart", playVideo);
         return () => {
-            document.removeEventListener('touchstart', playVideo);
+            document.removeEventListener("touchstart", playVideo);
         };
-    }, []);
+    }, [i18n.resolvedLanguage]);
+
     return (
         <>
             <div className="relative h-screen">
-                <video
-                    ref={videoRef}
-                    className="absolute top-0 left-0 w-full h-full object-cover"
-                    autoPlay
-                    playsInline
-                    loop
-                    muted
-                    preload="auto"
-                    defaultmuted="true"
-                    webkitplaysinline="true"
-                    poster={heroFallback}
-                >
-                    <source src={video} type="video/mp4"/>
-                    <img src={heroFallback} alt="Background"/>
-                </video>
-                <div
-                    className="absolute top-0 left-0 w-full h-full bg-gradient-to-b from-[#FFFFFF] to-[#FFF] opacity-30"></div>
-
+                {videoUrl ? (
+                    <video
+                        ref={videoRef}
+                        className="absolute top-0 left-0 w-full h-full object-cover"
+                        autoPlay
+                        playsInline
+                        loop
+                        muted
+                        preload="auto"
+                        poster={heroFallback}
+                    >
+                        <source src={videoUrl} type="video/mp4"/>
+                        <img src={heroFallback} alt="Background"/>
+                    </video>
+                ) : (
+                    <img src={heroFallback} alt="Fallback Background" className="absolute top-0 left-0 w-full h-full object-cover"/>
+                )}
+                <div className="absolute top-0 left-0 w-full h-full bg-gradient-to-b from-[#FFFFFF] to-[#FFF] opacity-30"></div>
 
                 <Navbar className="relative z-10"/>
                 <Hero className="relative z-0"/>
@@ -69,9 +82,9 @@ const Home = () => {
             <AdvantagesSection/>
             <News/>
             <Contact/>
-            {/* <Footer/> */}
         </>
     );
 };
 
 export default Home;
+

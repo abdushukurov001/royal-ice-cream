@@ -1,4 +1,4 @@
-import {useState} from 'react';
+import {useEffect, useState} from 'react';
 import Slider from "react-slick";
 import 'slick-carousel/slick/slick.css';
 import 'slick-carousel/slick/slick-theme.css';
@@ -6,38 +6,33 @@ import gradient from '../assets/Gradient.jpg'
 import imgL from '../assets/classicL.svg'
 import imgR from '../assets/classicR.svg'
 import {useTranslation} from "react-i18next";
+import client from '../service';
 
 
 function News() {
-    const {t} = useTranslation();
+    const {t, i18n} = useTranslation();
 
-    const [news, setNews] = useState([
-        {
-            title: "News Title 1",
-            description: "This is the description of news 1.",
-            image: "	https://imkonplus.uz/d/video_2020-12-21_17-59-34_2.gif"
-        },
-        {
-            title: "News Title 2",
-            description: "This is the description of news 2.",
-            image: "https://images.unsplash.com/photo-1563805042-7684c019e1cb?ixlib=rb-1.2.1&auto=format&fit=crop&w=300&q=80"
-        },
-        {
-            title: "News Title 3",
-            description: "This is the description of news 3.",
-            image: "https://images.unsplash.com/photo-1563805042-7684c019e1cb?ixlib=rb-1.2.1&auto=format&fit=crop&w=300&q=80"
-        },
-        {
-            title: "News Title 4",
-            description: "Lorem ipsum, dolor sit amet consectetur adipisicing elit. Mollitia eaque quis eius? Incidunt, nesciunt accusamus quas est quisquam repellat natus nam officia corrupti amet. This is the description of news 4.  ",
-            image: "https://images.unsplash.com/photo-1563805042-7684c019e1cb?ixlib=rb-1.2.1&auto=format&fit=crop&w=300&q=80"
-        },
-        {
-            title: "News Title 4",
-            description: "This is the description of news 4.",
-            image: "https://imkonplus.uz/d/video_2020-12-21_18-28-34.gif"
-        },
-    ]);
+    const [news, setNews] = useState(['']);
+
+
+    useEffect(() => {
+      const fetchNews = async () => {
+        try{
+            const lang = i18n.language || i18n.resolvedLanguage;
+            const response = await client.get(`/${lang}/news/`);
+            if (Array.isArray(response.data) && response.data.length > 0) {
+                setNews(response.data); 
+            } else {
+                console.warn("No documents found in API response");
+                setNews([]);
+              }
+        }  catch (error) {
+            console.error("Error fetching documents:", error);
+            setNews([]);
+          }
+      }
+      fetchNews()
+    }, [i18n.resolvedLanguage])
 
     const slickOptions = {
         infinite: true,
@@ -90,14 +85,12 @@ function News() {
                     backgroundImage: `url(${gradient})`,
                 }}
             >
-                {/* Left Decoration */}
                 <img
                     src={imgL}
                     alt="Decoration Left"
                     className="absolute left-0  top-[40] h-[300px] md:h-[500px]"
                     style={{transform: "translateY(-50%)"}}
                 />
-                {/* Right Decoration */}
                 <img
                     src={imgR}
                     alt="Decoration Right"
@@ -123,21 +116,17 @@ function News() {
                                  data-aos-duration={2000 + (key * 100)}
                             >
                                 <div
-                                    className="relative md:h-[430px] h-[400px] border-none border-slate-400 bg-pink-100 cursor-pointer backdrop-blur-[20px] p-[15px] rounded-[20px]">
+                                    className="relative md:h-[360px] h-[400px] border-none border-slate-400 bg-pink-100 cursor-pointer backdrop-blur-[20px] p-[15px] rounded-[20px]">
                                     <img
                                         src={item.image}
                                         alt={item.title}
                                         className="rounded-[20px] w-full aspect-[29/17] object-cover"
                                     />
-                                    <h5 className="text-[18px] line-clamp-2 text-black font-medium tracking-wide mt-[10px]">
+                                    <h5 className="text-[18px] font-bold capitalize line-clamp-2 text-black tracking-wide mt-[10px]">
                                         {item.title}
                                     </h5>
-                                    <p className="font-light line-clamp-4 text-black tracking-wide">
+                                    <p className="font-light first-letter:uppercase line-clamp-4 text-black tracking-wide ">
                                         {item.description}
-                                    </p>
-                                    {/* "2 mins read" always at the bottom */}
-                                    <p className="absolute bottom-[15px] right-[15px] text-black font-light text-[14px] tracking-wide">
-                                        2 mins read
                                     </p>
                                 </div>
                             </div>
