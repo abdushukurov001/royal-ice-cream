@@ -13,8 +13,6 @@ const AboutUs = () => {
       try {
         const lang = i18n.language || i18n.resolvedLanguage;
         const response = await client.get(`/${lang}/about/`);
-        console.log("API Response:", response.data);
-
         if (Array.isArray(response.data) && response.data.length > 0) {
           setDescription(response.data[0].main_description);
         } else {

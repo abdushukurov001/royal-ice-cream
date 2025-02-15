@@ -9,20 +9,21 @@ import Contact from "../components/Contact";
 import AdvantagesSection from "../components/WhyUs";
 import heroFallback from "../assets/hero.jpg";
 import client from "../service/index"; 
+import { useTranslation } from "react-i18next";
 
 
 const Home = () => {
     const [videoUrl, setVideoUrl] = useState(null);
     const videoRef = useRef(null);
-    const lang = localStorage.getItem('language') || 'uz';
-
-
+        const { i18n} = useTranslation();
+    
 
     useEffect(() => {
         
         const fetchVideo = async () => {
             try {
-                const response = await client.get(`ru/hero/`);
+                const lang = i18n.language || i18n.resolvedLanguage;
+                const response = await client.get(`${lang}/hero/`);
                 if (response.data && response.data.length > 0) {
                     setVideoUrl(response.data[0].video);
                 } else {
@@ -47,7 +48,7 @@ const Home = () => {
         return () => {
             document.removeEventListener("touchstart", playVideo);
         };
-    }, [lang]);
+    }, [i18n.resolvedLanguage]);
 
     return (
         <>
