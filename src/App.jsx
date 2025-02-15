@@ -22,7 +22,7 @@ function App() {
       element: <Catalog/>
     },
     {
-      path: '/catalog/:id',
+      path: '/catalog/:category',
       element: <ProductDetail/>
     },
     {

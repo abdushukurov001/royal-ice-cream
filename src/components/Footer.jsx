@@ -2,13 +2,33 @@ import {Link} from 'react-router-dom';
 import logo from '../assets/logo.png';
 import img from "../assets/classicLeft.svg";
 import ScrollTop from './TopScroll';
-import {FaTelegramPlane, FaInstagram, FaFacebook} from "react-icons/fa";
 import {useTranslation} from "react-i18next";
+import { useState, useEffect } from 'react';
+import client from '../service';
 
 
 const Footer = () => {
-    const {t} = useTranslation();
-
+    const {t, i18n} = useTranslation();
+    const [social, setSocial] = useState([])
+    
+     useEffect(() => {
+          const fetchNews = async () => {
+            try{
+                const lang = i18n.language || i18n.resolvedLanguage;
+                const response = await client.get(`/${lang}/social/`);
+                if (Array.isArray(response.data) && response.data.length > 0) {
+                    setSocial(response.data); 
+                } else {
+                    console.warn("No documents found in API response");
+                    setSocial([]);
+                  }
+            }  catch (error) {
+                console.error("Error fetching documents:", error);
+                setSocial([]);
+              }
+          }
+          fetchNews()
+        }, [i18n.resolvedLanguage])
 
     const scrollToSection = (sectionId) => {
         const section = document.getElementById(sectionId);
@@ -53,19 +73,16 @@ const Footer = () => {
                  <div/>
 
             </div>
-            <div className='bg-pink-400 h-[1px] mt-1 mb-2'></div>
+            <div className='bg-pink-300 h-[1px] mt-1 mb-2'></div>
 
-            <div className="flex justify-center gap-8">
-            <a href="https://t.me/yourchannel" target="_blank" rel="noopener noreferrer">
-                    <FaTelegramPlane className="w-6 h-6 text-white hover:text-pink-700"/>
-                </a>
-                <a href="https://instagram.com/yourprofile" target="_blank" rel="noopener noreferrer">
-                    <FaInstagram className="w-6 h-6 text-white hover:text-pink-700"/>
-                </a>
-                <a href="https://facebook.com/yourprofile" target="_blank" rel="noopener noreferrer">
-                    <FaFacebook className="w-6 h-6 text-white hover:text-pink-900"/>
-                </a>
-            </div>
+            <div className="flex mt-[20px] justify-center gap-8">
+    {social.map((item, key) => (
+        <a key={key} href={item.link} target="_blank" rel="noopener noreferrer">
+            <img src={item.icon} className="w-6 h-6 text-white hover:text-pink-700"/>
+        </a>
+    ))}
+</div>
+
             <ScrollTop/>
         </footer>
         </>

@@ -1,23 +1,22 @@
-import { Phone, Mail, MapPin } from 'lucide-react';
+import {Phone, Mail, MapPin} from 'lucide-react';
 import bgimg from '../assets/bg-contact.svg'
-import { useTranslation } from "react-i18next";
-import {  ToastContainer } from 'react-toastify';
+import {useTranslation} from "react-i18next";
+import {toast, ToastContainer} from 'react-toastify';
 import Footer from './Footer';
-import { useEffect, useState } from 'react';
+import {useEffect, useState} from 'react';
 import client from '../service';
 
 
 const ContactSection = () => {
     const [contact, setContact] = useState(null)
-    const { t,i18n } = useTranslation();
+    const {t, i18n} = useTranslation();
+    const lang = i18n.language || i18n.resolvedLanguage;
 
 
     useEffect(() => {
         const fetchContact = async () => {
             try {
-                const lang = i18n.language || i18n.resolvedLanguage;
                 const response = await client.get(`${lang}/contact/`);
-                console.log(response)
                 if (response.data && response.data.length > 0) {
                     setContact(response.data[0]);
                 } else {
@@ -33,23 +32,24 @@ const ContactSection = () => {
     const handleSubmit = async (event) => {
         event.preventDefault();
 
-        // const formData = new FormData(event.target);
-        // const data = {
-        //     name: formData.get('name'),
-        //     phone: formData.get('phone'),
-        //     message: formData.get('message'),
-        // };
+        const formData = new FormData(event.target);
+        const data = {
+            name: formData.get('name'),
+            phone: formData.get('phone'),
+            message: formData.get('message'),
+        };
 
-        // try {
-        //     if (true) {
-        //         toast.success('Message sent successfully!');
-        //         event.target.reset()
-        //     } else {
-        //         toast.error('Failed to send message. Please try again.');
-        //     }
-        // } catch (error) {
-        //     toast.error('An error occurred. Please try again later.');
-        // }
+        try {
+            if (data) {
+                client.post(`${lang}/send/`, data)
+                toast.success('Message sent successfully!');
+                event.target.reset()
+            } else {
+                toast.error('Failed to send message. Please try again.');
+            }
+        } catch (error) {
+            toast.error('An error occurred. Please try again later.');
+        }
 
     };
 
@@ -57,7 +57,7 @@ const ContactSection = () => {
         <>
             <div className='container mx-auto px-3 md:px-6'>
 
-            <section id='contact' className="relative mb-16 rounded-3xl mx-auto bg-pink-100 px-2 md:px-18 py-20">
+                <section id='contact' className="relative mb-16 rounded-3xl mx-auto bg-pink-100 px-2 md:px-18 py-20">
                     <img
                         src={bgimg}
                         alt="Background"
@@ -71,15 +71,15 @@ const ContactSection = () => {
                             {contact && (
                                 <>
                                     <p className="flex text-start items-center gap-3">
-                                        <Phone size={20} className="text-pink-600" />
+                                        <Phone size={20} className="text-pink-600"/>
                                         {contact.phone}
                                     </p>
                                     <p className="flex text-start items-center gap-3">
-                                        <Mail size={20} className="text-pink-600" />
+                                        <Mail size={20} className="text-pink-600"/>
                                         {contact.email}
                                     </p>
                                     <p className="flex text-start items-center gap-3">
-                                        <MapPin size={20} className="text-pink-600" />
+                                        <MapPin size={20} className="text-pink-600"/>
                                         {contact.address}
                                     </p>
                                 </>
@@ -88,24 +88,31 @@ const ContactSection = () => {
                         <div className="w-full lg:w-1/2 h-[350px] p-4 rounded-lg bg-white shadow-xl">
                             <form className="flex flex-col space-y-4" onSubmit={handleSubmit}>
                                 <div>
-                                    <label htmlFor="name" className="block text-sm font-medium text-gray-700">Name</label>
-                                    <input type="text" id="name" name="name" required className="mt-1 p-2 w-full rounded-md border border-pink-500" />
+                                    <label htmlFor="name"
+                                           className="block text-sm font-medium text-gray-700">Name</label>
+                                    <input type="text" id="name" name="name" required
+                                           className="mt-1 p-2 w-full rounded-md border border-pink-500"/>
                                 </div>
                                 <div>
-                                    <label htmlFor="phone" className="block text-sm font-medium text-gray-700">Phone</label>
-                                    <input type="tel" id="phone" name="phone" required className="mt-1 p-2 w-full rounded-md border border-pink-500" />
+                                    <label htmlFor="phone"
+                                           className="block text-sm font-medium text-gray-700">Phone</label>
+                                    <input type="tel" id="phone" name="phone" required
+                                           className="mt-1 p-2 w-full rounded-md border border-pink-500"/>
                                 </div>
                                 <div>
-                                    <label htmlFor="message" className="block text-sm font-medium text-gray-700">Message</label>
-                                    <textarea id="message" name="message" rows="2" required className="mt-1 p-2 w-full rounded-md border border-pink-500"></textarea>
+                                    <label htmlFor="message"
+                                           className="block text-sm font-medium text-gray-700">Message</label>
+                                    <textarea id="message" name="message" rows="2" required
+                                              className="mt-1 p-2 w-full rounded-md border border-pink-500"></textarea>
                                 </div>
-                                <button type="submit" className="py-2 px-4 bg-pink-500 text-white rounded-md hover:bg-pink-400">
+                                <button type="submit"
+                                        className="py-2 px-4 bg-pink-500 text-white rounded-md hover:bg-pink-400">
                                     Send
                                 </button>
                             </form>
                         </div>
                     </div>
-                    <ToastContainer />
+                    <ToastContainer/>
                 </section>
 
 
@@ -113,7 +120,7 @@ const ContactSection = () => {
 
             <div className="relative">
                 {/* Yuqori to‘lqin */}
-                <div className="absolute top-[-14px] left-0 w-full overflow-hidden" style={{ height: "40px", zIndex: 1 }}>
+                <div className="absolute top-[-14px] left-0 w-full overflow-hidden" style={{height: "40px", zIndex: 1}}>
 
                     <svg viewBox="0 0 1200 60" preserveAspectRatio="none" className="w-full h-full">
                         <path
@@ -134,7 +141,7 @@ const ContactSection = () => {
                     </svg>
                 </div>
 
-                <div className="absolute top-[-19px] left-0 w-full overflow-hidden" style={{ height: "40px", zIndex: 1 }}>
+                <div className="absolute top-[-19px] left-0 w-full overflow-hidden" style={{height: "40px", zIndex: 1}}>
 
                     <svg viewBox="0 0 1200 60" preserveAspectRatio="none" className="w-full h-full">
                         <path
@@ -156,16 +163,16 @@ const ContactSection = () => {
                 </div>
 
                 {contact && contact.location && (
-                        <div className="mt-10 w-full h-[400px] md:h-[400px] relative">
-                            <iframe
-                                src={contact.location}
-                                className="absolute top-0 left-0 w-full h-full rounded-lg border border-gray-300"
-                                allowFullScreen={true}
-                                frameBorder="0"
-                            />
-                        </div>
-                    )}
-                <div className="absolute bottom-0 left-0 w-full overflow-hidden" style={{ height: "50px" }}>
+                    <div className="mt-10 w-full h-[400px] md:h-[400px] relative">
+                        <iframe
+                            src={contact.location}
+                            className="absolute top-0 left-0 w-full h-full rounded-lg border border-gray-300"
+                            allowFullScreen={true}
+                            frameBorder="0"
+                        />
+                    </div>
+                )}
+                <div className="absolute bottom-0 left-0 w-full overflow-hidden" style={{height: "50px"}}>
                     <svg viewBox="0 0 1200 60" preserveAspectRatio="none" className="w-full h-full">
                         <path
                             d="M0,0 
@@ -181,7 +188,7 @@ const ContactSection = () => {
                     </svg>
                 </div>
 
-                <div className="absolute bottom-[-7px] left-0 w-full overflow-hidden" style={{ height: "50px" }}>
+                <div className="absolute bottom-[-7px] left-0 w-full overflow-hidden" style={{height: "50px"}}>
                     <svg viewBox="0 0 1200 60" preserveAspectRatio="none" className="w-full h-full">
                         <path
                             d="M0,0 
@@ -198,7 +205,7 @@ const ContactSection = () => {
                 </div>
             </div>
 
-            <Footer />
+            <Footer/>
         </>
     );
 };
