@@ -57,7 +57,7 @@ const ProductDetail = () => {
                                     href="/"
                                     className="mb-6 me-2 inline-flex items-center text-gray-600 hover:text-gray-900 transition-colors"
                                 >
-                                    Home
+                                     {t('navbar.home')}
                                 </a>
                                 <a
                                     onClick={() => window.history.back()}
@@ -76,7 +76,7 @@ const ProductDetail = () => {
                                             d="M5 12h14m-7-7l7 7-7 7"
                                         />
                                     </svg>
-                                    Products catalog
+                                   {t('navbar.catalog')}
                                 </a>
                                 <a
                                     onClick={() => window.history.back()}
@@ -95,7 +95,7 @@ const ProductDetail = () => {
                                             d="M5 12h14m-7-7l7 7-7 7"
                                         />
                                     </svg>
-                                    Products Info
+                                     {t('catalog.product_info')}
                                 </a>
                             </div>
                             <div className="space-y-12">

@@ -21,6 +21,7 @@ const ClassicFavorites = () => {
               try{
                   const lang = i18n.language || i18n.resolvedLanguage;
                   const response = await client.get(`/${lang}/categories/`);
+                  console.log('qqq',response)
                   if (Array.isArray(response.data) && response.data.length > 0) {
                       setCategory(response.data); 
                   } else {
@@ -104,7 +105,7 @@ const ClassicFavorites = () => {
          {t('home.favourites')}
         </h2>
         <p data-aos="fade-down" data-aos-duration="1500" data-aos-delay="50" className="text-center text-gray-600 mb-12">
-          Check out the top products that our customers love.
+             {t('home.top_products')}
         </p>
        </div>
 
@@ -138,7 +139,7 @@ const ClassicFavorites = () => {
            onClick={() => navigate("/catalog")}
             className="mt-4 cursor-pointer text-2xl text-center text-pink-400 hover:text-pink-500"
           >
-            Подробнее...
+           {t('buttons.more_details')}...
           </button>
      </div>
     </div>

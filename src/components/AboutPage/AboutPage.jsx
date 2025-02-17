@@ -38,7 +38,7 @@ const AboutPage = () => {
 
     const videoRef = React.useRef(null);
     const [isPlaying, setIsPlaying] = React.useState(false);
-    const { i18n} = useTranslation();
+    const {t, i18n} = useTranslation();
     const [about, setAbout] = useState('')
 
 
@@ -140,7 +140,7 @@ const AboutPage = () => {
 
                 <section className="max-w-7xl mx-auto py-24 px-4">
                     <div className="bg-white rounded-2xl p-12 shadow-xl">
-                        <h2 className="text-4xl font-bold mb-8 text-center">Our Mission</h2>
+                        <h2 className="text-4xl font-bold mb-8 text-center"> {t('about.mission')}</h2>
                         <p className="text-xl text-gray-600 text-center max-w-3xl mx-auto">
                             {about.description}
                         </p>

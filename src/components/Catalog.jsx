@@ -67,7 +67,7 @@ export default function CatalogPage() {
                 <header className="flex items-center justify-between mb-8">
                     <h1 className="text-3xl font-bold text-[#FF1493]">{t('navbar.catalog')}</h1>
                     <button className="bg-[#FF1493] text-white px-3 py-2 rounded-3xl hover:bg-[#FF1493]/90">
-                        Download catalog
+                        {t('catalog.download')}
                     </button>
                 </header>
 

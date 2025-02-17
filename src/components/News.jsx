@@ -105,7 +105,7 @@ function News() {
                     </h2>
                     <h4 data-aos="flip-up" data-aos-offset="400"
                         data-aos-delay="120"
-                        data-aos-duration="1400" className="pt-5 text-lg text-gray-700">Check out our top news</h4>
+                        data-aos-duration="1400" className="pt-5 text-lg text-gray-700"> {t('home.top_news')}.</h4>
                 </div>
                 <div className="container mx-auto px-4">
                     <Slider {...slickOptions} className="mx-auto">
