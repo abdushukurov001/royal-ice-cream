@@ -61,7 +61,7 @@ const AboutUs = () => {
           className="cursor-pointer py-2 px-5 bg-white rounded text-pink-500 transition-colors delay-75 shadow hover:text-white hover:bg-pink-500"
           to="/about"
         >
-          More details
+          {t('buttons.more_details')}
         </Link>
       </div>
       <div className="w-80 h-80 relative">

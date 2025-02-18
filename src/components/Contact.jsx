@@ -1,15 +1,15 @@
-import {Phone, Mail, MapPin} from 'lucide-react';
+import { Phone, Mail, MapPin } from 'lucide-react';
 import bgimg from '../assets/bg-contact.svg'
-import {useTranslation} from "react-i18next";
-import {toast, ToastContainer} from 'react-toastify';
+import { useTranslation } from "react-i18next";
+import { toast, ToastContainer } from 'react-toastify';
 import Footer from './Footer';
-import {useEffect, useState} from 'react';
+import { useEffect, useState } from 'react';
 import client from '../service';
 
 
 const ContactSection = () => {
     const [contact, setContact] = useState(null)
-    const {t, i18n} = useTranslation();
+    const { t, i18n } = useTranslation();
     const lang = i18n.language || i18n.resolvedLanguage;
 
 
@@ -42,13 +42,14 @@ const ContactSection = () => {
         try {
             if (data) {
                 client.post(`${lang}/send/`, data)
-                toast.success('Message sent successfully!');
+                toast.success(t('succes'));
                 event.target.reset()
             } else {
-                toast.error('Failed to send message. Please try again.');
+                toast.error(t('error'));
             }
+            // eslint-disable-next-line no-unused-vars
         } catch (error) {
-            toast.error('An error occurred. Please try again later.');
+            toast.error(t('error'));
         }
 
     };
@@ -71,48 +72,55 @@ const ContactSection = () => {
                             {contact && (
                                 <>
                                     <p className="flex text-start items-center gap-3">
-                                        <Phone size={20} className="text-pink-600"/>
-                                        {contact.phone}
+                                        <Phone size={20} className="text-pink-600" />
+                                        <a href={`tel:+${contact.phone.replace(/^(\d{3})(\d{2})(\d{3})(\d{2})(\d{2})$/, '$1$2$3$4$5')}`} className="text-black">
+                                            {contact.phone.replace(/^(\d{3})(\d{2})(\d{3})(\d{2})(\d{2})$/, '+$1 $2 $3-$4-$5')}
+                                        </a>
                                     </p>
                                     <p className="flex text-start items-center gap-3">
-                                        <Mail size={20} className="text-pink-600"/>
-                                        {contact.email}
+                                        <Mail size={20} className="text-pink-600" />
+                                        <a href={`mailto:${contact.email}`} className="text-black">
+                                            {contact.email}
+                                        </a>
                                     </p>
                                     <p className="flex text-start items-center gap-3">
-                                        <MapPin size={20} className="text-pink-600"/>
-                                        {contact.address}
+                                        <MapPin size={20} className="text-pink-600" />
+                                        <a href={`https://www.google.com/maps?q=${contact.address}`} target="_blank" rel="noopener noreferrer" className="text-black">
+                                            {contact.address}
+                                        </a>
                                     </p>
+
                                 </>
                             )}
                         </div>
                         <div className="w-full lg:w-1/2 h-[350px] p-4 rounded-lg bg-white shadow-xl">
-                            <form className="flex flex-col space-y-4" onSubmit={handleSubmit}>
+                            <form className="flex relative z-20 flex-col space-y-4" onSubmit={handleSubmit}>
                                 <div>
                                     <label htmlFor="name"
-                                           className="block text-sm font-medium text-gray-700">Name</label>
+                                        className="block text-sm font-medium text-gray-700">{t('contact.name')}</label>
                                     <input type="text" id="name" name="name" required
-                                           className="mt-1 p-2 w-full rounded-md border border-pink-500"/>
+                                        className="mt-1 p-2 w-full rounded-md border border-pink-500" />
                                 </div>
                                 <div>
                                     <label htmlFor="phone"
-                                           className="block text-sm font-medium text-gray-700">Phone</label>
+                                        className="block text-sm font-medium text-gray-700">{t('contact.phone')}</label>
                                     <input type="tel" id="phone" name="phone" required
-                                           className="mt-1 p-2 w-full rounded-md border border-pink-500"/>
+                                        className="mt-1 p-2 w-full rounded-md border border-pink-500" />
                                 </div>
                                 <div>
                                     <label htmlFor="message"
-                                           className="block text-sm font-medium text-gray-700">Message</label>
+                                        className="block text-sm font-medium text-gray-700">{t('contact.message')}</label>
                                     <textarea id="message" name="message" rows="2" required
-                                              className="mt-1 p-2 w-full rounded-md border border-pink-500"></textarea>
+                                        className="mt-1 p-2 w-full rounded-md border border-pink-500"></textarea>
                                 </div>
                                 <button type="submit"
-                                        className="py-2 px-4 bg-pink-500 text-white rounded-md hover:bg-pink-400">
-                                    Send
+                                    className="py-2 px-4 bg-pink-500 text-white rounded-md hover:bg-pink-400">
+                                    {t('contact.send')}
                                 </button>
                             </form>
                         </div>
                     </div>
-                    <ToastContainer/>
+                    <ToastContainer />
                 </section>
 
 
@@ -120,7 +128,7 @@ const ContactSection = () => {
 
             <div className="relative">
                 {/* Yuqori to‘lqin */}
-                <div className="absolute top-[-14px] left-0 w-full overflow-hidden" style={{height: "40px", zIndex: 1}}>
+                <div className="absolute top-[-14px] left-0 w-full overflow-hidden" style={{ height: "40px", zIndex: 1 }}>
 
                     <svg viewBox="0 0 1200 60" preserveAspectRatio="none" className="w-full h-full">
                         <path
@@ -141,7 +149,7 @@ const ContactSection = () => {
                     </svg>
                 </div>
 
-                <div className="absolute top-[-19px] left-0 w-full overflow-hidden" style={{height: "40px", zIndex: 1}}>
+                <div className="absolute top-[-19px] left-0 w-full overflow-hidden" style={{ height: "40px", zIndex: 1 }}>
 
                     <svg viewBox="0 0 1200 60" preserveAspectRatio="none" className="w-full h-full">
                         <path
@@ -172,7 +180,7 @@ const ContactSection = () => {
                         />
                     </div>
                 )}
-                <div className="absolute bottom-0 left-0 w-full overflow-hidden" style={{height: "50px"}}>
+                <div className="absolute bottom-0 left-0 w-full overflow-hidden" style={{ height: "50px" }}>
                     <svg viewBox="0 0 1200 60" preserveAspectRatio="none" className="w-full h-full">
                         <path
                             d="M0,0 
@@ -188,7 +196,7 @@ const ContactSection = () => {
                     </svg>
                 </div>
 
-                <div className="absolute bottom-[-7px] left-0 w-full overflow-hidden" style={{height: "50px"}}>
+                <div className="absolute bottom-[-7px] left-0 w-full overflow-hidden" style={{ height: "50px" }}>
                     <svg viewBox="0 0 1200 60" preserveAspectRatio="none" className="w-full h-full">
                         <path
                             d="M0,0 
@@ -205,7 +213,7 @@ const ContactSection = () => {
                 </div>
             </div>
 
-            <Footer/>
+            <Footer />
         </>
     );
 };
