@@ -1,6 +1,7 @@
 import { useTranslation } from "react-i18next";
 import { useState, useEffect } from "react";
 import client from "../service";
+import { t } from "i18next";
 
 
 const ImageSlider = () => {
@@ -37,7 +38,7 @@ const ImageSlider = () => {
     data-aos-offset="200"
     data-aos-delay="50"
     data-aos-duration="1000" className="text-4xl font-extrabold text-pink-500 text-center mb-12">
-    Почему выбирают нас?
+   {t("navbar.whyChooseUs")}
   </h2>
     <div className="mb-12 flex justify-center">
         

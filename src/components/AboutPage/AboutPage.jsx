@@ -1,81 +1,71 @@
-import {Play, Pause} from 'lucide-react';
+
+import {Play} from 'lucide-react';
 import ice_back from "../../assets/ice-back.jpg"
 import Navbar from "../Navbar.jsx";
 import React, {useEffect, useState} from "react";
 import Footer from "../Footer.jsx";
-import {useTranslation} from 'react-i18next';
+import { useTranslation } from 'react-i18next';
 import client from '../../service/index.jsx';
 
+
 const AboutPage = () => {
+
     const videoRef = React.useRef(null);
     const [isPlaying, setIsPlaying] = React.useState(false);
-    const [showControls, setShowControls] = React.useState(true);
     const {t, i18n} = useTranslation();
-    const [about, setAbout] = useState('');
+    const [about, setAbout] = useState('')
+    const [advertisements, setAdvertisements] = useState([]);
 
+
+     
     useEffect(() => {
-        const fetchVideo = async () => {
+        const fetchData = async () => {
             try {
                 const lang = i18n.language || i18n.resolvedLanguage;
-                const response = await client.get(`${lang}/about/`);
-
-                if (response.data && response.data.length > 0) {
-                    console.log("Fetched video URL:", response.data);
+                const [aboutRes, adsRes] = await Promise.all([
+                    client.get(`${lang}/about/`),
+                    client.get(`${lang}/advertisements/`)
+                ]);
+    
+                if (aboutRes.data && aboutRes.data.length > 0) {
                     setAbout({
-                        title: response.data[0].title,
-                        main_description: response.data[0].main_description,
-                        description: response.data[0].description,
-                        video: response.data[0].video
+                        title: aboutRes.data[0].title,
+                        description: aboutRes.data[0].description,
+                        video: aboutRes.data[0].video  
                     });
-                } else {
-                    console.warn("Video topilmadi yoki noto'g'ri formatda");
+                }
+    
+                if (adsRes.data) {
+                    setAdvertisements(adsRes.data);
                 }
             } catch (error) {
-                console.error("Error fetching video:", error);
+                console.error("Error fetching data:", error);
             }
         };
+    
+        fetchData();
+    }, [i18n.language]);
+    
 
-        fetchVideo();
-    }, [i18n.resolvedLanguage]);
 
     useEffect(() => {
-        window.scrollTo({top: 0, behavior: 'smooth'});
+        window.scrollTo({ top: 0, behavior: 'smooth' });
     }, []);
 
     const handlePlayPause = () => {
         if (videoRef.current) {
             if (videoRef.current.paused) {
-                videoRef.current.play();
-                setIsPlaying(true);
+                videoRef.current.play()
+                    .then(() => setIsPlaying(true))
+                    .catch(error => console.error("Video play error:", error));
             } else {
                 videoRef.current.pause();
                 setIsPlaying(false);
             }
         }
     };
-
-    // Add event listeners for video
-    useEffect(() => {
-        const video = videoRef.current;
-        if (!video) return;
-
-        const handlePlay = () => setIsPlaying(true);
-        const handlePause = () => setIsPlaying(false);
-        const handleEnded = () => {
-            setIsPlaying(false);
-            setShowControls(true);
-        };
-
-        video.addEventListener('play', handlePlay);
-        video.addEventListener('pause', handlePause);
-        video.addEventListener('ended', handleEnded);
-
-        return () => {
-            video.removeEventListener('play', handlePlay);
-            video.removeEventListener('pause', handlePause);
-            video.removeEventListener('ended', handleEnded);
-        };
-    }, []);
+    
+    
 
     return (
         <>
@@ -90,50 +80,41 @@ const AboutPage = () => {
                     />
                     <div className="absolute inset-0 z-20 flex items-center justify-center">
                         <div className="text-center text-white">
-                            <h1 className="text-5xl md:text-7xl font-bold mb-2">{about.title}</h1>
-                            <p className="text-xl md:text-2xl font-medium mb-4">{about.main_description}</p>
+                            <h1 className="text-5xl md:text-7xl font-bold mb-4">{t('navbar.about')}</h1>
                         </div>
                     </div>
                 </section>
 
                 <section className="max-w-7xl mx-auto py-24 px-4">
-                    <div
-                        className="relative aspect-video rounded-2xl overflow-hidden shadow-2xl"
-                        onMouseEnter={() => setShowControls(true)}
-                        onMouseLeave={() => setShowControls(isPlaying ? false : true)}
-                    >
-                        {about.video ? (
-                            <video
-                                ref={videoRef}
-                                className="w-full h-full object-cover"
-                                poster={about.video.poster}
-                                playsInline
-                                preload="metadata"
-                                controls={true}
-                                muted={false}
-                            >
-                                <source src={about.video} type="video/mp4"/>
-                                <source src={about.video.replace('.mp4', '.webm')} type="video/webm"/>
-                                Your browser does not support the video tag.
-                            </video>
-                        ) : (
-                            <p>Loading...</p>
-                        )}
+                    <div className="relative aspect-video rounded-2xl overflow-hidden shadow-2xl">
+                    {about.video ? (
+    <video
+        ref={videoRef}
+        className="w-full h-full object-cover"
+        poster={about.video.poster} 
+        playsInline
+        preload="metadata"
+        controls
+        muted
+        // onClick={handlePlayPause}
+    >
+        <source src={about.video} type="video/mp4" />
+        <source src={about.video.replace('.mp4', '.webm')} type="video/webm" />
+        Your browser does not support the video tag.
+    </video>
+) : (
+    <p>Loading...</p>
+)}
 
-                        {showControls && (
+                        {!isPlaying && (
                             <button
                                 onClick={handlePlayPause}
                                 className="absolute inset-0 flex items-center justify-center bg-black/30 hover:bg-black/40 transition-colors group"
-                                aria-label={isPlaying ? "Pause video" : "Play video"}
+                                aria-label="Play video"
                             >
                                 <div
-                                    className="w-20 h-20 rounded-full bg-white flex items-center justify-center group-hover:scale-110 transition-transform"
-                                >
-                                    {isPlaying ? (
-                                        <Pause size={40} className="text-pink-500"/>
-                                    ) : (
-                                        <Play size={40} className="text-pink-500"/>
-                                    )}
+                                    className="w-20 h-20 rounded-full bg-white flex items-center justify-center group-hover:scale-110 transition-transform">
+                                    <Play size={40} className="text-pink-500 ml-2"/>
                                 </div>
                             </button>
                         )}
@@ -142,16 +123,30 @@ const AboutPage = () => {
 
                 <section className="max-w-7xl mx-auto py-24 px-4">
                     <div className="bg-white rounded-2xl p-12 shadow-xl">
-                        <h2 className="text-4xl font-bold mb-8 text-center"> {t('about.mission')}</h2>
+                        <h2 className="text-4xl font-bold mb-8 text-center"> {about.title}</h2>
                         <p className="text-xl text-gray-600 text-center max-w-3xl mx-auto">
                             {about.description}
                         </p>
                     </div>
                 </section>
+
+                <section className="max-w-7xl mx-auto py-24 px-4">
+                    <h2 className="text-4xl font-bold text-center mb-16">{t('about.ourValues')}</h2>
+                    <div className="grid md:grid-cols-3 gap-8">
+                        {advertisements.map((ad, index) => (
+                            <div key={index} className="bg-white p-8 rounded-xl shadow-lg text-center hover:shadow-xl transition-shadow">
+                                {/* <img src={ad.icon} alt={ad.title} className="w-16 h-16 mb-4 mx-auto" /> */}
+                                <h3 className="text-2xl font-bold mb-4 text-pink-500">{ad.title}</h3>
+                                <p className="text-gray-600">{ad.description}</p>
+                            </div>
+                        ))}
+                    </div>
+                </section>
+
+
             </div>
+
             <Footer/>
         </>
     );
 };
-
-export default AboutPage;

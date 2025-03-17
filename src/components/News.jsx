@@ -120,7 +120,7 @@ function News() {
                                     <img
                                         src={item.image}
                                         alt={item.title}
-                                        className="rounded-[20px] w-full aspect-[29/17] object-cover"
+                                        className="rounded-[20px] w-full aspect-[29/17] lg:h-60 "
                                     />
                                     <h5 className="text-[18px] font-bold capitalize line-clamp-2 text-black tracking-wide mt-[10px]">
                                         {item.title}

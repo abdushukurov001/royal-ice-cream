@@ -1,3 +1,4 @@
+
 import {useState, useEffect} from 'react';
 import {useParams} from 'react-router-dom';
 import Navbar from "./Navbar.jsx";
@@ -8,7 +9,7 @@ import client from "../service/index.jsx";
 import Loading from "./Loading.jsx";
 
 const ProductDetail = () => {
-    const {category} = useParams();
+    const {category} = useParams(); // Get category from the URL
     const {t} = useTranslation();
     const [products, setProducts] = useState([]);
     const [selectedProduct, setSelectedProduct] = useState(null);
@@ -101,7 +102,7 @@ const ProductDetail = () => {
                             <div className="space-y-12">
                                 <section>
                                     {products.length > 0 && (
-                                        <h2 className="text-3xl capitalize font-semibold mb-4">{products[0].category.title}</h2>
+                                        <h2 className="text-3xl font-semibold mb-4">{products[0].category.title}</h2>
                                     )}
                                     <div className="grid grid-cols-2 md:grid-cols-3 lg:grid-cols-5 gap-4">
                                         {products.length > 0 ? (
@@ -115,18 +116,18 @@ const ProductDetail = () => {
                                                         className="aspect-square mx-auto relative mb-3 rounded-lg overflow-hidden">
                                                         <img
                                                             src={product.image}
-                                                            alt={product.title}
+                                                            alt={product.name}
                                                             width={260}
                                                             height={200}
                                                             className="object-cover h-60"
                                                         />
                                                     </div>
-                                                    <h3 className="text-md capitalize font-medium text-[#FF1493]">{product.title}</h3>
+                                                    <h3 className="text-md font-medium text-[#FF1493]">{product.name}</h3>
                                                     <p className="text-sm text-gray-500  line-clamp-2">{product.description}</p>
                                                 </div>
                                             ))
                                         ) : (
-                                            <p className="flex w-full h-full justify-center items-center">No products found in this category.</p>
+                                            <p className='text-center'>{t('catalog.not_found')}</p>
                                         )}
                                     </div>
                                 </section>
