@@ -10,7 +10,10 @@ export const resources = {
                 documents: "Sertifikatlar",
                 news: "Yangiliklar",
                 contact: "Aloqa",
-                advantages: "Bizning afzalliklarimiz"
+                advantages: "Bizning afzalliklarimiz",
+                whyChooseUs: " Nima uchun bizni tanlashadi",
+                download: "Yuklab olish"
+
             },
             home: {
                 hero: "<span class='text-pink-400'>Shirin</span> Taomlarni Kashf Qiling!",
@@ -23,7 +26,14 @@ export const resources = {
             catalog: {
                 download: "Katalogni yuklab oling",
                 no_products: "Bu toifadagi mahsulotlar topilmadi",
-                product_info: "Mahsulot haqida ma'lumot"
+                product_info: "Mahsulot haqida ma'lumot",
+                not_found: "Bu toifada mahsulot topilmadi.", 
+                see_more: "Ko'proq ko'rish",
+                detailed_product: "Mahsulot haqida batafsil",
+                information: " Qo'shimcha ma'lumotlar",
+                price: "Narxi",
+                weight: "Og'irligi "
+
             },
             contact: {
                 contact_us: "Biz bilan bog‘laning",
@@ -33,7 +43,9 @@ export const resources = {
                 send: "Yuborish"
             },
             about: {
-                mission: "Bizning Missiyamiz"
+                mission: "Bizning Missiyamiz",
+                ourValues: "Bizning qadriyatlarimiz"
+
             },
             buttons: {
                 more_details: "Batafsil",
@@ -52,7 +64,11 @@ export const resources = {
                 documents: "Сертификаты",
                 news: "Новости",
                 contact: "Контакты",
-                advantages: "Наши преимущества"
+                advantages: "Наши преимущества",
+                whyChooseUs: " Почему выбирают нас",
+                download: "Скачать"
+
+
             },
             home: {
                 hero: "Откройте для себя <span class='text-pink-400'>сладкие</span> угощения!",
@@ -65,7 +81,14 @@ export const resources = {
             catalog: {
                 download: "Скачать каталог",
                 no_products: "В этой категории товаров не найдено",
-                product_info: "Информация о продукте"
+                product_info: "Информация о продукте",
+                not_found: "В этой категории товары не найдены..", 
+                see_more: "Смотреть больше",
+                detailed_product: "Подробно о продукте",
+                information: " Дополнительная информация",
+                price: "Цена",
+                weight: "Вес"
+
             },
             contact: {
                 contact_us: "Свяжитесь с нами",
@@ -75,7 +98,8 @@ export const resources = {
                 send: "Отправить"
             },
             about: {
-                mission: "Наша миссия"
+                mission: "Наша миссия",
+                ourValues: "Наши ценности"
             },
             buttons: {
                 more_details: "Подробнее",
@@ -94,7 +118,10 @@ export const resources = {
                 documents: "Certificates",
                 news: "News",
                 contact: "Contact",
-                advantages: "Our Advantages"
+                advantages: "Our Advantages",
+                whyChooseUs: "Why choose us",
+                download: "Download"
+
             },
             home: {
                 hero: "Discover <span class='text-pink-400'>Sweet</span> Delights!",
@@ -107,7 +134,13 @@ export const resources = {
             catalog: {
                 download: "Download Catalog",
                 no_products: "No products found in this category",
-                product_info: "Products Info"
+                product_info: "Products Info",
+                not_found: "No products found in this category.", 
+                see_more: "See more",
+                detailed_product: "Detailed about the product",
+                information: "Additional information",
+                price: "Price",
+                weight: "Weight "
             },
             contact: {
                 contact_us: "Contact Us",
@@ -117,7 +150,8 @@ export const resources = {
                 send: "Send"
             },
             about: {
-                mission: "Our Mission"
+                mission: "Our Mission",
+                ourValues: "Our Values"
             },
             buttons: {
                 more_details: "More details",

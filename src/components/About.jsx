@@ -51,7 +51,7 @@ const AboutUs = () => {
           data-aos-duration="1000" 
           className="text-gray-500 md:text-lg leading-relaxed mb-4"
         >
-          {description}
+          {description}...
         </p>
         <Link 
           data-aos="fade-up" 

@@ -107,7 +107,7 @@ const Documents = () => {
                     className="w-full bg-pink-500 cursor-pointer text-white py-3 rounded-lg flex items-center justify-center gap-2 hover:bg-pink-600 transition-colors"
                   >
                     <Download size={20} />
-                    <span>{t("download")}</span>
+                    <span>   {t('navbar.download')}</span>
                   </a>
                 </div>
               </div>

@@ -126,7 +126,7 @@ const ProductDetail = () => {
                                                 </div>
                                             ))
                                         ) : (
-                                            <p>No products found in this category.</p>
+                                            <p className='text-center'>{t('catalog.not_found')}</p>
                                         )}
                                     </div>
                                 </section>

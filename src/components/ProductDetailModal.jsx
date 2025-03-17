@@ -1,7 +1,13 @@
-import {FaTimes} from 'react-icons/fa';
+import PropTypes from 'prop-types';
+import { FaTimes } from 'react-icons/fa';
+import {useTranslation} from 'react-i18next';
 
-const ProductModal = ({product, onClose}) => {
+
+const ProductModal = ({ product, onClose }) => {
+    const {t} = useTranslation();
     if (!product) return null;
+       
+    
 
     const handleOutsideClick = (e) => {
         if (e.target === e.currentTarget) {
@@ -18,7 +24,7 @@ const ProductModal = ({product, onClose}) => {
                 <div className="flex justify-between items-center p-4 border-b-white">
                     <h2 className="text-xl font-bold text-[#FF1493]">{product.title}</h2>
                     <button onClick={onClose} className="text-gray-500 hover:text-gray-700">
-                        <FaTimes className="w-6 h-6"/>
+                        <FaTimes className="w-6 h-6" />
                     </button>
                 </div>
                 <div className="p-6 flex flex-col max-h-[calc(100vh-10rem)] overflow-y-auto">
@@ -27,18 +33,18 @@ const ProductModal = ({product, onClose}) => {
                             <img
                                 src={product.image}
                                 alt={product.title}
-                                className="w-full md:h-full  object-cover rounded-lg"
+                                className="w-full md:h-full object-cover rounded-lg"
                             />
                         </div>
                         <div className="space-y-6 mt-6 max-h-[400px] overflow-y-auto">
-                            <h3 className="text-2xl font-semibold">Mahsulot haqida batafsil:</h3>
+                            <h3 className="text-2xl font-semibold">{t("catalog.detailed_product")}:</h3>
                             <p className="text-gray-600 text-lg">{product.description}</p>
 
                             <div className="max-h-[300px] overflow-y-auto">
-                                <h4 className="text-xl font-medium">Qo'shimcha ma'lumotlar:</h4>
+                                <h4 className="text-xl font-medium">{t("catalog.information")}:</h4>
                                 <ul className="list-disc list-inside text-gray-600 text-lg">
-                                    <li>Narxi: $10</li>
-                                    <li>Og'irligi: 500g</li>
+                                    <li>{t('catalog.price')}: {product.cost}</li>
+                                    <li>{t('catalog.weight')}: {product.weight} gr</li>
                                 </ul>
                             </div>
                         </div>
@@ -47,6 +53,17 @@ const ProductModal = ({product, onClose}) => {
             </div>
         </div>
     );
+};
+
+ProductModal.propTypes = {
+    product: PropTypes.shape({
+        title: PropTypes.string.isRequired,
+        image: PropTypes.string.isRequired,
+        description: PropTypes.string.isRequired,
+        weight: PropTypes.number.isRequired, 
+        cost: PropTypes.number.isRequired 
+    }).isRequired,
+    onClose: PropTypes.func.isRequired
 };
 
 export default ProductModal;
