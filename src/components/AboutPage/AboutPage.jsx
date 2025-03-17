@@ -1,3 +1,4 @@
+
 import {Play} from 'lucide-react';
 import ice_back from "../../assets/ice-back.jpg"
 import Navbar from "../Navbar.jsx";
@@ -149,6 +150,7 @@ const AboutPage = () => {
         </>
     );
 };
+
 
 export default AboutPage;
 // qq
