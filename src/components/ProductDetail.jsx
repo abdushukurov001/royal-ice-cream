@@ -122,8 +122,8 @@ const ProductDetail = () => {
                                                             className="object-cover h-60"
                                                         />
                                                     </div>
-                                                    <h3 className="text-md font-medium text-[#FF1493]">{product.name}</h3>
-                                                    <p className="text-sm text-gray-500  line-clamp-2">{product.description}</p>
+                                                    <h3 className="text-md font-medium text-[#FF1493] line-clamp-2">{product.title}</h3>
+                                                    <p className="text-sm text-gray-500  line-clamp-2">{product.description}...</p>
                                                 </div>
                                             ))
                                         ) : (
