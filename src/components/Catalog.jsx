@@ -39,7 +39,6 @@ export default function CatalogPage() {
 
   const handleDownload = () => {
     if (documentData) {
-      alert(documentData.file)
       const link = document.createElement("a");
       link.href = documentData.file; 
       link.download = documentData.name || "document"; 
