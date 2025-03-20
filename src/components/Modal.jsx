@@ -13,9 +13,9 @@ export default function Modal({ isOpen, onClose, newsItem }) {
       >
         <button
           onClick={onClose}
-          className="absolute top-3 right-3 text-gray-500 hover:text-gray-800 text-2xl"
+          className="absolute cursor-pointer top-3 right-3 text-gray-500 hover:text-gray-800 text-2xl"
         >
-          &times;
+          &times; 
         </button>
         <img
           src={newsItem.image}

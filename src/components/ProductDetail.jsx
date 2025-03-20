@@ -1,4 +1,3 @@
-
 import {useState, useEffect} from 'react';
 import {useParams} from 'react-router-dom';
 import Navbar from "./Navbar.jsx";
@@ -10,7 +9,7 @@ import Loading from "./Loading.jsx";
 
 const ProductDetail = () => {
     const {category} = useParams(); // Get category from the URL
-    const {t} = useTranslation();
+    const {t, i18n} = useTranslation();
     const [products, setProducts] = useState([]);
     const [selectedProduct, setSelectedProduct] = useState(null);
     const [loading, setLoading] = useState(true)
@@ -18,7 +17,9 @@ const ProductDetail = () => {
     useEffect(() => {
         const fetchProducts = async () => {
             try {
-                const response = await client.get(`/products?category=${category}`); // Fetch products from API
+                const lang = i18n.language || i18n.resolvedLanguage;
+
+                const response = await client.get(`/${lang}/products?category=${category}`); // Fetch products from API
                 setProducts(response.data); // Assuming the response contains an array of products
                 setLoading(false)
                 console.log(response.data)
@@ -30,7 +31,7 @@ const ProductDetail = () => {
         if (category) {
             fetchProducts();
         }
-    }, [category]);
+    }, [category, i18n.language]);
 
     const handleProductClick = (product) => {
         setSelectedProduct(product);
