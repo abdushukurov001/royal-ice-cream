@@ -118,7 +118,7 @@ const ClassicFavorites = () => {
           <img
             src={product.image}
             alt={product.title}
-            className="w-full h-62 object-cover"
+            className="mx-auto h-52 object-cover"
           />
         </div>
         <div className="h-full overflow-hidden relative">

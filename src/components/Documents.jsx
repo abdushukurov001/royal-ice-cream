@@ -74,7 +74,7 @@ const Documents = () => {
 
       {selectedDocument && (
         <div 
-          className="fixed inset-0 bg-gray-600/75 backdrop-blur-sm flex items-center justify-center p-4 z-50"
+          className="fixed inset-0 bg-gray-600/75  flex items-center justify-center p-4 z-50"
           onClick={handleBackdropClick}
         >
           <div className="bg-white rounded-xl max-w-[1000px] w-full h-auto max-h-[95vh] overflow-auto shadow-2xl flex flex-col">

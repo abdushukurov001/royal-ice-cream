@@ -119,7 +119,7 @@ const ProductDetail = () => {
                                                             alt={product.name}
                                                             width={260}
                                                             height={200}
-                                                            className="object-cover h-60"
+                                                            className="object-cover "
                                                         />
                                                     </div>
                                                     <h3 className="text-md font-medium text-[#FF1493] line-clamp-2">{product.title}</h3>
