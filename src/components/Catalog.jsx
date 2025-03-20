@@ -128,9 +128,9 @@ export default function CatalogPage() {
                     <div
                       key={product.id}
                       onClick={() => handleProductClick(product)}
-                      className="bg-[#FFF5F7] rounded-lg p-4 transition-transform hover:scale-105"
+                      className="bg-[#FFF5F7] cursor-pointer rounded-lg p-4 transition-transform hover:scale-105"
                     >
-                      <div className="aspect-square mx-auto relative mb-3 rounded-lg overflow-hidden">
+                      <div className="aspect-square  mx-auto relative mb-3 rounded-lg overflow-hidden">
                         <img
                           src={product.image}
                           alt={product.title}
