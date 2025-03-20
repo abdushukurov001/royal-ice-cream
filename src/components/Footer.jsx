@@ -55,7 +55,7 @@ const Footer = () => {
                      className='h-[80px] z-10'
                      alt=""/>
 
-                <ul className="flex z-1 flex-col justify-center flex-wrap sm:flex-row  gap-4 md:gap-6 space-x-4">
+                <ul className="flex z-1 items-center flex-col justify-center flex-wrap sm:flex-row  gap-4 md:gap-6 space-x-4">
                     <li><a onClick={() => window.location.href = "/"}
                            className="hover:text-gray-300 cursor-pointer">{t('navbar.home')}</a></li>
                     <li><a onClick={() => scrollToSection("about")}

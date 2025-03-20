@@ -1,4 +1,3 @@
-
 import { useState, useEffect } from "react";
 import { useTranslation } from "react-i18next";
 import { Link } from "react-router-dom";
@@ -15,6 +14,7 @@ export default function CatalogPage() {
   const [products, setProducts] = useState([]);
   const [loading, setLoading] = useState(true);
   const [selectedProduct, setSelectedProduct] = useState(null);
+  const [documentData, setDocumentData] = useState(null); 
 
   const handleProductClick = (product) => {
     setSelectedProduct(product);
@@ -22,6 +22,33 @@ export default function CatalogPage() {
 
   const closeModal = () => {
     setSelectedProduct(null);
+  };
+
+
+  const fetchDocument = async () => {
+    try {
+      const lang = i18n.language || i18n.resolvedLanguage;
+      const response = await client.get(`/${lang}/categories/document/`);
+      console.log(response.data)
+      setDocumentData(response.data[0]); 
+    } catch (error) {
+      console.error("Error fetching document:", error);
+    }
+  };
+
+
+  const handleDownload = () => {
+    if (documentData) {
+      alert(documentData.file)
+      const link = document.createElement("a");
+      link.href = documentData.file; 
+      link.download = documentData.name || "document"; 
+      document.body.appendChild(link);
+      link.click();
+      document.body.removeChild(link);
+    } else {
+      console.error("No document data available");
+    }
   };
 
   useEffect(() => {
@@ -36,7 +63,23 @@ export default function CatalogPage() {
           client.get(`/${lang}/products/`),
         ]);
 
-        setCategories(categoriesResponse.data);
+        const categoryOrder = {
+          "Ice cream": 1, "Мороженое": 1, "Muzqaymoq": 1,
+          "Glazed curd snack": 2, "Сырок": 2, "Sirok": 2,
+          "Semi-finished products": 3, "Полуфабрикаты": 3, "Yarim tayyor mahsulotlar": 3,
+          "Dumplings": 4, "Пельмени": 4, "Chuchvara": 4,
+          "Sunflower seeds": 5, "Семечки": 5, "Pista": 5,
+        };
+
+        const sortedCategories = categoriesResponse.data
+          .filter(category => category?.title)
+          .sort((a, b) => {
+            const orderA = categoryOrder[a.title] ?? 999;
+            const orderB = categoryOrder[b.title] ?? 999;
+            return orderA - orderB;
+          });
+
+        setCategories(sortedCategories);
         setProducts(productsResponse.data);
       } catch (error) {
         console.error("Error fetching data:", error);
@@ -46,6 +89,7 @@ export default function CatalogPage() {
     };
 
     fetchData();
+    fetchDocument(); 
   }, [i18n.language]);
 
   if (loading) {
@@ -64,7 +108,10 @@ export default function CatalogPage() {
       <div className="container mx-auto mt-22 min-h-dvh px-4 z-20 relative py-8">
         <header className="flex items-center justify-between mb-8">
           <h1 className="text-3xl font-bold text-[#FF1493]">{t("navbar.catalog")}</h1>
-          <button className="bg-[#FF1493] text-white px-3 py-2 rounded-3xl hover:bg-[#FF1493]/90">
+          <button
+            className="bg-[#FF1493] cursor-pointer text-white px-3 py-2 rounded-3xl hover:bg-[#FF1493]/90"
+            onClick={handleDownload} 
+          >
             {t("catalog.download")}
           </button>
         </header>
@@ -90,7 +137,7 @@ export default function CatalogPage() {
                           alt={product.title}
                           width={260}
                           height={200}
-                          className="object-cover h-60"
+                          className="object-cover"
                         />
                       </div>
                       <h3 className="text-md font-medium text-[#FF1493] line-clamp-2">{product.title}</h3>
@@ -98,7 +145,6 @@ export default function CatalogPage() {
                     </div>
                   ))}
 
-                  {/* Agar mahsulotlar 5 tadan ko‘p bo‘lsa, "See more" tugmachasi chiqadi */}
                   {categoryProducts.length > 5 && (
                     <Link to={`/catalog/${category.id}`}>
                       <div className="bg-[#FFF5F7] flex items-center justify-center rounded-lg p-4 w-full h-full transition-transform hover:scale-105">

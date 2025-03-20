@@ -28,13 +28,13 @@ const ProductModal = ({ product, onClose }) => {
                         <FaTimes className="w-6 h-6" />
                     </button>
                 </div>
-                <div className="p-6 flex flex-col max-h-[calc(100vh-10rem)] overflow-y-auto">
+                <div className="p-6 flex flex-col max-h-[calc(80vh-10rem)] overflow-y-auto">
                     <div className="grid grid-cols-1 md:grid-cols-2 gap-6">
-                        <div className="aspect-square">
+                        <div className="aspect-square mx-auto">
                             <img
                                 src={product.image}
                                 alt={product.title}
-                                className="w-full md:h-full object-cover rounded-lg"
+                                className=" w-44 md:w-full  object-cover rounded-lg"
                             />
                         </div>
                         <div className="space-y-6 mt-6 max-h-[400px] overflow-y-auto">
@@ -45,7 +45,7 @@ const ProductModal = ({ product, onClose }) => {
                                 <h4 className="text-xl font-medium">{t("catalog.information")}:</h4>
                                 <ul className="list-disc list-inside text-gray-600 text-lg">
                                     <li>{t('catalog.price')}: {product.cost}</li>
-                                    <li>{t('catalog.weight')}: {product.weight} gr</li>
+                                    <li>{t('catalog.weight')}: {product.weight} </li>
                                 </ul>
                             </div>
                         </div>

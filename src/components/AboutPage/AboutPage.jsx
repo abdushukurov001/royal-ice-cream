@@ -132,11 +132,11 @@ const AboutPage = () => {
 
                 <section className="max-w-7xl mx-auto py-24 px-4">
                     <h2 className="text-4xl font-bold text-center mb-16">{t('about.ourValues')}</h2>
-                    <div className="grid md:grid-cols-3 gap-8">
+                    <div className="flex flex-wrap  justify-center gap-8">
                         {advertisements.map((ad, index) => (
-                            <div key={index} className="bg-white p-8 rounded-xl shadow-lg text-center hover:shadow-xl transition-shadow">
+                            <div key={index} className="bg-white w-72 p-8 rounded-xl shadow-lg text-center hover:shadow-xl transition-shadow">
                                 {/* <img src={ad.icon} alt={ad.title} className="w-16 h-16 mb-4 mx-auto" /> */}
-                                <h3 className="text-2xl font-bold mb-4 text-pink-500">{ad.title}</h3>
+                                <h3 className="lg:text-2xl font-bold mb-4 text-pink-500">{ad.title}</h3>
                                 <p className="text-gray-600">{ad.description}</p>
                             </div>
                         ))}
