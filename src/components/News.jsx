@@ -64,12 +64,12 @@ function News() {
       id="news"
       style={{ backgroundImage: `url(${gradient})` }}
     >
-      <img src={imgL} alt="Decoration Left" className="absolute left-0 top-[40] h-[300px] md:h-[500px]" />
-      <img src={imgR} alt="Decoration Right" className="absolute right-0 bottom-[80px] md:bottom-[80px] h-[300px]" />
+      <img src={imgL} alt="Decoration Left" className="absolute left-0 md:top-[40px] top-[50px] h-[200px] md:h-[500px]" />
+      <img src={imgR} alt="Decoration Right" className="absolute right-0 bottom-[80px] md:bottom-[80px] h-[250px]" />
       
       <div className="container mx-auto px-4 text-center mb-12">
-        <h2 className="text-4xl font-bold text-pink-500">{t("navbar.news")}</h2>
-        <h4 className="pt-5 text-lg text-gray-700">{t("home.top_news")}.</h4>
+        <h2 className="text-4xl z-40 font-bold text-pink-500">{t("navbar.news")}</h2>
+        <h4 className="pt-5 text-lg z-40 text-gray-700">{t("home.top_news")}.</h4>
       </div>
 
       <div className="container mx-auto px-4">

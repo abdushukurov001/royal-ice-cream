@@ -21,7 +21,6 @@ const ClassicFavorites = () => {
               try{
                   const lang = i18n.resolvedLanguage;
                   const response = await client.get(`/${lang}/categories/`);
-                  console.log('qqq',response)
                   if (Array.isArray(response.data) && response.data.length > 0) {
                       setCategory(response.data); 
                   } else {
