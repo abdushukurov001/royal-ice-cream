@@ -23,7 +23,7 @@ const Language = () => {
     if (savedLanguage && Object.keys(languageMap).includes(savedLanguage)) {
       i18n.changeLanguage(savedLanguage);
     } else {
-      const defaultLanguage = i18n.language || 'en';
+      const defaultLanguage = i18n.resolvedLanguage || 'en';
       localStorage.setItem('language', defaultLanguage);
     }
   }, [i18n]);

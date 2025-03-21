@@ -22,7 +22,7 @@ const Home = () => {
         
         const fetchVideo = async () => {
             try {
-                const lang = i18n.language || i18n.resolvedLanguage;
+                const lang =  i18n.resolvedLanguage;
                 const response = await client.get(`${lang}/hero/`);
                 if (response.data && response.data.length > 0) {
                     setVideoUrl(response.data[0].video);

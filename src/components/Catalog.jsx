@@ -27,9 +27,8 @@ export default function CatalogPage() {
 
   const fetchDocument = async () => {
     try {
-      const lang = i18n.language || i18n.resolvedLanguage;
+      const lang =  i18n.resolvedLanguage;
       const response = await client.get(`/${lang}/categories/document/`);
-      console.log(response.data)
       setDocumentData(response.data[0]); 
     } catch (error) {
       console.error("Error fetching document:", error);
@@ -55,7 +54,7 @@ export default function CatalogPage() {
 
     const fetchData = async () => {
       try {
-        const lang = i18n.language || i18n.resolvedLanguage;
+        const lang =  i18n.resolvedLanguage;
 
         const [categoriesResponse, productsResponse] = await Promise.all([
           client.get(`/${lang}/categories/`),
@@ -89,7 +88,7 @@ export default function CatalogPage() {
 
     fetchData();
     fetchDocument(); 
-  }, [i18n.language]);
+  }, [i18n.resolvedLanguage]);
 
   if (loading) {
     return (

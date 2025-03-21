@@ -11,7 +11,7 @@ const AboutUs = () => {
   useEffect(() => {
     const fetchDescription = async () => {
       try {
-        const lang = i18n.language || i18n.resolvedLanguage;
+        const lang =  i18n.resolvedLanguage;
         const response = await client.get(`/${lang}/about/`);
         if (Array.isArray(response.data) && response.data.length > 0) {
           setDescription(response.data[0].main_description);

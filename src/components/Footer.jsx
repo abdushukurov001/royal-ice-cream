@@ -14,13 +14,13 @@ const Footer = () => {
      useEffect(() => {
           const fetchNews = async () => {
             try{
-                const lang = i18n.language || i18n.resolvedLanguage;
+                const lang =  i18n.resolvedLanguage;
                 const response = await client.get(`/${lang}/social/`);
                 if (Array.isArray(response.data) && response.data.length > 0) {
                     setSocial(response.data); 
                 } else {
-                    console.warn("No documents found in API response");
-                    setSocial([]);
+                    // console.warn("No documents found in API response");
+                    // setSocial([]);
                   }
             }  catch (error) {
                 console.error("Error fetching documents:", error);

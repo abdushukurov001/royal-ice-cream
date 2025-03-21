@@ -19,7 +19,7 @@ const ClassicFavorites = () => {
        useEffect(() => {
             const fetchNews = async () => {
               try{
-                  const lang = i18n.language || i18n.resolvedLanguage;
+                  const lang = i18n.resolvedLanguage;
                   const response = await client.get(`/${lang}/categories/`);
                   console.log('qqq',response)
                   if (Array.isArray(response.data) && response.data.length > 0) {
