@@ -17,7 +17,7 @@ const ProductDetail = () => {
     useEffect(() => {
         const fetchProducts = async () => {
             try {
-                const lang = i18n.language || i18n.resolvedLanguage;
+                const lang =  i18n.resolvedLanguage;
 
                 const response = await client.get(`/${lang}/products?category=${category}`); // Fetch products from API
                 setProducts(response.data); // Assuming the response contains an array of products
@@ -31,7 +31,7 @@ const ProductDetail = () => {
         if (category) {
             fetchProducts();
         }
-    }, [category, i18n.language]);
+    }, [category, i18n.resolvedLanguage]);
 
     const handleProductClick = (product) => {
         setSelectedProduct(product);

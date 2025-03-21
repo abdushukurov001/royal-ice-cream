@@ -12,7 +12,7 @@ const Documents = () => {
   useEffect(() => {
     const fetchDocuments = async () => {
       try {
-        const lang = i18n.language || i18n.resolvedLanguage;
+        const lang =  i18n.resolvedLanguage;
         const response = await client.get(`/${lang}/documents/`);
         if (Array.isArray(response.data) && response.data.length > 0) {
           setDocuments(response.data); 

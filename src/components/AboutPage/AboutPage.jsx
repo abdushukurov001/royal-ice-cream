@@ -21,7 +21,7 @@ const AboutPage = () => {
     useEffect(() => {
         const fetchData = async () => {
             try {
-                const lang = i18n.language || i18n.resolvedLanguage;
+                const lang =  i18n.resolvedLanguage;
                 const [aboutRes, adsRes] = await Promise.all([
                     client.get(`${lang}/about/`),
                     client.get(`${lang}/advertisements/`)
@@ -44,7 +44,7 @@ const AboutPage = () => {
         };
     
         fetchData();
-    }, [i18n.language]);
+    }, [i18n.resolvedLanguage]);
     
 
 

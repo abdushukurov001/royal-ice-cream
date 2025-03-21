@@ -20,7 +20,7 @@ const AdvantagesSection = () => {
       useEffect(() => {
         const fetchNews = async () => {
           try{
-              const lang = i18n.language || i18n.resolvedLanguage;
+              const lang =  i18n.resolvedLanguage;
               const response = await client.get(`/${lang}/advertisements/`);
               if (Array.isArray(response.data) && response.data.length > 0) {
                   setAdvertisements(response.data); 

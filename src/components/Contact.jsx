@@ -10,7 +10,7 @@ import client from '../service';
 const ContactSection = () => {
     const [contact, setContact] = useState(null)
     const { t, i18n } = useTranslation();
-    const lang = i18n.language || i18n.resolvedLanguage;
+    const lang =  i18n.resolvedLanguage;
 
 
     useEffect(() => {
