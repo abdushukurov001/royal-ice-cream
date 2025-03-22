@@ -2,6 +2,9 @@ import { useEffect, useState } from 'react';
 import { Download, X } from 'lucide-react';
 import { useTranslation } from "react-i18next";
 import client from '../service';
+import Slider from "react-slick";
+import "slick-carousel/slick/slick.css";
+import "slick-carousel/slick/slick-theme.css";
 
 const Documents = () => {
   const { t, i18n } = useTranslation();
@@ -34,6 +37,23 @@ const Documents = () => {
     }
   };
 
+  const slickOptions = {
+    infinite: true,
+    speed: 1000,
+    slidesToShow: 4,
+    slidesToScroll: 1,
+    autoplay: true,
+    autoplaySpeed: 2000,
+    dots: true,
+    arrows: false,
+    responsive: [
+      { breakpoint: 640, settings: { slidesToShow: 1, slidesToScroll: 1, dots: true } },
+      { breakpoint: 768, settings: { slidesToShow: 2, slidesToScroll: 2, dots: true } },
+      { breakpoint: 1024, settings: { slidesToShow: 3, slidesToScroll: 3 } },
+      { breakpoint: 1536, settings: { slidesToShow: 4, slidesToScroll: 4 } },
+    ],
+  };
+
   return (
     <>
       <div className="py-16 px-8 scroll-mt-16 md:mt-0 mt-12" id='documents'>
@@ -48,26 +68,29 @@ const Documents = () => {
             {t('navbar.documents')}
           </h2>
 
-          <div className="grid lg:grid-cols-3 sm:grid-cols-2 gap-8">
-            {documents.map((doc, index) => (
-              <div 
-                key={index}
-                onClick={() => setSelectedDocument(doc)}
-                data-aos="fade-up" 
-                data-aos-offset="200"
-                data-aos-delay="100"
-                data-aos-duration="1000"
-                data-aos-easing="ease-in-out"
-                className="bg-pink-100 rounded-xl p-4 shadow-lg hover:shadow-xl transition-shadow cursor-pointer"
-              >
-                <img
-                  src={doc.image}
-                  alt={doc.title}
-                  className="w-full md:h-[300px] h-[250px] object-cover rounded-lg mb-4"
-                />
-                <h3 className="text-lg font-semibold text-center">{doc.title}</h3>
-              </div>
-            ))}
+          <div className="container mx-auto px-4">
+          <Slider {...slickOptions} className="mx-auto">
+          {documents.map((doc, index) => (
+  <div 
+    key={index}
+    onClick={() => setSelectedDocument(doc)}
+    className="px-2"
+  >
+   <div className='relative md:h-[360px] h-[400px] bg-pink-100 cursor-pointer p-[15px] rounded-[20px]'>
+   <img
+      src={doc.image}
+      alt={doc.title}
+      className="h-64 mx-auto  object-cover mb-3"
+    />
+    <h3 className="text-lg font-semibold text-center min-h-[3rem] flex items-center justify-center">
+      {doc.title}
+    </h3>
+   </div>
+  </div>
+))}
+
+
+        </Slider>
           </div>
         </div>
       </div>
