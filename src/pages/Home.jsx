@@ -41,13 +41,20 @@ const Home = () => {
   }, [i18n.resolvedLanguage]);
   
   useEffect(() => {
+    // iOS uchun maxsus sozlamalar
+    const isIOS = /iPad|iPhone|iPod/.test(navigator.userAgent) && !window.MSStream;
+    if (isIOS && videoRef.current) {
+      videoRef.current.setAttribute('playsinline', 'true');
+      videoRef.current.setAttribute('muted', 'true');
+    }
+  
     // Separate useEffect for video playback logic
     if (!videoRef.current || !videoUrl) return;
-    
+  
     const playVideo = () => {
       if (videoRef.current && !videoLoaded) {
         videoRef.current.load(); // Ensure video is loaded before playing
-        
+  
         videoRef.current.play()
           .then(() => {
             setVideoLoaded(true);

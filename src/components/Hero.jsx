@@ -3,12 +3,12 @@ import heroLeft from "../assets/her0-left.svg";
 import heroRight from "../assets/hero-right.svg";
 
 const Hero = () => {
-    const {t} = useTranslation()
+    const { t } = useTranslation()
 
     const scrollToSection = (sectionId) => {
         const section = document.getElementById(sectionId);
         if (section) {
-            section.scrollIntoView({behavior: "smooth"});
+            section.scrollIntoView({ behavior: "smooth" });
         } else {
             window.location.href = `/?scroll=${sectionId}`;
         }
@@ -31,16 +31,16 @@ const Hero = () => {
             <div
                 className="relative z-10 max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 h-full flex items-center justify-center text-center">
                 <div className="text-white">
-                <h1
-  data-aos="fade-down"
-  data-aos-offset="200"
-  data-aos-duration="1000"
-  data-aos-easing="ease-in-out"
-  data-aos-mirror="true"
-  data-aos-once="false"
-  className="md:text-[100px] text-5xl drop-shadow-xl bekshire font-bold mb-4 font-berkshire"
-  dangerouslySetInnerHTML={{ __html: t('home.hero') }}
-/>
+                    <h1
+                        data-aos="fade-down"
+                        data-aos-offset="200"
+                        data-aos-duration="1000"
+                        data-aos-easing="ease-in-out"
+                        data-aos-mirror="true"
+                        data-aos-once="false"
+                        className="md:text-[100px] text-5xl drop-shadow-xl bekshire font-bold mb-4 font-berkshire"
+                        dangerouslySetInnerHTML={{ __html: t('home.hero') }}
+                    />
 
                     <p
                         data-aos="fade-up"
@@ -53,8 +53,8 @@ const Hero = () => {
                         {t('home.hero_desc')}
                     </p>
                     <button data-aos="zoom-in" data-aos-delay="1000"
-                            onClick={() => scrollToSection("contact")}
-                            className="bg-pink-500 cursor-pointer hover:bg-pink-400 text-white px-6 py-3 rounded-3xl text-lg font-semibold shadow-md transition-colors">
+                        onClick={() => scrollToSection("contact")}
+                        className="bg-pink-500 cursor-pointer hover:bg-pink-400 text-white px-6 py-3 rounded-3xl text-lg font-semibold shadow-md transition-colors">
                         {t('contact.contact_us')}
                     </button>
                 </div>

@@ -76,7 +76,7 @@ const Documents = () => {
     onClick={() => setSelectedDocument(doc)}
     className="px-2"
   >
-   <div className='relative md:h-[360px] h-[400px] bg-pink-100 cursor-pointer p-[15px] rounded-[20px]'>
+   <div className='relative md:h-[360px] h-[400px] bg-[#F5F5F5] cursor-pointer p-[15px] rounded-[20px] shadow-lg'>
    <img
       src={doc.image}
       alt={doc.title}

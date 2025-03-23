@@ -78,8 +78,8 @@ function News() {
             <div key={key} className="px-2" onClick={() => openModal(item)}>
               <div className="relative md:h-[360px] h-[400px] bg-pink-100 cursor-pointer p-[15px] rounded-[20px]">
                 <img src={item.image} alt={item.title} className=" h-48 mx-auto  object-cover" />
-                <h5 className="text-[18px] font-bold md:line-clamp-1 line-clamp-2 text-black tracking-wide mt-[10px]">{item.title}</h5>
-                <p className="font-light lg:line-clamp-2 md:line-clamp-2 line-clamp-4 text-black">{item.description}</p>
+                <h5 className="text-[18px] font-bold md:line-clamp-1 line-clamp-2 text-black tracking-wide mt-[10px] text-center">{item.title}</h5>
+                <p className="font-light lg:line-clamp-2 md:line-clamp-3 line-clamp-4 text-black indent-1">{item.description}</p>
               </div>
             </div>
           ))}

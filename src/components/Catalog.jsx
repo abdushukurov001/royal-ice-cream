@@ -4,13 +4,21 @@ import { Link } from "react-router-dom";
 import Navbar from "./Navbar.jsx";
 import Footer from "./Footer.jsx";
 import Loading from "./Loading.jsx";
-import client from '../service';
+import client from "../service";
 
 export default function CatalogPage() {
   const { t, i18n } = useTranslation();
   const [categories, setCategories] = useState([]);
   const [loading, setLoading] = useState(true);
   const [documentData, setDocumentData] = useState(null);
+
+  const categoryMapping = [
+    { uz: "Muzqaymoq", ru: "Мороженое", en: "Ice cream", order: 1 },
+    { uz: "Sirok", ru: "Сырок", en: "Glazed curd snack", order: 2 },
+    { uz: "Yarim tayyor mahsulotlar", ru: "Полуфабрикаты", en: "Semi-finished products", order: 3 },
+    { uz: "Quyiltirilgan sut", ru: "Сгущенное молоко", en: "Condensed milk", order: 4 },
+    { uz: "Pista", ru: "Семечки", en: "Sunflower seeds", order: 5 },
+  ];
 
   const fetchDocument = async () => {
     try {
@@ -36,19 +44,31 @@ export default function CatalogPage() {
               const categoryId = product.catalog.id;
               const categoryTitle = product.catalog.title;
 
-              if (!groupedCategories[categoryId]) {
-                groupedCategories[categoryId] = {
+              const matchedCategory = categoryMapping.find(
+                (cat) =>
+                  cat.ru === categoryTitle ||  cat.uz === categoryTitle ||  cat.en === categoryTitle
+              );
+
+              const baseCategory = matchedCategory ? matchedCategory.uz : categoryTitle;
+
+              if (!groupedCategories[baseCategory]) {
+                groupedCategories[baseCategory] = {
                   id: categoryId,
-                  title: categoryTitle,
+                  title: matchedCategory ? matchedCategory[lang] || matchedCategory.uz : categoryTitle, 
                   products: [],
+                  order: matchedCategory ? matchedCategory.order : 99, 
                 };
               }
 
-              groupedCategories[categoryId].products.push(product);
+              groupedCategories[baseCategory].products.push(product);
             }
           });
 
-          setCategories(Object.values(groupedCategories));
+          const sortedCategories = Object.values(groupedCategories).sort(
+            (a, b) => a.order - b.order
+          );
+
+          setCategories(sortedCategories);
         } else {
           console.warn("No categories found in API response");
           setCategories([]);
@@ -97,9 +117,9 @@ export default function CatalogPage() {
       <Navbar />
       <div className="container mx-auto mt-22 min-h-dvh px-4 z-20 relative py-8">
         <header className="flex items-center justify-between mb-8">
-          <h1 className="text-3xl font-bold text-[#FF1493]">{t("navbar.catalog")}</h1>
+          <h1 className="md:text-3xl text-xl font-bold text-[#FF1493]">{t("navbar.catalog")}</h1>
           <button
-            className="bg-[#FF1493] cursor-pointer text-white px-3 py-2 rounded-3xl hover:bg-[#FF1493]/90"
+            className="bg-[#FF1493] cursor-pointer text-white md:px-3 px-2 py-2 rounded-3xl hover:bg-[#FF1493]/90"
             onClick={handleDownload}
           >
             {t("catalog.download")}
@@ -114,11 +134,11 @@ export default function CatalogPage() {
                 {category.products.length > 0 ? (
                   category.products.map((product) => (
                     <Link key={product.id} to={`/catalog/${category.id}/${product.id}`}>
-                      <div className="bg-[#FFF5F7] p-4 rounded-lg hover:shadow-md transition-all">
+                      <div className="bg-[#FFF5F7]  p-4 rounded-lg hover:shadow-md transition-all">
                         <img
                           src={product.image}
                           alt={product.title}
-                          className="w-full h-40 object-cover rounded-lg mb-3"
+                          className="w-full md:h-48  object-cover rounded-lg mb-3"
                         />
                         <h3 className="text-lg font-bold text-center text-[#FF1493] line-clamp-2">
                           {product.title}
