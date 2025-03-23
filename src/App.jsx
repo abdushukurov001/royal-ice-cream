@@ -3,44 +3,40 @@ import Catalog from './components/Catalog';
 import ProductDetail from './components/ProductDetail';
 import Home from './pages/Home'
 import './i18n/i18';
-import {createBrowserRouter, RouterProvider} from 'react-router-dom';
+import { createBrowserRouter, RouterProvider } from 'react-router-dom';
 import AboutPage from "./components/AboutPage/AboutPage.jsx";
 
-
 function NotFoundRedirect() {
-  return <Home />; 
+  return <Home />;
 }
 
 function App() {
   const router = createBrowserRouter([
     {
       path: '/',
-      element: <Home/>
+      element: <Home />
     },
     {
       path: '/catalog',
-      element: <Catalog/>
+      element: <Catalog />
     },
     {
-      path: '/catalog/:category',
-      element: <ProductDetail/>
+      path: '/catalog/:categoryId/:productId', 
+      element: <ProductDetail />
     },
     {
       path: '/about',
-      element: <AboutPage/>
+      element: <AboutPage />
     },
     {
-      path: '*', 
+      path: '*',
       element: <NotFoundRedirect />,
     },
-
   ]);
- 
 
-  return (
-    <RouterProvider router={router}/>
-    
-  )
+  return ( 
+    <RouterProvider router={router} /> 
+  );
 }
 
-export default App
+export default App;

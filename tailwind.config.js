@@ -1,18 +1,18 @@
 /** @type {import('tailwindcss').Config} */
-module.exports = {
-  content: [
-    "./src/**/*.{html,js,jsx,ts,tsx}",
-    "./public/index.html", 
-  ],
-  theme: {
-    extend: {
-      fontFamily: {
-        berkshire: ['Berkshire Swash', 'cursive'],
-      },
+export const content = [
+  "./src/**/*.{html,js,jsx,ts,tsx}",
+  "./public/index.html",
+];
+export const theme = {
+  extend: {
+    fontFamily: {
+      berkshire: ['Berkshire Swash', 'cursive'],
     },
   },
-  plugins: [
-    require('tailwindcss'),
-    require('autoprefixer'),
-  ],
 };
+export const plugins = [
+  // eslint-disable-next-line no-undef
+  require('tailwindcss'),
+  // eslint-disable-next-line no-undef
+  require('autoprefixer'),
+];
