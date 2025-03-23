@@ -20,9 +20,16 @@ const ProductDetail = () => {
       try {
         const lang = i18n.resolvedLanguage;
         const response = await client.get(`/${lang}/products/`);
+        const arr = []
 
         if (response.data) {
-          setProduct(response.data);
+          console.log(response.data[0])
+          for (const element of response.data) {
+            if (element.category["id"] == Number(productId)) {
+              arr.push(element)
+            }
+            setProduct(arr)
+          }
         } else {
           setError(t("catalog.not_found"));
         }
@@ -105,7 +112,7 @@ const ProductDetail = () => {
             <section>
               <h2 className="text-3xl font-semibold mb-6">{product.title}</h2>
               <div className="grid grid-cols-2 md:grid-cols-3 lg:grid-cols-5 gap-4">
-                {product.subproducts?.map((sub) => (
+                {product.map((sub) => (
                   <div
                     key={sub.id}
                     onClick={() => handleSubproductClick(sub)}
