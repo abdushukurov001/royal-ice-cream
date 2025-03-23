@@ -4,14 +4,32 @@ import { Link } from "react-router-dom";
 import Navbar from "./Navbar.jsx";
 import Footer from "./Footer.jsx";
 import Loading from "./Loading.jsx";
+import client from '../service';
+
 
 export default function CatalogPage() {
-  const { t } = useTranslation();
+  const { t, i18n } = useTranslation();
 
   const [loading, setLoading] = useState(true);
+  const [documentData, setDocumentData] = useState(null); 
+
   // const [selectedProduct, setSelectedProduct] = useState(null);
 
   // Statik kategoriyalar va mahsulotlar
+
+  const fetchDocument = async () => {
+    try {
+      const lang =  i18n.resolvedLanguage;
+      const response = await client.get(`/${lang}/categories/document/`);
+      setDocumentData(response.data[0]); 
+    } catch (error) {
+      console.error("Error fetching document:", error);
+    }
+  };
+
+  fetchDocument(); 
+
+
   const categories = [
     {
       id: 1,
@@ -130,6 +148,19 @@ export default function CatalogPage() {
       ],
     },
   ];
+
+    const handleDownload = () => {
+    if (documentData) {
+      const link = document.createElement("a");
+      link.href = documentData.file; 
+      link.download = documentData.name || "document"; 
+      document.body.appendChild(link);
+      link.click();
+      document.body.removeChild(link);
+    } else {
+      console.error("No document data available");
+    }
+  };
   
 
   // const handleProductClick = (product) => {
@@ -159,7 +190,7 @@ export default function CatalogPage() {
           <h1 className="text-3xl font-bold text-[#FF1493]">{t("navbar.catalog")}</h1>
           <button
             className="bg-[#FF1493] cursor-pointer text-white px-3 py-2 rounded-3xl hover:bg-[#FF1493]/90"
-            onClick={() => alert("Download functionality")}
+            onClick={handleDownload} 
           >
             {t("catalog.download")}
           </button>

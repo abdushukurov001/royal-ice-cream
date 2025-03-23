@@ -82,7 +82,7 @@ const Documents = () => {
       alt={doc.title}
       className="h-64 mx-auto  object-cover mb-3"
     />
-    <h3 className="text-lg font-semibold line-clamp-1 text-center min-h-[3rem] flex items-center justify-center">
+    <h3 className="text-lg font-semibold line-clamp-1 text-center min-h-[3rem] ">
       {doc.title}
     </h3>
    </div>
@@ -122,7 +122,7 @@ const Documents = () => {
                 </div>
 
                 <div className="flex flex-col justify-between h-full">
-                  <p className="text-gray-600 mb-6">{selectedDocument.description}</p>
+                  <p className="text-gray-600 mb-6 ">{selectedDocument.description}</p>
                   <a
                     href={selectedDocument.file} 
                     target="_blank"

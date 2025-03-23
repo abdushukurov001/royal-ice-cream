@@ -234,8 +234,8 @@ const ProductDetail = () => {
                 {product.subproducts.map((sub) => (
                   <div key={sub.id}  onClick={() => handleSubproductClick(sub)} className="bg-[#FFF5F7] rounded-lg p-4 transition-transform hover:scale-105 cursor-pointer">
                     <img src={sub.image} alt={sub.title} className="w-full max-h-52 object-cover rounded-lg mb-3" />
-                    <h3 className="text-md font-medium text-[#FF1493]">{sub.title}</h3>
-                    <p className="text-sm text-gray-500">{sub.description}</p>
+                    <h3 className="text-md font-medium text-[#FF1493] line-clamp-2">{sub.title}</h3>
+                    <p className="text-sm text-gray-500 line-clamp-2">{sub.description}</p>
                   </div>
                 ))}
               </div>
