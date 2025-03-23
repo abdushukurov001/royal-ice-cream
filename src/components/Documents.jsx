@@ -82,7 +82,7 @@ const Documents = () => {
       alt={doc.title}
       className="h-64 mx-auto  object-cover mb-3"
     />
-    <h3 className="text-lg font-semibold text-center min-h-[3rem] flex items-center justify-center">
+    <h3 className="text-lg font-semibold line-clamp-1 text-center min-h-[3rem] flex items-center justify-center">
       {doc.title}
     </h3>
    </div>
