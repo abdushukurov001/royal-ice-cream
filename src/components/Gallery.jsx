@@ -45,7 +45,7 @@ const ImageSlider = () => {
       <img
         src={wyUs.image}
         alt="Static Image"
-        className="w-full lg:max-w-5xl h-64 object-cover rounded-lg shadow-lg"
+        className="w-full lg:max-w-5xl h-72 object-cover rounded-lg shadow-lg"
       />
     </div>
     </div>

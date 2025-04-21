@@ -5,6 +5,7 @@ import { toast, ToastContainer } from 'react-toastify';
 import Footer from './Footer';
 import { useEffect, useState } from 'react';
 import client from '../service';
+import SocialLinks from './SocialLinks';
 
 
 const ContactSection = () => {
@@ -70,28 +71,41 @@ const ContactSection = () => {
                                 {t('navbar.contact')}
                             </h2>
                             {contact && (
-                                <>
-                                    <p className="flex text-start items-center gap-3">
-                                        <Phone size={20} className="text-pink-600" />
-                                        <a href={`tel:+${contact.phone.replace(/^(\d{3})(\d{2})(\d{3})(\d{2})(\d{2})$/, '$1$2$3$4$5')}`} className="text-black">
-                                            {contact.phone.replace(/^(\d{3})(\d{2})(\d{3})(\d{2})(\d{2})$/, '+$1 $2 $3-$4-$5')}
-                                        </a>
-                                    </p>
-                                    <p className="flex text-start items-center gap-3">
-                                        <Mail size={20} className="text-pink-600" />
-                                        <a href={`mailto:${contact.email}`} className="text-black">
-                                            {contact.email}
-                                        </a>
-                                    </p>
-                                    <p className="flex text-start items-center gap-3">
-                                        <MapPin size={20} className="text-pink-600" />
-                                        <a href={`https://www.google.com/maps?q=${contact.address}`} target="_blank" rel="noopener noreferrer" className="text-black">
-                                            {contact.address}
-                                        </a>
-                                    </p>
-
-                                </>
-                            )}
+  <>
+    <p className="flex text-start items-center gap-3 relative z-10">
+      <Phone size={20} className="text-pink-600" />
+      <a 
+        href={`tel:+${contact.phone.replace(/^(\d{3})(\d{2})(\d{3})(\d{2})(\d{2})$/, '$1$2$3$4$5')}`} 
+        className="text-black hover:underline cursor-pointer"
+      >
+        {contact.phone.replace(/^(\d{3})(\d{2})(\d{3})(\d{2})(\d{2})$/, '+$1 $2 $3-$4-$5')}
+      </a>
+    </p>
+    <p className="flex text-start items-center gap-3 relative z-10">
+      <Mail size={20} className="text-pink-600" />
+      <a 
+        href={`mailto:${contact.email}`} 
+        className="text-black hover:underline cursor-pointer"
+      >
+        {contact.email}
+      </a>
+    </p>
+    <p className="flex text-start items-center gap-3 relative z-10">
+      <MapPin size={20} className="text-pink-600" />
+      <a 
+        href={`https://www.google.com/maps?q=${contact.address}`} 
+        target="_blank" 
+        rel="noopener noreferrer" 
+        className="text-black hover:underline cursor-pointer"
+      >
+        {contact.address}
+      </a>
+    </p>
+    <div className="relative">
+      <SocialLinks />
+    </div>
+  </>
+)}
                         </div>
                         <div className="w-full lg:w-1/2 h-[350px] p-4 rounded-lg bg-white shadow-xl">
                             <form className="flex relative z-20 flex-col space-y-4" onSubmit={handleSubmit}>
